@@ -1,0 +1,20 @@
+{
+  "name": "@studyfind/firebase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@studyfind/types": "^1.0.0",
+    "firebase": "^8.10.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "typescript": "^4.4.4"
+  }
+}
