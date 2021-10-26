@@ -1,38 +1,46 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import { ChakraProvider, Flex } from "@chakra-ui/react";
+import { Message } from "components";
+import { theme } from "constants/theme";
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
-  </ChakraProvider>
-)
+import ResetPassword from "pages/ResetPassword";
+import VerifyEmail from "pages/VerifyEmail";
+
+function App() {
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode") || "";
+  const code = params.get("oobCode") || "";
+
+  const render = () => {
+    if (!mode) {
+      return (
+        <Message
+          status="failure"
+          title="404 Error"
+          description="The action you want to perform could not be found"
+        />
+      );
+    }
+
+    if (!code) {
+      return (
+        <Message
+          status="failure"
+          title="400 Error"
+          description="The action code is missing from your link"
+        />
+      );
+    }
+
+    return mode === "resetPassword" ? <ResetPassword code={code} /> : <VerifyEmail code={code} />;
+  };
+
+  return (
+    <ChakraProvider theme={theme}>
+      <Flex height="100vh" width="100vw" justify="center" align="center">
+        {render()}
+      </Flex>
+    </ChakraProvider>
+  );
+}
+
+export default App;
