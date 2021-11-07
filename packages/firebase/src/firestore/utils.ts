@@ -1,8 +1,12 @@
 import firebase from "firebase";
-import moment from "moment-timezone";
+import * as moment from "moment-timezone";
 
 export const getNow = () => {
   return moment().utc().valueOf();
+};
+
+export const guessTimezone = () => {
+  return moment.tz.guess();
 };
 
 // POST

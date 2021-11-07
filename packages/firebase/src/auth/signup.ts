@@ -1,6 +1,4 @@
-import * as moment from "moment-timezone";
-
-import { auth, side } from "../config";
+import { auth } from "../config";
 import { setDoesUserExist } from "./utils";
 import { createResearcherDocument } from "../firestore/mutations/researcher";
 import { createParticipantDocument } from "../firestore/mutations/participant";
@@ -10,8 +8,10 @@ import {
   Timezone,
   UserID,
 } from "@studyfind/types";
+import { getNow, guessTimezone } from "../firestore/utils";
 
 interface SignUpPayload {
+  side: "RESEARCHER" | "PARTICIPANT";
   name: string;
   email: string;
   password: string;
@@ -22,9 +22,9 @@ const defaultResearcher: CreateResearcherDocument = {
   background: "",
   phone: "",
   timezone: {
-    region: moment.tz.guess() as Timezone,
+    region: guessTimezone() as Timezone,
     autodetect: true,
-    updatedAt: moment.utc().valueOf(),
+    updatedAt: getNow(),
   },
   notifications: {
     local: true,
@@ -41,9 +41,9 @@ const defaultParticipant: CreateParticipantDocument = {
   enrolled: [],
   saved: [],
   timezone: {
-    region: moment.tz.guess() as Timezone,
+    region: guessTimezone() as Timezone,
     autodetect: true,
-    updatedAt: moment.utc().valueOf(),
+    updatedAt: getNow(),
   },
   location: {
     address: "",
@@ -52,7 +52,7 @@ const defaultParticipant: CreateParticipantDocument = {
       longitude: 0,
     },
     autodetect: false,
-    updatedAt: moment.utc().valueOf(),
+    updatedAt: getNow(),
   },
   notifications: {
     local: true,
@@ -61,13 +61,13 @@ const defaultParticipant: CreateParticipantDocument = {
   },
 };
 
-const createUserDocument = {
-  RESEARCHER: (uid: UserID) => createResearcherDocument(uid, defaultResearcher),
-  PARTICIPANT: (uid: UserID) => createParticipantDocument(uid, defaultParticipant),
-}[side];
-
-export const signup = async ({ name, email, password }: SignUpPayload) => {
+export const signup = async ({ side, name, email, password }: SignUpPayload) => {
   const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
+  const createUserDocument = {
+    RESEARCHER: (uid: UserID) => createResearcherDocument(uid, defaultResearcher),
+    PARTICIPANT: (uid: UserID) => createParticipantDocument(uid, defaultParticipant),
+  }[side];
 
   if (user) {
     await Promise.all([

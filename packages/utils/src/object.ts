@@ -1,5 +1,5 @@
 type Object = { [key: string]: any };
-type ValueCallback = (key: string, value: any) => void;
+type ValueCallback = (key: string, value: any) => any;
 type BooleanCallback = (key: string, value: any) => boolean;
 
 const map = (object: Object, fn: ValueCallback) => {

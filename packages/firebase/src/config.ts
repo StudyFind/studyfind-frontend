@@ -16,5 +16,3 @@ export const auth = app.auth();
 export const storage = app.storage();
 export const functions = app.functions();
 export const firestore = app.firestore();
-
-export const side = "RESEARCHER";

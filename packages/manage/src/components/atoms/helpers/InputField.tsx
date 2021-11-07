@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const InputField = memo(({ as, error, ...rest }: Props) => {
+  console.log(error);
+
   const errorPlaceholderColor = useColorModeValue("red.400", "red.400");
   const errorBackground = useColorModeValue("red.100", "red.800");
   const borderColor = useColorModeValue("gray.200", "gray.700");
