@@ -1,8 +1,0 @@
-{
-  "files.exclude": {
-    "packages/researcher": true,
-    "packages/utils": true,
-    "packages/types": true,
-    "packages/manage": true
-  }
-}
