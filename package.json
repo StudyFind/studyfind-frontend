@@ -2,7 +2,7 @@
   "name": "studyfind-frontend",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "packages/*"
   ],
   "scripts": {
     "test": "lerna run test",
