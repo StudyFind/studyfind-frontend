@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, Flex, Textarea, FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/react";
 import { InputField } from "../helpers";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string;
   readonly error?: string;
@@ -10,7 +10,7 @@ type Props = {
   readonly limit?: number;
   readonly onChange: (name: string, value: string) => void;
   readonly [key: string]: any;
-};
+}
 
 export const TextareaInput = React.memo(
   ({ name, value, error, label, limit, onChange, ...rest }: Props) => {

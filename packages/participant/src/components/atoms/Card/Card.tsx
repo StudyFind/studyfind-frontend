@@ -3,10 +3,10 @@ import React from "react";
 import { useColor } from "hooks";
 import { Box } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   readonly children: React.ReactNode;
   readonly [key: string]: any;
-};
+}
 
 export const Card = React.memo(({ children, ...rest }: Props) => {
   const borderColor = useColor("gray.200", "gray.700");

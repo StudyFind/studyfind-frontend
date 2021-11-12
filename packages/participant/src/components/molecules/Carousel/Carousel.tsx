@@ -4,12 +4,12 @@ import { Flex } from "@chakra-ui/react";
 
 import CarouselDots from "./CarouselDots";
 
-type Props = {
+interface Props {
   items: React.ReactElement[];
   interval: number;
   size: "sm" | "md" | "lg";
   [key: string]: any;
-};
+}
 
 function Carousel({ items, size = "md", interval, ...rest }: Props) {
   const [itemIndex, setItemIndex] = useState(0);

@@ -4,11 +4,11 @@ import { Button } from "@chakra-ui/react";
 import { FaCopy, FaCheckCircle } from "react-icons/fa";
 import { SecondaryButton } from "../SecondaryButton/SecondaryButton";
 
-type Props = {
+interface Props {
   readonly children: string;
   readonly copiedValue: string;
   readonly buttonTextOnCopied?: string;
-};
+}
 
 export const ClipboardButton = React.memo(
   ({ children, copiedValue, buttonTextOnCopied }: Props) => {

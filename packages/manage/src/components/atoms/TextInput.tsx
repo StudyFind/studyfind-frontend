@@ -3,7 +3,7 @@ import { memo } from "react";
 import { InputGroup, InputLeftElement, InputRightElement } from "@chakra-ui/react";
 import { InputField, InputWrapper } from "./helpers";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string;
   readonly error?: string;
@@ -14,7 +14,7 @@ type Props = {
   readonly rightWidth?: string;
   readonly onChange: (name: string, value: string) => void;
   readonly [key: string]: any;
-};
+}
 
 export const TextInput = memo(
   ({ name, value, error, label, left, leftWidth, right, rightWidth, onChange, ...rest }: Props) => {

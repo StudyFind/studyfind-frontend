@@ -3,7 +3,7 @@ import React from "react";
 import { useColor } from "hooks";
 import { Grid, Heading, Text, Checkbox } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: boolean;
   readonly error?: string;
@@ -11,7 +11,7 @@ type Props = {
   readonly details?: string;
   readonly onChange: (name: string, value: boolean) => void;
   readonly [key: string]: any;
-};
+}
 
 export const CheckboxInput = React.memo(
   ({ name, value, error, label, details, onChange, ...rest }: Props) => {
@@ -48,5 +48,3 @@ export const CheckboxInput = React.memo(
     );
   }
 );
-
-export default CheckboxInput;

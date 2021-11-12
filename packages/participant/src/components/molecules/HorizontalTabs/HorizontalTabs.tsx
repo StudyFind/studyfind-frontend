@@ -4,11 +4,11 @@ import { useTabs, useColor, useDevice } from "hooks";
 import { Tabs, Tab, TabList, TabPanels, TabPanel } from "@chakra-ui/react";
 import { Tab as TabType } from "types/global";
 
-type Props = {
+interface Props {
   tabs: TabType[];
   useURL?: boolean;
   [key: string]: any;
-};
+}
 
 function HorizontalTabs({ tabs, useURL = true, ...rest }: Props) {
   const color = useColor("gray.400", "gray.500");

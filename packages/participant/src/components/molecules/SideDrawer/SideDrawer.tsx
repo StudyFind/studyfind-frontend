@@ -13,13 +13,13 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   heading: string;
   subheading: string;
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
-};
+}
 
 function SideDrawer({ heading, subheading, onClose, isOpen, children }: Props) {
   const headBackground = useColor("white", "gray.900");

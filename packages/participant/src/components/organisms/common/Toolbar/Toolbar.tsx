@@ -3,6 +3,7 @@ import { FaBell, FaUserCircle, FaSun, FaMoon, FaQuestionCircle } from "react-ico
 
 import ToolbarLink from "./ToolbarLink";
 import ToolbarSettingsMenu from "./ToolbarSettingsMenu";
+import ToolbarNotificationsMenu from "./ToolbarNotificationsMenu";
 import ToolbarAccountMenu from "./ToolbarAccountMenu";
 import ToolbarSupportMenu from "./ToolbarSupportMenu";
 import { useColor } from "hooks";
@@ -25,7 +26,7 @@ function Toolbar({ heading, ...rest }: Props) {
     },
     {
       name: "notifications",
-      menu: <ToolbarSettingsMenu />,
+      menu: <ToolbarNotificationsMenu />,
       icon: <FaBell />,
     },
     {

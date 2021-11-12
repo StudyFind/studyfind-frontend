@@ -3,14 +3,14 @@ import { useColor } from "hooks";
 import { Box, HStack, Icon } from "@chakra-ui/react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
-type Props = {
+interface Props {
   size: "sm" | "md" | "lg";
   itemIndex: number;
   numberOfItems: number;
   handleBack: () => void;
   handleNext: () => void;
   handleSelect: (index: number) => void;
-};
+}
 
 function CarouselDots({
   size,

@@ -7,10 +7,10 @@ import { Grid, Divider } from "@chakra-ui/react";
 import CalendarHead from "./CalendarHead";
 import CalendarBody from "./CalendarBody";
 
-type Props = {
+interface Props {
   date: string;
   setDate: React.Dispatch<React.SetStateAction<string | undefined>>;
-};
+}
 
 function Calendar({ date, setDate }: Props) {
   const [month, setMonth] = useState(NaN);

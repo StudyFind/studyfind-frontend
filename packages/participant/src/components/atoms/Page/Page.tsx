@@ -4,11 +4,11 @@ import { useColor, useDevice } from "hooks";
 import { Box } from "@chakra-ui/react";
 import { Loader } from "../Loader/Loader";
 
-type Props = {
+interface Props {
   isLoading: boolean;
   children: React.ReactNode;
   [key: string]: any;
-};
+}
 
 export const Page = React.memo(({ isLoading, children, ...rest }: Props) => {
   const { isPhone } = useDevice();
@@ -17,11 +17,7 @@ export const Page = React.memo(({ isLoading, children, ...rest }: Props) => {
 
   return (
     <Box background={background} padding={isPhone ? "20px" : "40px"} {...rest}>
-      {isLoading ? (
-        <Loader height={`calc(100vh - ${isPhone ? 40 : 80}px)`} />
-      ) : (
-        children
-      )}
+      {isLoading ? <Loader height={`calc(100vh - ${isPhone ? 40 : 80}px)`} /> : children}
     </Box>
   );
 });

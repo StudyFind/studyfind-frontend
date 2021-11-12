@@ -2,13 +2,13 @@ import React from "react";
 import { Tooltip, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { ButtonClickEventHandler } from "types/global";
 
-type Props = {
+interface Props {
   readonly icon: React.ReactElement;
   readonly hint?: string;
   readonly size?: string;
   readonly colorScheme?: string;
   readonly onClick?: ButtonClickEventHandler;
-};
+}
 
 type ColorSet = {
   readonly color: string;

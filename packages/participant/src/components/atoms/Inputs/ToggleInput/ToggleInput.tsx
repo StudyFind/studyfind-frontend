@@ -4,13 +4,13 @@ import { useColor } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { ColorScheme } from "types/global";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: boolean;
   readonly label?: string;
   readonly colorScheme?: ColorScheme;
   readonly onChange: (name: string, value: boolean) => void;
-};
+}
 
 export const ToggleInput = React.memo(
   ({ name, value, label, colorScheme = "blue", onChange }: Props) => {
@@ -19,14 +19,8 @@ export const ToggleInput = React.memo(
     const defaultBorderColor = useColor("gray.300", "gray.500");
 
     const activeColor = useColor(`${colorScheme}.500`, `${colorScheme}.400`);
-    const activeBackground = useColor(
-      `${colorScheme}.100`,
-      `${colorScheme}.900`
-    );
-    const activeBorderColor = useColor(
-      `${colorScheme}.400`,
-      `${colorScheme}.400`
-    );
+    const activeBackground = useColor(`${colorScheme}.100`, `${colorScheme}.900`);
+    const activeBorderColor = useColor(`${colorScheme}.400`, `${colorScheme}.400`);
 
     const styles = value
       ? {

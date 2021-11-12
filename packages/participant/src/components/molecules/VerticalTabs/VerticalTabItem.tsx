@@ -2,13 +2,13 @@ import React from "react";
 import { useColor } from "hooks";
 import { Button, Text } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   icon?: React.ReactElement;
   name: string;
   selected: boolean;
   showBorder: boolean;
   onClick: () => void;
-};
+}
 
 function VerticalTabItem({ icon, name, selected, showBorder, onClick }: Props) {
   const borderColor = useColor("gray.200", "gray.700");

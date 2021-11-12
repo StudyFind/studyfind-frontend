@@ -3,11 +3,11 @@ import React from "react";
 import { useColor } from "hooks";
 import { Input } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   as?: React.FC;
   error?: string;
   [key: string]: any;
-};
+}
 
 export const InputField = ({ as, error, ...rest }: Props) => {
   const errorPlaceholderColor = useColor("red.400", "red.400");

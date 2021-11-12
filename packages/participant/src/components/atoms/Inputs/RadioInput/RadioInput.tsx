@@ -5,7 +5,7 @@ import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { InputWrapper } from "../helpers";
 import { Option } from "types/global";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string;
   readonly error?: string;
@@ -16,7 +16,7 @@ type Props = {
   readonly size?: "sm" | "md" | "lg";
   readonly onChange: (name: string, value: string) => void;
   readonly [key: string]: any;
-};
+}
 
 export const RadioInput = React.memo(
   ({
@@ -56,9 +56,7 @@ export const RadioInput = React.memo(
                 zIndex={value === option.value ? 10 : 1}
                 borderLeftRadius={i !== firstIndex ? 0 : undefined}
                 borderRightRadius={i !== lastIndex ? 0 : undefined}
-                borderColor={
-                  value === option.value ? "blue.500" : defaultBackground
-                }
+                borderColor={value === option.value ? "blue.500" : defaultBackground}
                 color={value === option.value ? "white" : "gray.500"}
                 background={value === option.value ? "blue.500" : undefined}
                 _hover={{ background: value === option.value && "blue.500" }}

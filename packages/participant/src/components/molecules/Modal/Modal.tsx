@@ -1,18 +1,14 @@
 import React from "react";
 
 import { useColor } from "hooks";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogOverlay,
-} from "@chakra-ui/react";
+import { AlertDialog, AlertDialogContent, AlertDialogOverlay } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   open: boolean;
   handleClose: () => void;
   children: React.ReactNode;
   [key: string]: any;
-};
+}
 
 function Modal({ children, open, handleClose, ...rest }: Props) {
   const backgroundColor = useColor("white", "gray.800");

@@ -5,7 +5,7 @@ import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { InputWrapper } from "../helpers";
 import { Option } from "types/global";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string[];
   readonly error?: string;
@@ -15,7 +15,7 @@ type Props = {
   readonly size?: "sm" | "md" | "lg";
   readonly onChange: (name: string, value: string[]) => void;
   readonly [key: string]: any;
-};
+}
 
 export const StringSelectInput = React.memo(
   ({

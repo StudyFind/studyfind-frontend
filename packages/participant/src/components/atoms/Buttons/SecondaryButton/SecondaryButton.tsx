@@ -2,10 +2,10 @@ import { useColor } from "hooks";
 import { Button } from "@chakra-ui/react";
 import React from "react";
 
-type Props = {
+interface Props {
   readonly children: string;
   readonly [key: string]: any;
-};
+}
 
 export const SecondaryButton = React.memo(({ children, ...rest }: Props) => {
   const borderColor = useColor("gray.200", "gray.700");

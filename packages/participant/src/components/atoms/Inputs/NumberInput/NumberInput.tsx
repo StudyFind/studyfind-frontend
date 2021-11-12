@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { InputField, InputWrapper } from "../helpers";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string;
   readonly error?: string;
@@ -22,7 +22,7 @@ type Props = {
   readonly precision?: number;
   readonly onChange: (name: string, value: number) => void;
   readonly [key: string]: any;
-};
+}
 
 export const NumberInput = React.memo(
   ({
@@ -57,11 +57,7 @@ export const NumberInput = React.memo(
           onChange={handleChange}
           {...rest}
         >
-          <InputField
-            as={NumberInputField}
-            error={error}
-            placeholder={placeholder}
-          />
+          <InputField as={NumberInputField} error={error} placeholder={placeholder} />
           <NumberInputStepper>
             <NumberIncrementStepper color={stepperColor} />
             <NumberDecrementStepper color={stepperColor} />

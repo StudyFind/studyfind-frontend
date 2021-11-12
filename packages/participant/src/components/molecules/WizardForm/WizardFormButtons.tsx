@@ -2,14 +2,14 @@ import React from "react";
 
 import { Flex, Button } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   isFirstStep: boolean;
   isFinalStep: boolean;
   loading: boolean;
   handleBack: () => void;
   handleNext: () => void;
   handleSubmit: () => void;
-};
+}
 
 function WizardFormButton({
   isFirstStep,

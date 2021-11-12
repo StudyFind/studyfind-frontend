@@ -2,10 +2,10 @@ import React from "react";
 import { useColor } from "hooks";
 import { IconButton } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   icon: React.ReactElement;
   onClick: () => void;
-};
+}
 
 function CalendarHeadButton({ icon, onClick }: Props) {
   const color = useColor("blue.500", "blue.200");

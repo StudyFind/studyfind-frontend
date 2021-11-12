@@ -120,12 +120,15 @@ function Home() {
   const handleSubscribe = (email: string) => {
     // return mailing.subscribe({ email });
     // subscribe
-    return Promise.resolve(email);
+    return Promise.resolve(email); // TODO: Create mailing document
   };
+
+  const SectionDivider = () => <Divider borderColor={dividerColor} />;
 
   return (
     <Box>
       <Header logoLink="/home#" buttonText="Join Now" buttonLink="/auth" />
+
       <Hero
         logoLink="/home#"
         blackText="Participating in clinical trials"
@@ -134,16 +137,24 @@ function Home() {
         buttonLink="/auth"
         image={Background}
       />
-      <Divider borderColor={dividerColor} />
+
+      <SectionDivider />
+
       <Features features={features} />
-      <Divider borderColor={dividerColor} />
+
+      <SectionDivider />
+
       <Team title={title} description={description} founders={founders} panels={panels} />
-      <Divider borderColor={dividerColor} />
+
+      <SectionDivider />
+
       <Mailing handleSubscribe={handleSubscribe} />
-      <Divider borderColor={dividerColor} />
+
+      <SectionDivider />
+
       <Footer
         links={{
-          linkedin: "https://www.linkedin.com/company/studyfind/",
+          linkedin: "https://www.linkedin.com/company/studyfind",
           instagram: "https://www.instagram.com/studyfindco",
           facebook: "https://www.facebook.com/studyfindco",
         }}

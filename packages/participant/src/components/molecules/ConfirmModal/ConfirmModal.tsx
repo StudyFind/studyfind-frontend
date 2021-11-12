@@ -15,7 +15,7 @@ import {
 import { SecondaryButton } from "../../atoms/Buttons/SecondaryButton/SecondaryButton";
 import { ColorScheme } from "types/global";
 
-type Props = {
+interface Props {
   open: boolean;
   title: string;
   description: string;
@@ -23,7 +23,7 @@ type Props = {
   buttonText: string;
   handleClose: () => void;
   handleConfirm: () => Promise<any>;
-};
+}
 
 function ConfirmModal({
   open,

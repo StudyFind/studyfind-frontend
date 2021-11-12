@@ -5,14 +5,14 @@ import { Heading, Text, Box, Icon, Center, Flex } from "@chakra-ui/react";
 import { FaTimesCircle, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
 
-type Props = {
+interface Props {
   status: "success" | "neutral" | "failure";
   title: string;
   description: string;
   showBackground?: boolean;
   children: React.ReactNode;
   [key: string]: any;
-};
+}
 
 type Status = {
   colorScheme: "green" | "blue" | "red";

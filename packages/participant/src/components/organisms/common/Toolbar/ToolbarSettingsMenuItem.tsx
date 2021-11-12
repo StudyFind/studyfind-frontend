@@ -3,11 +3,11 @@ import { MenuItem, Text, Icon } from "@chakra-ui/react";
 import { Link } from "components/atoms/Link/Link";
 import { IconType } from "react-icons";
 
-type Props = {
+interface Props {
   icon: IconType;
   name: string;
   link: string;
-};
+}
 
 function ToolbarSettingsMenuItem({ icon, name, link }: Props) {
   const borderColor = useColor("gray.200", "gray.700");

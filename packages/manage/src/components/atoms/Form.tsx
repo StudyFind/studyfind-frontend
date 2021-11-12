@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-type Props = {
+interface Props {
   readonly children: React.ReactNode;
   readonly onSubmit: React.FormEventHandler<HTMLFormElement>;
 };

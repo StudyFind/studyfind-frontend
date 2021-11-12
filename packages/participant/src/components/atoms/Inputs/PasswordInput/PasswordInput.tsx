@@ -3,14 +3,14 @@ import { useColor } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { TextInput } from "../TextInput/TextInput";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string;
   readonly error?: string;
   readonly label?: string;
   readonly onChange: (name: string, value: string) => void;
   readonly [key: string]: any;
-};
+}
 
 export const PasswordInput = React.memo(
   ({ name, value, error, label, onChange, ...rest }: Props) => {

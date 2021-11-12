@@ -1,10 +1,10 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 
-type Props = {
+interface Props {
   content: React.ReactElement;
   width: string;
-};
+}
 
 function CarouselSlide({ content, width }: Props) {
   return (

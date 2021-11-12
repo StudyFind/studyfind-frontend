@@ -5,56 +5,65 @@ import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react
 import { Box } from "@chakra-ui/react";
 
 import { auth, firestore } from "@studyfind/firebase";
-import { ParticipantDocumentStructure } from "@studyfind/types";
+import { ResearcherDocumentStructure, ParticipantDocumentStructure } from "@studyfind/types";
 import { Side } from "types/global";
 
-// import ProfileResearcher from "./Profile/ProfileResearcher";
-// import ProfileParticipant from "./Profile/ProfileParticipant";
+import { Loader } from "components/atoms";
+
+import ProfileResearcher from "./Profile/ProfileResearcher";
+import ProfileParticipant from "./Profile/ProfileParticipant";
 import Notifications from "./Notifications/Notifications";
-// import Timezone from "./Timezone/Timezone";
+import Timezone from "./Timezone/Timezone";
 import Security from "./Security/Security";
-// import Subscription from "./Subscription/Subscription";
+import Subscription from "./Subscription/Subscription";
 
 import VerticalTabs from "components/molecules/VerticalTabs/VerticalTabs";
-import { Loader } from "components/atoms/Loader/Loader";
+
+export type DocumentStructure = ResearcherDocumentStructure | ParticipantDocumentStructure;
+
+const side = process.env.REACT_APP_SIDE as Side;
+
+const Profile = {
+  RESEARCHER: (props: any) => <ProfileResearcher {...props} />,
+  PARTICIPANT: (props: any) => <ProfileParticipant {...props} />,
+}[side];
 
 function AccountPage() {
   const user = auth.getUser();
-  const side = process.env.REACT_APP_SIDE as Side;
 
-  const [participant, loading, error] = useDocument<ParticipantDocumentStructure>(
-    firestore.references.getParticipantReference(user?.uid)
-  );
+  const reference = {
+    RESEARCHER: firestore.references.getResearcherReference(user?.uid),
+    PARTICIPANT: firestore.references.getParticipantReference(user?.uid),
+  }[side];
 
-  const [values, setValues] = useState(participant);
-
-  // const Profile = {
-  //   RESEARCHER: ProfileResearcher,
-  //   PARTICIPANT: ProfileParticipant,
-  // }[side];
+  const [userDocument, loading, error] = useDocument<DocumentStructure>(reference);
+  const [values, setValues] = useState<typeof userDocument>(undefined);
 
   useEffect(() => {
-    if (participant) {
-      setValues(participant);
+    if (!values && userDocument) {
+      setValues(userDocument);
     }
-  }, [participant]);
+  }, [userDocument]);
 
-  const haveInputsChanged = JSON.stringify(values) !== JSON.stringify(participant);
+  const haveInputsChanged = JSON.stringify(values) !== JSON.stringify(userDocument);
 
   const handleCancel = () => {
-    setValues(participant);
+    console.log("handleCancel");
+    setValues(userDocument);
   };
 
   const handleUpdate = () => {
     // return mutator.update(user.id, values);
-    return Promise.resolve();
+    return Promise.resolve(); // TODO: Update user document
   };
 
-  const handleSetProfileAttribute = (name: keyof ParticipantDocumentStructure, value: string) => {
+  const handleSetProfileAttribute = (name: string, value: string) => {
+    console.log("handleSetProfileAttribute");
     setValues((prev) => prev && { ...prev, [name]: value });
   };
 
   const handleSetNotificationsAttribute = (name: string, value: boolean) => {
+    console.log("handleSetNotificationsAttribute");
     setValues(
       (prev) =>
         prev && {
@@ -67,7 +76,8 @@ function AccountPage() {
     );
   };
 
-  const handleSetTimezoneAttribute = (name: string, value: string) => {
+  const handleSetTimezoneAttribute = (name: string, value: string | boolean) => {
+    console.log("handleSetTimezoneAttribute");
     setValues(
       (prev) =>
         prev && {
@@ -95,7 +105,17 @@ function AccountPage() {
     name: "Profile",
     link: "/account/profile",
     icon: <FaUser />,
-    content: <div>PROFILE</div>,
+    content: (
+      <Profile
+        {...updateProps}
+        values={
+          side === "RESEARCHER"
+            ? (values as ResearcherDocumentStructure | undefined)
+            : (values as ParticipantDocumentStructure | undefined)
+        }
+        handleSetProfileAttribute={handleSetProfileAttribute}
+      />
+    ),
   };
 
   const NOTIFICATIONS = {
@@ -114,7 +134,7 @@ function AccountPage() {
     name: "Timezone",
     link: "/account/timezone",
     icon: <FaMapMarkedAlt />,
-    content: <div>TIMEZONE</div>,
+    content: <Timezone {...updateProps} handleSetTimezoneAttribute={handleSetTimezoneAttribute} />,
   };
 
   const SECURITY = {
@@ -128,13 +148,13 @@ function AccountPage() {
     name: "Subscription",
     link: "/account/subscription",
     icon: <FaCreditCard />,
-    content: <div>SUBSCRIPTION</div>,
+    content: <Subscription {...updateProps} />,
   };
 
   const tabs =
     side === "RESEARCHER"
       ? [PROFILE, NOTIFICATIONS, TIMEZONE, SECURITY, SUBSCRIPTION]
-      : [PROFILE, NOTIFICATIONS, TIMEZONE, SECURITY, SUBSCRIPTION];
+      : [PROFILE, NOTIFICATIONS, TIMEZONE, SECURITY];
 
   return (
     <Box paddingY="10px">

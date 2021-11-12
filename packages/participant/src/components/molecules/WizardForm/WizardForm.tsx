@@ -6,23 +6,17 @@ import { ButtonClickEventHandler } from "types/global";
 import WizardFormSteps from "./WizardFormSteps";
 import WizardFormButtons from "./WizardFormButtons";
 
-type Props = {
+interface Props {
   steps: React.ReactElement[];
   handleSubmit: ButtonClickEventHandler;
   loading: boolean;
   allowSkippingSteps: boolean;
-};
+}
 
-function WizardForm({
-  steps,
-  loading,
-  handleSubmit,
-  allowSkippingSteps,
-}: Props) {
+function WizardForm({ steps, loading, handleSubmit, allowSkippingSteps }: Props) {
   const numberOfSteps = steps.length;
 
-  const { stepIndex, handleBack, handleNext, handleSelect } =
-    useWizard(numberOfSteps);
+  const { stepIndex, handleBack, handleNext, handleSelect } = useWizard(numberOfSteps);
 
   return (
     <>

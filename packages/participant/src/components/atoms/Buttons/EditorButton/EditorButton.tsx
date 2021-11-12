@@ -4,12 +4,12 @@ import { useColor } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { ButtonClickEventHandler, ColorScheme } from "types/global";
 
-type Props = {
+interface Props {
   readonly icon?: React.ReactElement;
   readonly children: React.ReactNode;
   readonly colorScheme?: ColorScheme;
   readonly onClick?: ButtonClickEventHandler;
-};
+}
 
 export const EditorButton = React.memo(
   ({ children, icon, colorScheme = "gray", onClick = () => {} }: Props) => {

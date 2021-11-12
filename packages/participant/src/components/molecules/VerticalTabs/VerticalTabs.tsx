@@ -7,11 +7,11 @@ import { Tab } from "types/global";
 
 import VerticalTabItem from "./VerticalTabItem";
 
-type Props = {
+interface Props {
   tabs: Tab[];
   useURL: boolean;
   [key: string]: any;
-};
+}
 
 function VerticalTabs({ tabs, useURL = true, ...rest }: Props) {
   const { tabIndex, setTabIndex } = useTabs(tabs, useURL);

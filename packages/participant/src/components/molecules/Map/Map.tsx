@@ -9,15 +9,13 @@ type Marker = {
   onClick: () => void;
 };
 
-type Props = {
+interface Props {
   center: GoogleMapReact.Coords;
   markers: Marker[];
-};
+}
 
 function Map({ center, markers }: Props) {
-  const Marker = ({ lat, lng, onClick }: Marker) => (
-    <FaMapMarkerAlt size={30} color="red" />
-  );
+  const Marker = ({ lat, lng, onClick }: Marker) => <FaMapMarkerAlt size={30} color="red" />;
 
   return (
     // Important! Always set the container height explicitly
@@ -27,12 +25,7 @@ function Map({ center, markers }: Props) {
       zoom={11}
     >
       {markers.map((marker, i) => (
-        <Marker
-          key={i}
-          lat={marker.lat}
-          lng={marker.lng}
-          onClick={marker.onClick}
-        />
+        <Marker key={i} lat={marker.lat} lng={marker.lng} onClick={marker.onClick} />
       ))}
     </GoogleMapReact>
   );

@@ -1,31 +1,19 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
-import {
-  FaAngleDoubleLeft,
-  FaAngleDoubleRight,
-  FaAngleLeft,
-  FaAngleRight,
-} from "react-icons/fa";
+import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import CalendarHeadButton from "./CalendarHeadButton";
 
-type Props = {
+interface Props {
   month: number;
   year: number;
   backYear: () => void;
   backMonth: () => void;
   nextYear: () => void;
   nextMonth: () => void;
-};
+}
 
-function CalendarHead({
-  month,
-  year,
-  backYear,
-  backMonth,
-  nextYear,
-  nextMonth,
-}: Props) {
+function CalendarHead({ month, year, backYear, backMonth, nextYear, nextMonth }: Props) {
   const MONTH_NAMES = [
     "January",
     "February",

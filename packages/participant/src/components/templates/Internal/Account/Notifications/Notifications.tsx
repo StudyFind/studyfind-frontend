@@ -1,14 +1,15 @@
+import { auth } from "@studyfind/firebase";
+
 import { Grid, Tooltip, Box } from "@chakra-ui/react";
 import { CheckboxInput } from "components/atoms/Inputs/CheckboxInput/CheckboxInput";
 
-import { ParticipantDocumentStructure } from "@studyfind/types";
-
 import AccountWrapper from "../AccountWrapper";
 import AccountHeader from "../AccountHeader";
-import { auth } from "@studyfind/firebase";
+
+import { DocumentStructure } from "../AccountPage";
 
 interface Props {
-  values: ParticipantDocumentStructure;
+  values: DocumentStructure | undefined;
   showButtons: boolean;
   handleCancel: React.MouseEventHandler;
   handleUpdate: () => Promise<void>;
@@ -25,10 +26,10 @@ function Notifications({
   const user = auth.getUser();
 
   const email = user.email;
-  const phone = values.phone;
-  const localPreference = values.notifications.local;
-  const emailPreference = values.notifications.email;
-  const phonePreference = values.notifications.phone;
+  const phone = values?.phone || "";
+  const localPreference = values?.notifications?.local || false;
+  const emailPreference = values?.notifications?.email || false;
+  const phonePreference = values?.notifications?.phone || false;
 
   return (
     <AccountWrapper

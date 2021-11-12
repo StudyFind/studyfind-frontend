@@ -1,87 +1,59 @@
-export {};
-// import { Grid } from "@chakra-ui/react";
-// import { TextInput, TextareaInput, PhoneInput } from "components";
+import { Grid } from "@chakra-ui/react";
+import { TextInput, TextareaInput, PhoneInput } from "components/atoms";
 
-// import AccountWrapper from "../AccountWrapper";
-// import AccountHeader from "../AccountHeader";
-// import { useEffect, useState } from "react";
+import AccountWrapper from "../AccountWrapper";
+import AccountHeader from "../AccountHeader";
+import { ResearcherDocumentStructure } from "@studyfind/types";
 
-// function ProfileResearcher({
-//   values,
-//   showButtons,
-//   handleCancel,
-//   handleUpdate,
-//   handleSetProfileAttribute,
-// }) {
-//   const [phoneValue, setPhoneValue] = useState("");
-//   const [phoneError, setPhoneError] = useState("");
+interface Props {
+  values: ResearcherDocumentStructure | undefined;
+  showButtons: boolean;
+  handleCancel: () => void;
+  handleUpdate: () => Promise<void>;
+  handleSetProfileAttribute: (name: string, value: string) => void;
+}
 
-//   const normalizePhone = (value) => {
-//     const cleaned = value.replace(/\+1/, "").replace(/[^\d]/g, "");
+function ProfileResearcher({
+  values,
+  showButtons,
+  handleCancel,
+  handleUpdate,
+  handleSetProfileAttribute,
+}: Props) {
+  return (
+    <AccountWrapper
+      showButtons={showButtons}
+      handleCancel={handleCancel}
+      handleUpdate={handleUpdate}
+    >
+      <AccountHeader
+        title="Profile"
+        description="The profile section contains personal information like your organization and background"
+      />
+      <Grid gap="25px">
+        <PhoneInput
+          label="Phone"
+          name="phone"
+          placeholder="Required for receiving text notifications"
+          value={values?.phone || ""}
+          onChange={handleSetProfileAttribute}
+        />
+        <TextInput
+          label="Organization"
+          name="organization"
+          value={values?.organization || ""}
+          onChange={handleSetProfileAttribute}
+        />
+        <TextareaInput
+          label="Background"
+          name="background"
+          height="108px"
+          value={values?.background || ""}
+          onChange={handleSetProfileAttribute}
+        />
+      </Grid>
+    </AccountWrapper>
+  );
+}
 
-//     if (/(\d{3})(\d{3})(\d{1,4})/.exec(cleaned)) {
-//       return cleaned.replace(/(\d{3})(\d{3})(\d{1,4})/, "+1 ($1) $2-$3").substr(0, 17);
-//     }
-
-//     if (/(\d{3})(\d{1,3})/.exec(cleaned)) {
-//       return cleaned.replace(/(\d{3})(\d{1,3})/, "+1 ($1) $2");
-//     }
-
-//     if (/(\d{1,3})/.exec(cleaned)) {
-//       return cleaned.replace(/(\d{1,3})/, "+1 ($1");
-//     }
-
-//     return "";
-//   };
-
-//   const handlePhone = (name, value) => {
-//     const phoneCleaned = value.replace(/\D/g, "").substr(1);
-//     setPhoneValue(normalizePhone(value));
-//     setPhoneError(
-//       phoneCleaned.length !== 0 && phoneCleaned.length !== 10 ? "The phone number is invalid" : ""
-//     );
-//     handleSetProfileAttribute(name, phoneCleaned);
-//   };
-
-//   useEffect(() => {
-//     handlePhone("phone", normalizePhone(values.phone || ""));
-//   }, [values.phone]);
-
-//   return (
-//     <AccountWrapper
-//       showButtons={!phoneError && showButtons}
-//       handleCancel={handleCancel}
-//       handleUpdate={handleUpdate}
-//     >
-//       <AccountHeader
-//         title="Profile"
-//         description="The profile section contains personal information like your organization and background"
-//       />
-//       <Grid gap="25px">
-//         <PhoneInput
-//           label="Phone"
-//           name="phone"
-//           placeholder="Required for receiving text notifications"
-//           value={phoneValue}
-//           error={phoneError}
-//           onChange={handlePhone}
-//         />
-//         <TextInput
-//           label="Organization"
-//           name="organization"
-//           value={values.organization}
-//           onChange={handleSetProfileAttribute}
-//         />
-//         <TextareaInput
-//           label="Background"
-//           name="background"
-//           height="108px"
-//           value={values.background}
-//           onChange={handleSetProfileAttribute}
-//         />
-//       </Grid>
-//     </AccountWrapper>
-//   );
-// }
-
-// export default ProfileResearcher;
+export default ProfileResearcher;

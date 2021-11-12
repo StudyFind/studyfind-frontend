@@ -5,10 +5,10 @@ import { Heading, Flex } from "@chakra-ui/react";
 import { FaPlusCircle } from "react-icons/fa";
 import { ButtonClickEventHandler } from "types/global";
 
-type Props = {
+interface Props {
   readonly children: React.ReactNode;
   readonly onClick: ButtonClickEventHandler;
-};
+}
 
 export const NewCardButton = React.memo(({ children, onClick }: Props) => {
   const color = useColor("gray.500", "gray.500");

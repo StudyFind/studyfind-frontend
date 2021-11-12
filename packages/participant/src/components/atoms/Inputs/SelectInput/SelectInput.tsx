@@ -4,7 +4,7 @@ import { Select } from "@chakra-ui/react";
 import { Option } from "types/global";
 import { InputField, InputWrapper } from "../helpers";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string;
   readonly error?: string;
@@ -12,7 +12,7 @@ type Props = {
   readonly options: Option[];
   readonly onChange: (name: string, value: string) => void;
   readonly [key: string]: any;
-};
+}
 
 export const SelectInput = React.memo(
   ({ name, value, error, label, options, onChange, ...rest }: Props) => {

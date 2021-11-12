@@ -2,21 +2,13 @@ import React, { useState } from "react";
 import { useColor } from "hooks";
 import { useMeasure } from "react-use";
 
-import {
-  Box,
-  Button,
-  Flex,
-  Tag,
-  TagCloseButton,
-  TagLabel,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Tag, TagCloseButton, TagLabel, Text } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
 
 import { TextInput } from "../TextInput/TextInput";
 import { Form } from "../../Form/Form";
 
-type Props = {
+interface Props {
   readonly name: string;
   readonly value: string[];
   readonly error?: string;
@@ -26,7 +18,7 @@ type Props = {
   readonly allowDuplicates?: boolean;
   readonly formatTag?: (text: string) => string;
   readonly onChange: (name: string, value: string[]) => void;
-};
+}
 
 export const TagInput = React.memo(
   ({
