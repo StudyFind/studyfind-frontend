@@ -8,9 +8,9 @@ import { IconType } from "react-icons/lib";
 interface Props {
   status: "success" | "neutral" | "failure";
   title: string;
-  description: string;
+  description?: string;
   showBackground?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   [key: string]: any;
 }
 
