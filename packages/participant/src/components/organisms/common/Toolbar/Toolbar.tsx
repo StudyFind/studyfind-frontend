@@ -1,12 +1,10 @@
-import { Flex, Heading, useColorMode } from "@chakra-ui/react";
-import { FaBell, FaUserCircle, FaSun, FaMoon, FaQuestionCircle } from "react-icons/fa";
-
-import ToolbarLink from "./ToolbarLink";
-import ToolbarSettingsMenu from "./ToolbarSettingsMenu";
-import ToolbarNotificationsMenu from "./ToolbarNotificationsMenu";
-import ToolbarAccountMenu from "./ToolbarAccountMenu";
-import ToolbarSupportMenu from "./ToolbarSupportMenu";
 import { useColor } from "hooks";
+
+import { Flex, Heading } from "@chakra-ui/react";
+
+import ToolbarNotifications from "./ToolbarNotifications/ToolbarNotifications";
+import ToolbarAccount from "./ToolbarAccount/ToolbarAccount";
+import ToolbarSupport from "./ToolbarSupport/ToolbarSupport";
 
 interface Props {
   heading: string;
@@ -14,32 +12,8 @@ interface Props {
 }
 
 function Toolbar({ heading, ...rest }: Props) {
-  const { colorMode, toggleColorMode } = useColorMode();
   const borderColor = useColor("gray.200", "gray.700");
   const background = useColor("white", "gray.800");
-
-  const links = [
-    {
-      name: "mode",
-      icon: colorMode === "light" ? <FaMoon /> : <FaSun />,
-      onClick: toggleColorMode,
-    },
-    {
-      name: "notifications",
-      menu: <ToolbarNotificationsMenu />,
-      icon: <FaBell />,
-    },
-    {
-      name: "account",
-      menu: <ToolbarAccountMenu />,
-      icon: <FaUserCircle />,
-    },
-    {
-      name: "support",
-      menu: <ToolbarSupportMenu />,
-      icon: <FaQuestionCircle />,
-    },
-  ];
 
   return (
     <Flex
@@ -56,15 +30,9 @@ function Toolbar({ heading, ...rest }: Props) {
         {heading}
       </Heading>
       <Flex justify="flex-end" align="center" gridGap="10px" {...rest}>
-        {links.map((link, i) => (
-          <ToolbarLink
-            key={i}
-            name={link.name}
-            icon={link.icon}
-            menu={link.menu}
-            onClick={link.onClick}
-          />
-        ))}
+        <ToolbarSupport />
+        <ToolbarAccount />
+        <ToolbarNotifications />
       </Flex>
     </Flex>
   );

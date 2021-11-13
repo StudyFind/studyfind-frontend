@@ -1,9 +1,19 @@
 import { MenuList, Grid } from "@chakra-ui/react";
 import { auth } from "@studyfind/firebase";
-import { FaDoorOpen, FaShieldAlt, FaBell, FaMapMarkedAlt, FaUser } from "react-icons/fa";
-import ToolbarAccountMenuItem from "./ToolbarAccountMenuItem";
+import { useOverlay } from "hooks";
+import {
+  FaDoorOpen,
+  FaShieldAlt,
+  FaBell,
+  FaMapMarkedAlt,
+  FaUser,
+  FaUserCircle,
+} from "react-icons/fa";
 
-function ToolbarAccountMenu() {
+import ToolbarLink from "../ToolbarLink";
+import ToolbarAccountItem from "./ToolbarAccountItem";
+
+function ToolbarAccount() {
   const sublinks = [
     { name: "Profile", icon: FaUser, link: "/account/profile" },
     { name: "Notifications", icon: FaBell, link: "/account/notifications" },
@@ -12,15 +22,17 @@ function ToolbarAccountMenu() {
     { name: "Sign out", icon: FaDoorOpen, link: "", color: "red.400", onClick: auth.signout },
   ];
 
-  return (
+  const MENU = (
     <MenuList padding="10px" maxHeight="300px" overflowY="scroll">
       <Grid gap="6px">
         {sublinks.map((sublink, i) => (
-          <ToolbarAccountMenuItem key={i} {...sublink} />
+          <ToolbarAccountItem key={i} {...sublink} />
         ))}
       </Grid>
     </MenuList>
   );
+
+  return <ToolbarLink name="account" icon={<FaUserCircle />} menu={MENU} />;
 }
 
-export default ToolbarAccountMenu;
+export default ToolbarAccount;

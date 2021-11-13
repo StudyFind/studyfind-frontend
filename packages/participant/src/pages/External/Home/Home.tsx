@@ -118,7 +118,6 @@ function Home() {
   ];
 
   const handleSubscribe = (email: string) => {
-    // return mailing.subscribe({ email });
     // subscribe
     return Promise.resolve(email); // TODO: Create mailing document
   };

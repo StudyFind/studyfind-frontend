@@ -8,8 +8,9 @@ interface Props {
   colorScheme: ColorScheme;
 }
 
-function ToolbarNotificationsMenuItemIcon({ icon, colorScheme }: Props) {
+function ToolbarNotificationsItemIcon({ icon, colorScheme }: Props) {
   const iconColor = useColor(`${colorScheme}.400`, `${colorScheme}.400`);
+  const borderColor = useColor(`${colorScheme}.200`, `${colorScheme}.700`);
   const backgroundColor = useColor(`${colorScheme}.100`, `${colorScheme}.900`);
 
   return (
@@ -18,6 +19,8 @@ function ToolbarNotificationsMenuItemIcon({ icon, colorScheme }: Props) {
       rounded="full"
       justify="center"
       align="center"
+      borderWidth="1px"
+      borderColor={borderColor}
       background={backgroundColor}
     >
       <Icon as={icon} width="14px" height="14px" color={iconColor} />
@@ -25,4 +28,4 @@ function ToolbarNotificationsMenuItemIcon({ icon, colorScheme }: Props) {
   );
 }
 
-export default ToolbarNotificationsMenuItemIcon;
+export default ToolbarNotificationsItemIcon;

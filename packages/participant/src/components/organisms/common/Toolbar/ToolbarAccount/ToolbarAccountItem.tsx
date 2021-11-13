@@ -10,7 +10,7 @@ interface Props {
   [key: string]: any;
 }
 
-function ToolbarSupportMenuItem({ icon, name, link, ...rest }: Props) {
+function ToolbarAccountItem({ icon, name, link, ...rest }: Props) {
   const borderColor = useColor("gray.200", "gray.700");
   const hoverBackground = useColor("gray.200", "gray.800");
   const activeBackground = useColor("gray.300", "gray.700");
@@ -44,4 +44,4 @@ function ToolbarSupportMenuItem({ icon, name, link, ...rest }: Props) {
   );
 }
 
-export default ToolbarSupportMenuItem;
+export default ToolbarAccountItem;

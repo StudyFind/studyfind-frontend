@@ -20,15 +20,17 @@ import {
   FaUserClock,
 } from "react-icons/fa";
 
-import ToolbarNotificationsMenuItemIcon from "./ToolbarNotificationsMenuItemIcon";
-import ToolbarNotificationsMenuItemTime from "./ToolbarNotificationsMenuItemTime";
-import { ParticipantNotificationDocumentStructure } from "@studyfind/types";
 import { IconType } from "react-icons/lib";
 import { ColorScheme } from "types/global";
+import { NotificationDocumentStructureExtended } from "./types";
+
+import ToolbarNotificationsItemIcon from "./ToolbarNotificationsItemIcon";
+import ToolbarNotificationsItemTime from "./ToolbarNotificationsItemTime";
 
 interface Props {
-  notification: ParticipantNotificationDocumentStructure; // TODO: make this dyanmic based on side
-  handleNotificationRead: (notification: ParticipantNotificationDocumentStructure) => Promise<void>; // TODO: make this dyanmic based on side
+  isOpen: boolean;
+  notification: NotificationDocumentStructureExtended;
+  handleNotificationRead: (notification: NotificationDocumentStructureExtended) => Promise<void>;
 }
 
 interface Theme {
@@ -36,20 +38,8 @@ interface Theme {
   colorScheme: ColorScheme;
 }
 
-function NotificationItem({ notification, handleNotificationRead }: Props) {
-  const [initialRead] = useState(notification.read);
-  /*
-    ^^^^^
-    done to save original value of notification.read when the component first rendered
-    the purpose is to save the original read state of the notification even though read
-    is changed from false to true in the useEffect below
-    the notification prop is attached to a firebase realtime listener hook which will change
-    the value of notification.read as soon as its updated
-    this update would change the blue "unread" background to the white "background" almost
-    immediately without conveying to the user that this is a new notification
-    the blue background would've disappeared the next time the component is loaded as the
-    original notification.read value would be true when the component first renders
-  */
+function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead }: Props) {
+  const [emphasize, setEmphasize] = useState(false);
 
   const { code, createdAt, title, body, link, read } = notification;
 
@@ -71,22 +61,36 @@ function NotificationItem({ notification, handleNotificationRead }: Props) {
     MEETING_NOW: { icon: FaCalendarDay, colorScheme: "cyan" },
     REMINDER_NOW: { icon: FaClock, colorScheme: "cyan" },
     DELETE_ACCOUNT: { icon: FaClock, colorScheme: "cyan" },
+    NEW_MESSAGE: { icon: FaComment, colorScheme: "green" },
   };
 
-  const { icon, colorScheme } = themes[code];
+  const { icon, colorScheme } = themes[code] || { icon: FaUser, colorScheme: "teal" };
 
   useEffect(() => {
-    if (!initialRead) {
+    if (!read && isOpen) {
+      setEmphasize(true);
       handleNotificationRead(notification);
     }
-  }, []);
+  }, [read, isOpen]);
+
+  useEffect(() => {
+    if (emphasize) {
+      setTimeout(() => {
+        setEmphasize(false);
+      }, 3000);
+    }
+  }, [emphasize]);
 
   const { isPhone } = useDevice();
 
   const titleColor = useColor("black", "white");
 
   // convert external link to internal link otherwise Link component will open link in new tab
-  const hostname = "https://researcher.studyfind.org"; // TODO: make this dyanmic based on side
+  const hostname =
+    process.env.REACT_APP_SIDE === "RESEARCHER"
+      ? "https://researcher.studyfind.org"
+      : "https://studyfind.org";
+
   const internalLink = link.substring(hostname.length);
 
   return (
@@ -103,7 +107,7 @@ function NotificationItem({ notification, handleNotificationRead }: Props) {
       width="100%"
     >
       <Flex align="flex-start" padding="12px" gridGap="8px" rounded="md">
-        <ToolbarNotificationsMenuItemIcon icon={icon} colorScheme={colorScheme} />
+        <ToolbarNotificationsItemIcon icon={icon} colorScheme={colorScheme} />
         <Box width="100%" marginLeft="4px">
           <Flex
             direction={isPhone ? "column" : "row"}
@@ -112,7 +116,7 @@ function NotificationItem({ notification, handleNotificationRead }: Props) {
           >
             <Text fontSize="14px" fontWeight="600" color={titleColor}>
               {title}
-              {!read && (
+              {emphasize && (
                 <Icon
                   as={FaCircle}
                   color="blue.400"
@@ -122,12 +126,10 @@ function NotificationItem({ notification, handleNotificationRead }: Props) {
                 />
               )}
             </Text>
-            <ToolbarNotificationsMenuItemTime time={1636574902384 || createdAt} />
-            {/* // TODO: remove fixed value */}
+            <ToolbarNotificationsItemTime time={createdAt} />
           </Flex>
           <Text fontSize="14px" fontWeight="400" color="gray.400">
-            {body || "This is an example line of text to fill up some space"}
-            {/* // TODO: remove fixed value */}
+            {body}
           </Text>
         </Box>
       </Flex>
@@ -135,4 +137,4 @@ function NotificationItem({ notification, handleNotificationRead }: Props) {
   );
 }
 
-export default NotificationItem;
+export default ToolbarNotificationsItem;

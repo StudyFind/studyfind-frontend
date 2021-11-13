@@ -7,7 +7,7 @@ interface Props {
   time: number;
 }
 
-function NotificationTime({ time }: Props) {
+function ToolbarNotificationsItemTime({ time }: Props) {
   const displayTime = datetime.get12HourTime(time);
   const displayDate = datetime.getFriendlyDate(time);
   const relativeTime = datetime.getRelativeTime(time);
@@ -28,4 +28,4 @@ function NotificationTime({ time }: Props) {
   );
 }
 
-export default NotificationTime;
+export default ToolbarNotificationsItemTime;
