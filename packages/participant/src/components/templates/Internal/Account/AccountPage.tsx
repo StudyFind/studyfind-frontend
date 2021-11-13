@@ -48,7 +48,6 @@ function AccountPage() {
   const haveInputsChanged = JSON.stringify(values) !== JSON.stringify(userDocument);
 
   const handleCancel = () => {
-    console.log("handleCancel");
     setValues(userDocument);
   };
 
@@ -58,12 +57,10 @@ function AccountPage() {
   };
 
   const handleSetProfileAttribute = (name: string, value: string) => {
-    console.log("handleSetProfileAttribute");
     setValues((prev) => prev && { ...prev, [name]: value });
   };
 
   const handleSetNotificationsAttribute = (name: string, value: boolean) => {
-    console.log("handleSetNotificationsAttribute");
     setValues(
       (prev) =>
         prev && {
@@ -77,7 +74,6 @@ function AccountPage() {
   };
 
   const handleSetTimezoneAttribute = (name: string, value: string | boolean) => {
-    console.log("handleSetTimezoneAttribute");
     setValues(
       (prev) =>
         prev && {
