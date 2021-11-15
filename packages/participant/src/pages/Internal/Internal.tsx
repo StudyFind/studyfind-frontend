@@ -1,5 +1,9 @@
-import { useLocation } from "react-router-dom";
 import { useColor } from "hooks";
+import { useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+
+import { createGlobalStyle } from "styled-components";
+
 import { Box, Grid } from "@chakra-ui/react";
 import { FaSearch, FaClipboard, FaNewspaper, FaCalendarAlt } from "react-icons/fa";
 
@@ -16,11 +20,20 @@ import Account from "pages/Internal/Account/Account";
 import Feature from "pages/Internal/Support/Feature/Feature";
 import Bug from "pages/Internal/Support/Bug/Bug";
 import FAQs from "pages/Internal/Support/FAQs/FAQs";
-import { createGlobalStyle } from "styled-components";
 
 function Internal() {
+  const history = useHistory();
   const location = useLocation();
   const background = useColor("white", "gray.800");
+
+  useEffect(() => {
+    const redirect = localStorage.getItem("redirect");
+
+    if (redirect) {
+      history.push(redirect);
+      localStorage.removeItem("redirect");
+    }
+  }, []);
 
   const links = [
     { name: "Find Studies", path: "/find-studies", icon: <FaSearch /> },

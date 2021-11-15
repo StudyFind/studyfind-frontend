@@ -7,6 +7,7 @@ import External from "pages/External/External";
 import Internal from "pages/Internal/Internal";
 
 import Loading from "./Loading";
+import { useEffect } from "react";
 
 function App() {
   const [cred, loading] = useAuthState(services.auth);
@@ -17,6 +18,17 @@ function App() {
       initialColorMode: "dark",
     },
   });
+
+  useEffect(() => {
+    const externalPaths = ["", "/", "/auth", "/team"];
+    const currentPath = window.location.pathname;
+
+    localStorage.removeItem("redirect");
+
+    if (!cred && !externalPaths.includes(currentPath)) {
+      localStorage.setItem("redirect", currentPath);
+    }
+  }, [cred]);
 
   return (
     <BrowserRouter>
