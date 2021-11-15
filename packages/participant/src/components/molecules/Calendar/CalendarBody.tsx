@@ -10,7 +10,7 @@ interface Props {
   month: number;
   year: number;
   date: string;
-  setDate: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setDate: React.Dispatch<React.SetStateAction<string>> | ((value: string) => void);
 }
 
 function CalendarBody({ month, year, date, setDate }: Props) {

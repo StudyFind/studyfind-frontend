@@ -9,7 +9,7 @@ import CalendarBody from "./CalendarBody";
 
 interface Props {
   date: string;
-  setDate: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setDate: React.Dispatch<React.SetStateAction<string>> | ((value: string) => void);
 }
 
 function Calendar({ date, setDate }: Props) {
