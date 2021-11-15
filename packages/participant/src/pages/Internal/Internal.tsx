@@ -11,7 +11,6 @@ import FindStudies from "pages/Internal/FindStudies/FindStudies";
 import YourStudies from "pages/Internal/YourStudies/YourStudies";
 import ViewStudy from "pages/Internal/ViewStudy/ViewStudy";
 import NewsFeed from "pages/Internal/NewsFeed/NewsFeed";
-import Notifications from "./Notifications/Notifications";
 import Schedule from "pages/Internal/Schedule/Schedule";
 import Account from "pages/Internal/Account/Account";
 import Feature from "pages/Internal/Support/Feature/Feature";
@@ -71,7 +70,6 @@ function Internal() {
             { path: "/your-studies", component: YourStudies },
             { path: "/view-study", component: ViewStudy },
             { path: "/news-feed", component: NewsFeed },
-            { path: "/notifications", component: Notifications },
             { path: "/schedule", component: Schedule },
             { path: "/account/:tab", component: Account },
             { path: "/support/bug", component: Bug },
