@@ -1,11 +1,13 @@
-import { useColor } from "hooks";
+import { useState } from "react";
+import { useColor, useDevice } from "hooks";
+
+import { auth } from "@studyfind/firebase";
 
 import { Flex } from "@chakra-ui/react";
 
 import SidebarLogo from "./SidebarLogo";
 import SidebarLinks from "./SidebarLinks";
 import SidebarUser from "./SidebarUser";
-import { auth } from "@studyfind/firebase";
 
 interface LinkType {
   icon: React.ReactElement;
@@ -14,31 +16,42 @@ interface LinkType {
 }
 
 interface Props {
-  name: string;
-  email: string;
   links: LinkType[];
   [key: string]: any;
 }
 
-function Sidebar({ name, email, links, ...rest }: Props) {
+function Sidebar({ links, ...rest }: Props) {
+  const [active, setActive] = useState(false);
+  const { isPhone } = useDevice();
+
   const background = useColor("blue.900", "gray.900");
   const user = auth.getUser();
 
+  const toggleActive = () => {
+    if (isPhone) {
+      setActive((prev) => !prev);
+    }
+  };
+
   return (
     <Flex
-      height="100%"
+      height={active ? "100vh" : "100%"}
       width="100%"
       direction="column"
       background={background}
-      borderRightWidth="1px"
-      borderRightColor="gray.700"
+      borderRightWidth={isPhone ? "" : "1px"}
+      borderRightColor={isPhone ? "" : "gray.700"}
+      borderBottomWidth={isPhone ? "1px" : ""}
+      borderBottomColor={isPhone ? "gray.700" : ""}
       {...rest}
     >
-      <SidebarLogo />
-      <>
-        <SidebarLinks links={links} />
-        <SidebarUser name={user?.displayName || ""} email={user?.email || ""} />
-      </>
+      <SidebarLogo isPhone={isPhone} active={active} toggleActive={toggleActive} />
+      {(!isPhone || active) && (
+        <>
+          <SidebarLinks links={links} />
+          <SidebarUser name={user?.displayName || ""} email={user?.email || ""} />
+        </>
+      )}
     </Flex>
   );
 }

@@ -4,8 +4,17 @@ import { Link } from "components/atoms/Link/Link";
 import { Flex, Heading, Image } from "@chakra-ui/react";
 
 import SFLogo from "images/logo.png";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-function SidebarLogo() {
+interface Props {
+  isPhone: boolean;
+  active: boolean;
+  toggleActive: () => void;
+}
+
+function SidebarLogo({ isPhone, active, toggleActive }: Props) {
+  const ToggleIcon = active ? FaTimes : FaBars;
+
   return (
     <Flex justify="space-between" align="center" padding="20px">
       <LogoLink to="/" isWrapper>
@@ -14,6 +23,7 @@ function SidebarLogo() {
           StudyFind
         </Heading>
       </LogoLink>
+      {isPhone && <ToggleIcon size="24px" color="white" onClick={toggleActive} />}
     </Flex>
   );
 }
