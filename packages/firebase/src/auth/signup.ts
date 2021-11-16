@@ -45,15 +45,6 @@ const defaultParticipant: CreateParticipantDocument = {
     autodetect: true,
     updatedAt: getNow(),
   },
-  location: {
-    address: "",
-    coordinates: {
-      latitude: 0,
-      longitude: 0,
-    },
-    autodetect: false,
-    updatedAt: getNow(),
-  },
   notifications: {
     local: true,
     email: false,
