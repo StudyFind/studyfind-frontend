@@ -1,4 +1,5 @@
-export * from "./feedback";
+export * from "./bug";
+export * from "./feature";
 export * from "./mailing";
 export * from "./meeting";
 export * from "./message";
