@@ -1,4 +1,5 @@
-export { createFeedbackDocument } from "./feedback";
+export { createBugDocument } from "./bug";
+export { createFeatureDocument } from "./feature";
 export { createMailingDocument } from "./mailing";
 export { createMeetingDocument, updateMeetingDocument, deleteMeetingDocument } from "./meeting";
 export { createReminderDocument, updateReminderDocument, deleteReminderDocument } from "./reminder";
