@@ -1,16 +1,10 @@
 import { Date, DocumentID, Phone } from "../custom";
-import {
-  Metadata,
-  UserLocationStructure,
-  UserNotificationSettingsStructure,
-  UserTimezoneStructure,
-} from "../reused";
+import { Metadata, UserNotificationSettingsStructure, UserTimezoneStructure } from "../reused";
 
 export type BiologicalSex = "" | "Male" | "Female";
 
 export interface ParticipantDocumentStructure
   extends UserTimezoneStructure,
-    UserLocationStructure,
     UserNotificationSettingsStructure,
     Metadata {
   sex: BiologicalSex;

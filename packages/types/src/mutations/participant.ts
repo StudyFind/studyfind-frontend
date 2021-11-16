@@ -13,15 +13,6 @@ export interface CreateParticipantDocument {
     autodetect: true;
     updatedAt: Timestamp;
   };
-  location: {
-    address: "";
-    coordinates: {
-      latitude: 0;
-      longitude: 0;
-    };
-    autodetect: false;
-    updatedAt: Timestamp;
-  };
   notifications: {
     local: true;
     email: false;
@@ -38,15 +29,6 @@ export type UpdateParticipantDocument = {
   saved?: any;
   timezone?: {
     region?: Timezone;
-    autodetect?: boolean;
-    updatedAt?: Timestamp;
-  };
-  location?: {
-    address?: Address;
-    coordinates?: {
-      latitude?: Latitude;
-      longitude?: Longitude;
-    };
     autodetect?: boolean;
     updatedAt?: Timestamp;
   };
