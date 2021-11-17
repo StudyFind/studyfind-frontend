@@ -1,4 +1,4 @@
-import { storage } from "src";
+import { storage } from "../../../index";
 import { DocumentID } from "@studyfind/types";
 
 export const deleteStudyFile = async (studyID: DocumentID, name: string) => {

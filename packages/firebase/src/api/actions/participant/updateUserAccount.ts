@@ -1,4 +1,4 @@
-import { auth, firestore } from "src";
+import { auth, firestore } from "../../../index";
 import { UpdateParticipantDocument } from "@studyfind/types";
 
 export const updateUserAccount = (data: UpdateParticipantDocument) => {

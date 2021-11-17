@@ -6,10 +6,10 @@ import { CheckboxInput } from "components/atoms/Inputs/CheckboxInput/CheckboxInp
 import AccountWrapper from "../AccountWrapper";
 import AccountHeader from "../AccountHeader";
 
-import { DocumentStructure } from "../AccountPage";
+import { UserDocument } from "types/side";
 
 interface Props {
-  values: DocumentStructure | undefined;
+  values: UserDocument | undefined;
   showButtons: boolean;
   handleCancel: React.MouseEventHandler;
   handleUpdate: () => Promise<void>;

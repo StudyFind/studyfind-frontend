@@ -1,14 +1,14 @@
+import { api } from "@studyfind/firebase";
+
 import { useState, useEffect } from "react";
 import { useDocument } from "hooks";
 
-import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react-icons/fa";
 import { Box } from "@chakra-ui/react";
+import { Loader, Message } from "components/atoms";
+import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react-icons/fa";
 
-import { auth, firestore } from "@studyfind/firebase";
-import { ResearcherDocumentStructure, ParticipantDocumentStructure } from "@studyfind/types";
 import { Side } from "types/global";
-
-import { Loader } from "components/atoms";
+import { UserDocument } from "types/side";
 
 import ProfileResearcher from "./Profile/ProfileResearcher";
 import ProfileParticipant from "./Profile/ProfileParticipant";
@@ -19,8 +19,6 @@ import Subscription from "./Subscription/Subscription";
 
 import VerticalTabs from "components/molecules/VerticalTabs/VerticalTabs";
 
-export type DocumentStructure = ResearcherDocumentStructure | ParticipantDocumentStructure;
-
 const side = process.env.REACT_APP_SIDE as Side;
 
 const Profile = {
@@ -29,14 +27,12 @@ const Profile = {
 }[side];
 
 function AccountPage() {
-  const user = auth.getUser();
-
   const reference = {
-    RESEARCHER: firestore.references.getResearcherReference(user?.uid),
-    PARTICIPANT: firestore.references.getParticipantReference(user?.uid),
+    RESEARCHER: api.queries.researcher.getResearcherQuery(),
+    PARTICIPANT: api.queries.participant.getParticipantQuery(),
   }[side];
 
-  const [userDocument, loading, error] = useDocument<DocumentStructure>(reference);
+  const [userDocument, loading, error] = useDocument<UserDocument>(reference);
   const [values, setValues] = useState<typeof userDocument>(undefined);
 
   useEffect(() => {
@@ -52,8 +48,12 @@ function AccountPage() {
   };
 
   const handleUpdate = () => {
-    // return mutator.update(user.id, values);
-    return Promise.resolve(); // TODO: Update user document
+    const updateUserAccount =
+      side === "RESEARCHER"
+        ? api.actions.researcher.updateUserAccount
+        : api.actions.participant.updateUserAccount;
+
+    return updateUserAccount(values as UserDocument);
   };
 
   const handleSetProfileAttribute = (name: string, value: string) => {
@@ -90,6 +90,16 @@ function AccountPage() {
     return <Loader height="calc(100vh - 128px)" />;
   }
 
+  if (error) {
+    return (
+      <Message
+        status="failure"
+        title="Database Error"
+        description="We could not load your account information"
+      />
+    );
+  }
+
   const updateProps = {
     values,
     showButtons: haveInputsChanged,
@@ -104,11 +114,7 @@ function AccountPage() {
     content: (
       <Profile
         {...updateProps}
-        values={
-          side === "RESEARCHER"
-            ? (values as ResearcherDocumentStructure | undefined)
-            : (values as ParticipantDocumentStructure | undefined)
-        }
+        values={values as UserDocument}
         handleSetProfileAttribute={handleSetProfileAttribute}
       />
     ),

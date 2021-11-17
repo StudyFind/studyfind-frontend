@@ -1,3 +1,3 @@
-import { firestore } from "src";
+import { firestore } from "../../../index";
 
 export const createStudy = firestore.mutations.createStudyDocument;

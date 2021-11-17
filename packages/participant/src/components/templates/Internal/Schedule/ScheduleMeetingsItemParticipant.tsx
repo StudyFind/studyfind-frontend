@@ -5,10 +5,10 @@ import { datetime } from "@studyfind/utils";
 import { Flex, Text } from "@chakra-ui/react";
 import { FaCheckCircle, FaPhone } from "react-icons/fa";
 import { Card, Hint, Link, ActionButton } from "components/atoms";
-import { MeetingDocumentStructureExtended } from "./types";
+import { MeetingDocumentExtended } from "./types";
 
 interface Props {
-  meeting: MeetingDocumentStructureExtended;
+  meeting: MeetingDocumentExtended;
   handleConfirm: () => Promise<void>;
 }
 

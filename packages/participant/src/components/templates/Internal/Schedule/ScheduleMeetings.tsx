@@ -7,7 +7,7 @@ import ScheduleMeetingsLoading from "./ScheduleMeetingsLoading";
 import ScheduleMeetingsError from "./ScheduleMeetingsError";
 import ScheduleMeetingsList from "./ScheduleMeetingsList";
 import ScheduleMeetingsEmpty from "./ScheduleMeetingsEmpty";
-import { MeetingDocumentStructure } from "@studyfind/types";
+import { MeetingDocument } from "@studyfind/types";
 
 interface Props {
   date: string;
@@ -16,7 +16,7 @@ interface Props {
 function ScheduleMeetings({ date }: Props) {
   const idType = process.env.REACT_APP_SIDE === "RESEARCHER" ? "researcherID" : "participantID";
 
-  const [meetings, loading, error] = useCollection<MeetingDocumentStructure>(
+  const [meetings, loading, error] = useCollection<MeetingDocument>(
     services.firestore
       .collection("meetings")
       .where(idType, "==", auth.getUser().uid)

@@ -9,5 +9,6 @@ export { submitFeature } from "./submitFeature";
 export { reportBug } from "./reportBug";
 export { subscribeMailing } from "./subscribeMailing";
 export { unsaveStudy } from "./unsaveStudy";
+export { updateUserAccount } from "./updateUserAccount";
 export { updateUserNotifications } from "./updateUserNotifications";
 export { updateUserTimezone } from "./updateUserTimezone";

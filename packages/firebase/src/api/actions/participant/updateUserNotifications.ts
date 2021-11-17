@@ -1,4 +1,4 @@
-import { auth, firestore } from "src";
+import { auth, firestore } from "../../../index";
 
 interface UpdateUserNotificationsPayload {
   local?: boolean;

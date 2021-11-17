@@ -3,10 +3,10 @@ import { RadioInput, TextInput, TextareaInput, PhoneInput } from "components/ato
 
 import AccountWrapper from "../AccountWrapper";
 import AccountHeader from "../AccountHeader";
-import { ParticipantDocumentStructure } from "@studyfind/types";
+import { ParticipantDocument } from "@studyfind/types";
 
 interface Props {
-  values: ParticipantDocumentStructure | undefined;
+  values: ParticipantDocument | undefined;
   showButtons: boolean;
   handleCancel: () => void;
   handleUpdate: () => Promise<void>;

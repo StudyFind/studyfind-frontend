@@ -7,7 +7,7 @@ import { getNotificationsReference, updateNotificationDocument } from "./side";
 import { FaBell } from "react-icons/fa";
 import { Loader, Message } from "components/atoms";
 import { Flex, MenuList, Grid, Divider } from "@chakra-ui/react";
-import { NotificationDocumentStructure, NotificationDocumentStructureExtended } from "./types";
+import { NotificationDocument, NotificationDocumentExtended } from "./types";
 
 import ToolbarNotificationsItem from "./ToolbarNotificationsItem";
 import ToolbarLink from "../ToolbarLink";
@@ -23,11 +23,11 @@ function ToolbarNotifications() {
 
   const { uid } = auth.getUser();
 
-  const [notifications, loading, error] = useCollection<NotificationDocumentStructure>(
+  const [notifications, loading, error] = useCollection<NotificationDocument>(
     getNotificationsReference(uid).orderBy("time", "desc")
   );
 
-  const handleNotificationRead = (notification: NotificationDocumentStructureExtended) => {
+  const handleNotificationRead = (notification: NotificationDocumentExtended) => {
     return updateNotificationDocument(uid, notification.id, {
       read: true,
     });

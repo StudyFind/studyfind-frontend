@@ -117,11 +117,6 @@ function Home() {
     },
   ];
 
-  const handleSubscribe = (email: string) => {
-    // subscribe
-    return Promise.resolve(email); // TODO: Create mailing document
-  };
-
   const SectionDivider = () => <Divider borderColor={dividerColor} />;
 
   return (
@@ -147,7 +142,7 @@ function Home() {
 
       <SectionDivider />
 
-      <Mailing handleSubscribe={handleSubscribe} />
+      <Mailing />
 
       <SectionDivider />
 

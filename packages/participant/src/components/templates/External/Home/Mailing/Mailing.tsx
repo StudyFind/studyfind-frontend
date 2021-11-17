@@ -1,3 +1,5 @@
+import { api } from "@studyfind/firebase";
+
 import { useState } from "react";
 import { useColor, useDevice } from "hooks";
 import { validate } from "@studyfind/utils";
@@ -11,11 +13,7 @@ import { TextInput } from "components/atoms/Inputs/TextInput/TextInput";
 
 import HomeSectionWrapper from "../HomeSectionWrapper";
 
-interface Props {
-  handleSubscribe: (email: string) => Promise<any>;
-}
-
-function Mailing({ handleSubscribe }: Props) {
+function Mailing() {
   const { isPhone } = useDevice();
 
   const [email, setEmail] = useState("");
@@ -38,7 +36,9 @@ function Mailing({ handleSubscribe }: Props) {
     }
 
     setLoading(true);
-    handleSubscribe(email)
+
+    return api.actions.participant
+      .subscribeMailing({ email })
       .then(() => setSuccess(true))
       .catch(() => setError("There was an error"))
       .finally(() => setLoading(false));

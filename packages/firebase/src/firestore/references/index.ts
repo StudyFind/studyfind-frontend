@@ -124,7 +124,7 @@ export const getStudyParticipantsReference = (studyID: DocumentID) => {
   return firestore
     .collection(COLLECTION_KEYS.studies)
     .doc(studyID)
-    .collection(COLLECTION_KEYS.participants) as CollectionReference<Document>;
+    .collection(COLLECTION_KEYS.participants) as CollectionReference<StudyParticipantDocument>;
 };
 
 // STUDY PARTICIPANT
@@ -133,7 +133,7 @@ export const getStudyParticipantReference = (studyID: DocumentID, participantID:
     .collection(COLLECTION_KEYS.studies)
     .doc(studyID)
     .collection(COLLECTION_KEYS.participants)
-    .doc(participantID) as DocumentReference<Document>;
+    .doc(participantID) as DocumentReference<StudyParticipantDocument>;
 };
 
 // STUDY PARTICIPANT NOTES

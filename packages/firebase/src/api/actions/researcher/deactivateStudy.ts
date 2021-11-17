@@ -1,4 +1,4 @@
-import { firestore } from "src";
+import { firestore } from "../../../index";
 import { DocumentID } from "@studyfind/types";
 
 export const deactivateStudy = async (studyID: DocumentID) => {

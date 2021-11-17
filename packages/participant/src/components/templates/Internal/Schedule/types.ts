@@ -1,4 +1,4 @@
 import { Data } from "react-firebase-hooks/firestore/dist/firestore/types";
-import { MeetingDocumentStructure } from "@studyfind/types";
+import { MeetingDocument } from "@studyfind/types";
 
-export type MeetingDocumentStructureExtended = Data<MeetingDocumentStructure, "id", "ref">;
+export type MeetingDocumentExtended = Data<MeetingDocument, "id", "ref">;

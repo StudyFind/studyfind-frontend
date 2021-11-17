@@ -1,4 +1,4 @@
-import { firestore } from "src";
+import { firestore } from "../../../index";
 
 interface SubscribeMailingPayload {
   email: string;

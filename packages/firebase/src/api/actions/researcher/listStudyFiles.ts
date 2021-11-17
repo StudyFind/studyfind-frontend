@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-import { storage } from "src";
+import { storage } from "../../../index";
 import { DocumentID } from "@studyfind/types";
 
 interface FileData {

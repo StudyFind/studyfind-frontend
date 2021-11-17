@@ -1,7 +1,4 @@
-import {
-  ParticipantDocumentStructure,
-  ParticipantNotificationDocumentStructure,
-} from "@studyfind/types";
+import { ParticipantDocument, ParticipantNotificationDocument } from "@studyfind/types";
 
-export type DocumentStructure = ParticipantDocumentStructure;
-export type NotificationDocumentStructure = ParticipantNotificationDocumentStructure;
+export type UserDocument = ParticipantDocument;
+export type NotificationDocument = ParticipantNotificationDocument;

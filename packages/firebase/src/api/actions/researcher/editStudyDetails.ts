@@ -1,4 +1,4 @@
-import { firestore } from "src";
+import { firestore } from "../../../index";
 import { DocumentID } from "@studyfind/types";
 import { StudySex, StudyType } from "@studyfind/types";
 

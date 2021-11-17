@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-import { auth, firestore } from "src";
+import { auth, firestore } from "../../../index";
 import { DocumentID } from "@studyfind/types";
 
 interface UnsaveStudyPayload {

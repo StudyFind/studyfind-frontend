@@ -1,24 +1,24 @@
 import { SimpleGrid } from "@chakra-ui/react";
 
-import { MeetingDocumentStructureExtended } from "./types";
+import { MeetingDocumentExtended } from "./types";
 
 import ScheduleMeetingsItemParticipant from "./ScheduleMeetingsItemParticipant";
 import ScheduleMeetingsItemResearcher from "./ScheduleMeetingsItemResearcher";
 
 interface Props {
-  meetings: MeetingDocumentStructureExtended[];
+  meetings: MeetingDocumentExtended[];
 }
 
 function ScheduleMeetingsList({ meetings }: Props) {
-  const handleConfirm = (meeting: MeetingDocumentStructureExtended) => {
+  const handleConfirm = (meeting: MeetingDocumentExtended) => {
     return Promise.resolve(); // TODO: Confirm meeting
   };
 
-  const handleDelete = (meeting: MeetingDocumentStructureExtended) => {
+  const handleDelete = (meeting: MeetingDocumentExtended) => {
     return Promise.resolve(); // TODO: Delete meeting
   };
 
-  const ScheduleMeetingItem = ({ meeting }: { meeting: MeetingDocumentStructureExtended }) => {
+  const ScheduleMeetingItem = ({ meeting }: { meeting: MeetingDocumentExtended }) => {
     return process.env.REACT_APP_SIDE === "RESEARCHER" ? (
       <ScheduleMeetingsItemResearcher
         meeting={meeting}

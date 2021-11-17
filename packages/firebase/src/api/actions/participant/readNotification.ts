@@ -1,4 +1,4 @@
-import { auth, firestore } from "src";
+import { auth, firestore } from "../../../index";
 import { DocumentID } from "@studyfind/types";
 
 interface ReadNotificationPayload {

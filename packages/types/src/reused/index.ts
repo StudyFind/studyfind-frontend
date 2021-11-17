@@ -28,7 +28,7 @@ export interface UserNotificationSettingsStructure {
   };
 }
 
-export interface CommonNotificationDocumentStructure {
+export interface CommonNotificationDocument {
   title: string;
   body: string;
   link: URL;

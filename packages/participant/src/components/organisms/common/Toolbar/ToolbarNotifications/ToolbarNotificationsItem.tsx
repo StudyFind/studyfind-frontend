@@ -22,15 +22,15 @@ import {
 
 import { IconType } from "react-icons/lib";
 import { ColorScheme } from "types/global";
-import { NotificationDocumentStructureExtended } from "./types";
+import { NotificationDocumentExtended } from "./types";
 
 import ToolbarNotificationsItemIcon from "./ToolbarNotificationsItemIcon";
 import ToolbarNotificationsItemTime from "./ToolbarNotificationsItemTime";
 
 interface Props {
   isOpen: boolean;
-  notification: NotificationDocumentStructureExtended;
-  handleNotificationRead: (notification: NotificationDocumentStructureExtended) => Promise<void>;
+  notification: NotificationDocumentExtended;
+  handleNotificationRead: (notification: NotificationDocumentExtended) => Promise<void>;
 }
 
 interface Theme {

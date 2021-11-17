@@ -1,3 +1,3 @@
-import { firestore } from "src";
+import { firestore } from "../../../index";
 
 export const deleteMeeting = firestore.mutations.deleteMeetingDocument;

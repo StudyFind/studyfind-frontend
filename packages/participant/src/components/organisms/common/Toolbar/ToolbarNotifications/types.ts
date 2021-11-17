@@ -1,5 +1,5 @@
 import { Data } from "react-firebase-hooks/firestore/dist/firestore/types";
-import { NotificationDocumentStructure as NotificationDocument } from "types/side";
+import { NotificationDocument as NotificationDocumentTemp } from "types/side";
 
-export type NotificationDocumentStructure = NotificationDocument;
-export type NotificationDocumentStructureExtended = Data<NotificationDocument, "id", "ref">;
+export type NotificationDocument = NotificationDocumentTemp;
+export type NotificationDocumentExtended = Data<NotificationDocument, "id", "ref">;

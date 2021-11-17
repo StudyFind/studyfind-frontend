@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import { auth, services } from "src";
+import { auth, services } from "../../../index";
 import { MeetingDocument } from "@studyfind/types";
 
 export const getScheduleQuery = () => {

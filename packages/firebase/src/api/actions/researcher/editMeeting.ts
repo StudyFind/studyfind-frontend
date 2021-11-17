@@ -1,4 +1,4 @@
-import { firestore } from "src";
+import { firestore } from "../../../index";
 import { DocumentID, Timestamp, URL } from "@studyfind/types";
 
 interface EditMeetingPayload {

@@ -1,6 +1,6 @@
-import { CommonNotificationDocumentStructure } from "../reused";
+import { CommonNotificationDocument } from "../reused";
 
-export interface ParticipantNotificationDocument extends CommonNotificationDocumentStructure {
+export interface ParticipantNotificationDocument extends CommonNotificationDocument {
   code:
     | "CREATE_ACCOUNT"
     | "DELETE_ACCOUNT"

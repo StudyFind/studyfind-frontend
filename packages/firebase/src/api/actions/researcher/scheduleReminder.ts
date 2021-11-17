@@ -1,4 +1,4 @@
-import { auth, firestore } from "src";
+import { auth, firestore } from "../../../index";
 import { Date, DocumentID, WeeklyOffset } from "@studyfind/types";
 
 interface ScheduleReminderPayload {

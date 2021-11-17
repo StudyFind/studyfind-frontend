@@ -1,4 +1,4 @@
-import { auth, firestore } from "src";
+import { auth, firestore } from "../../../index";
 import { datetime } from "@studyfind/utils";
 import { Timezone } from "@studyfind/types";
 

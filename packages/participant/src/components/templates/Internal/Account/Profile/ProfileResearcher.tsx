@@ -3,10 +3,10 @@ import { TextInput, TextareaInput, PhoneInput } from "components/atoms";
 
 import AccountWrapper from "../AccountWrapper";
 import AccountHeader from "../AccountHeader";
-import { ResearcherDocumentStructure } from "@studyfind/types";
+import { ResearcherDocument } from "@studyfind/types";
 
 interface Props {
-  values: ResearcherDocumentStructure | undefined;
+  values: ResearcherDocument | undefined;
   showButtons: boolean;
   handleCancel: () => void;
   handleUpdate: () => Promise<void>;
