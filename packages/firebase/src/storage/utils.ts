@@ -11,3 +11,7 @@ export const uploadFile = async (path: string, file: File) => {
 export const deleteFile = async (path: string) => {
   return storage.ref().child(path).delete();
 };
+
+export const listFiles = async (path: string) => {
+  return storage.ref(path).listAll();
+};

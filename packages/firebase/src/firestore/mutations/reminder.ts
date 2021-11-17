@@ -2,10 +2,7 @@ import { createDocument } from "../utils";
 import { updateDocument } from "../utils";
 import { deleteDocument } from "../utils";
 
-import {
-  getStudyParticipantReminderReference,
-  getStudyParticipantRemindersReference,
-} from "../references";
+import { getReminderReference, getRemindersReference } from "../references";
 
 import { CreateReminderDocument, UpdateReminderDocument } from "@studyfind/types";
 import { DocumentID } from "@studyfind/types";
@@ -15,7 +12,7 @@ export const createReminderDocument = (
   participantID: DocumentID,
   data: CreateReminderDocument
 ) => {
-  return createDocument(getStudyParticipantRemindersReference(studyID, participantID), data);
+  return createDocument(getRemindersReference(studyID, participantID), data);
 };
 
 export const updateReminderDocument = (
@@ -24,10 +21,7 @@ export const updateReminderDocument = (
   reminderID: DocumentID,
   data: UpdateReminderDocument
 ) => {
-  return updateDocument(
-    getStudyParticipantReminderReference(studyID, participantID, reminderID),
-    data
-  );
+  return updateDocument(getReminderReference(studyID, participantID, reminderID), data);
 };
 
 export const deleteReminderDocument = (
@@ -35,5 +29,5 @@ export const deleteReminderDocument = (
   participantID: DocumentID,
   reminderID: DocumentID
 ) => {
-  return deleteDocument(getStudyParticipantReminderReference(studyID, participantID, reminderID));
+  return deleteDocument(getReminderReference(studyID, participantID, reminderID));
 };

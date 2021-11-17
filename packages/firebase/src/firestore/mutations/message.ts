@@ -2,10 +2,7 @@ import { createDocument } from "../utils";
 import { updateDocument } from "../utils";
 import { deleteDocument } from "../utils";
 
-import {
-  getStudyParticipantMessageReference,
-  getStudyParticipantMessagesReference,
-} from "../references";
+import { getMessageReference, getMessagesReference } from "../references";
 
 import { CreateMessageDocument, UpdateMessageDocument } from "@studyfind/types";
 import { DocumentID } from "@studyfind/types";
@@ -15,7 +12,7 @@ export const createMessageDocument = (
   participantID: DocumentID,
   data: CreateMessageDocument
 ) => {
-  return createDocument(getStudyParticipantMessagesReference(studyID, participantID), data);
+  return createDocument(getMessagesReference(studyID, participantID), data);
 };
 
 export const updateMessageDocument = (
@@ -24,10 +21,7 @@ export const updateMessageDocument = (
   messageID: DocumentID,
   data: UpdateMessageDocument
 ) => {
-  return updateDocument(
-    getStudyParticipantMessageReference(studyID, participantID, messageID),
-    data
-  );
+  return updateDocument(getMessageReference(studyID, participantID, messageID), data);
 };
 
 export const deleteMessageDocument = (
@@ -35,5 +29,5 @@ export const deleteMessageDocument = (
   participantID: DocumentID,
   messageID: DocumentID
 ) => {
-  return deleteDocument(getStudyParticipantMessageReference(studyID, participantID, messageID));
+  return deleteDocument(getMessageReference(studyID, participantID, messageID));
 };

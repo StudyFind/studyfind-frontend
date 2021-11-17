@@ -2,7 +2,7 @@ import { createDocument } from "../utils";
 import { updateDocument } from "../utils";
 import { deleteDocument } from "../utils";
 
-import { getStudyParticipantNoteReference, getStudyParticipantNotesReference } from "../references";
+import { getNoteReference, getNotesReference } from "../references";
 
 import { CreateNoteDocument, UpdateNoteDocument } from "@studyfind/types";
 import { DocumentID } from "@studyfind/types";
@@ -12,7 +12,7 @@ export const createNoteDocument = (
   participantID: DocumentID,
   data: CreateNoteDocument
 ) => {
-  return createDocument(getStudyParticipantNotesReference(studyID, participantID), data);
+  return createDocument(getNotesReference(studyID, participantID), data);
 };
 
 export const updateNoteDocument = (
@@ -21,7 +21,7 @@ export const updateNoteDocument = (
   noteID: DocumentID,
   data: UpdateNoteDocument
 ) => {
-  return updateDocument(getStudyParticipantNoteReference(studyID, participantID, noteID), data);
+  return updateDocument(getNoteReference(studyID, participantID, noteID), data);
 };
 
 export const deleteNoteDocument = (
@@ -29,5 +29,5 @@ export const deleteNoteDocument = (
   participantID: DocumentID,
   noteID: DocumentID
 ) => {
-  return deleteDocument(getStudyParticipantNoteReference(studyID, participantID, noteID));
+  return deleteDocument(getNoteReference(studyID, participantID, noteID));
 };

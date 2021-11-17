@@ -1,1 +1,1 @@
-export { downloadFile, uploadFile, deleteFile } from "./utils";
+export { downloadFile, uploadFile, deleteFile, listFiles } from "./utils";

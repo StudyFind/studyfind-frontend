@@ -2,20 +2,16 @@ import { createDocument } from "../utils";
 import { updateDocument } from "../utils";
 import { deleteDocument } from "../utils";
 
-import {
-  getStudyParticipantMeetingReference,
-  getStudyParticipantMeetingsReference,
-} from "../references";
+import { getMeetingReference, getMeetingsReference } from "../references";
 
-import { CreateMeetingDocument, UpdateMeetingDocument } from "@studyfind/types";
-import { DocumentID } from "@studyfind/types";
+import { DocumentID, CreateMeetingDocument, UpdateMeetingDocument } from "@studyfind/types";
 
 export const createMeetingDocument = (
   studyID: DocumentID,
   participantID: DocumentID,
   data: CreateMeetingDocument
 ) => {
-  return createDocument(getStudyParticipantMeetingsReference(studyID, participantID), data);
+  return createDocument(getMeetingsReference(studyID, participantID), data);
 };
 
 export const updateMeetingDocument = (
@@ -24,10 +20,7 @@ export const updateMeetingDocument = (
   meetingID: string,
   data: UpdateMeetingDocument
 ) => {
-  return updateDocument(
-    getStudyParticipantMeetingReference(studyID, participantID, meetingID),
-    data
-  );
+  return updateDocument(getMeetingReference(studyID, participantID, meetingID), data);
 };
 
 export const deleteMeetingDocument = (
@@ -35,5 +28,5 @@ export const deleteMeetingDocument = (
   participantID: DocumentID,
   meetingID: DocumentID
 ) => {
-  return deleteDocument(getStudyParticipantMeetingReference(studyID, participantID, meetingID));
+  return deleteDocument(getMeetingReference(studyID, participantID, meetingID));
 };

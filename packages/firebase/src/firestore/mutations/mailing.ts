@@ -1,7 +1,8 @@
-import { firestore } from "../../config";
 import { createDocument } from "../utils";
+import { getMailingReference } from "../references";
+
 import { CreateMailingDocument } from "@studyfind/types";
 
 export const createMailingDocument = (data: CreateMailingDocument) => {
-  return createDocument(firestore.collection("mailing"), data);
+  return createDocument(getMailingReference(), data);
 };
