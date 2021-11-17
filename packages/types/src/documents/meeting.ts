@@ -1,28 +1,30 @@
 import { DocumentID, Timestamp, URL, UserID } from "../custom";
 
-export interface MeetingDocumentResearcherFields {
+export interface MeetingDocument {
   name: string;
   link: URL;
   time: Timestamp;
-}
-
-export interface MeetingDocumentParticipantFields {
   confirmedByParticipant: boolean;
+  participantID: UserID;
+  researcherID: UserID;
+  studyID: DocumentID;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
 }
 
-export interface MeetingDocumentForeignKeys {
+export interface CreateMeetingDocument {
+  name: string;
+  link: URL;
+  time: Timestamp;
+  confirmedByParticipant: false;
   participantID: UserID;
   researcherID: UserID;
   studyID: DocumentID;
 }
 
-export interface MeetingDocumentMetadata {
-  createdAt: Timestamp;
-  updatedAt: Timestamp;
+export interface UpdateMeetingDocument {
+  name?: string;
+  link?: URL;
+  time?: Timestamp;
+  confirmedByParticipant?: true;
 }
-
-export interface MeetingDocumentStructure
-  extends MeetingDocumentResearcherFields,
-    MeetingDocumentParticipantFields,
-    MeetingDocumentForeignKeys,
-    MeetingDocumentMetadata {}

@@ -25,7 +25,7 @@ export type StudyResource = {
 export type StudySex = "All" | "Male" | "Female";
 export type StudyType = "Observational" | "Interventional";
 
-export interface StudyDocumentStructure {
+export interface StudyDocument {
   activated: boolean;
   title: string;
   description: string;
@@ -52,3 +52,47 @@ export interface StudyDocumentStructure {
   createdAt: Timestamp;
   updatedAt: Timestamp;
 }
+
+export interface CreateStudyDocument {
+  activated: true;
+  title: string;
+  description: string;
+  sex: StudySex;
+
+  minAge: number;
+  maxAge: number;
+  acceptsHealthyParticipants: boolean;
+  acceptsRemoteParticipants: boolean;
+  type: StudyType;
+
+  researcher: {
+    id: UserID;
+    name: string;
+    email: Email;
+  };
+
+  conditions: string[];
+
+  locations: StudyLocation[];
+  questions: StudyQuestion[];
+  resources: StudyResource[];
+}
+
+export type UpdateStudyDocument = {
+  activated?: boolean;
+  title?: string;
+  description?: string;
+  sex?: StudySex;
+
+  minAge?: number;
+  maxAge?: number;
+  acceptsHealthyParticipants?: boolean;
+  acceptsRemoteParticipants?: boolean;
+  type?: StudyType;
+
+  conditions?: string[];
+
+  locations?: StudyLocation[];
+  questions?: StudyQuestion[];
+  resources?: StudyResource[];
+};

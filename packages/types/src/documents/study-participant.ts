@@ -7,12 +7,25 @@ export type StudyParticipantStatus =
   | "screened"
   | "accepted"
   | "rejected";
+
 export type StudyParticipantReponse = "Yes" | "No" | "Unsure";
 
-export interface StudyParticipantDocumentStructure {
+export interface StudyParticipantDocument {
   status: StudyParticipantStatus;
   questions: StudyQuestion[];
   responses: StudyParticipantReponse[];
   timezone: Timezone;
   availability: string;
+}
+
+export interface CreateStudyParticipantDocument {
+  status: "interested";
+  questions: StudyQuestion[];
+  responses: StudyParticipantReponse[];
+  timezone: Timezone;
+  availability: string;
+}
+
+export interface UpdateStudyParticipantDocument {
+  status?: StudyParticipantStatus;
 }

@@ -1,13 +1,5 @@
 import { Address, Latitude, Longitude, Timestamp, Timezone, URL } from "../custom";
 
-export interface CreateTracking {
-  createdAt: Timestamp;
-}
-
-export interface UpdateTracking {
-  updatedAt: Timestamp;
-}
-
 export interface UserTimezoneStructure {
   timezone: {
     region: Timezone;
@@ -36,7 +28,7 @@ export interface UserNotificationSettingsStructure {
   };
 }
 
-export interface CommonNotificationDocumentStructure extends CreateTracking, UpdateTracking {
+export interface CommonNotificationDocumentStructure {
   title: string;
   body: string;
   link: URL;

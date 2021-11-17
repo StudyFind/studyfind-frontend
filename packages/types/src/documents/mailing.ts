@@ -1,8 +1,13 @@
-import { Email, Timestamp, UserType } from "../custom";
+import { Email, Timestamp, Side } from "../custom";
 
-export interface MailingDocumentStructure {
-  side: UserType;
+export interface MailingDocument {
+  side: Side;
   email: Email;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+}
+
+export interface CreateMailingDocument {
+  side: Side;
+  email: Email;
 }

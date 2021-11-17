@@ -1,7 +1,6 @@
 import { CommonNotificationDocumentStructure } from "../reused";
 
-export interface ParticipantNotificationDocumentStructure
-  extends CommonNotificationDocumentStructure {
+export interface ParticipantNotificationDocument extends CommonNotificationDocumentStructure {
   code:
     | "CREATE_ACCOUNT"
     | "DELETE_ACCOUNT"
@@ -15,4 +14,8 @@ export interface ParticipantNotificationDocumentStructure
     | "RESEARCHER_CHANGED_PARTICIPANT_STATUS"
     | "MEETING_NOW"
     | "REMINDER_NOW";
+}
+
+export interface UpdateParticipantNotification {
+  read?: true;
 }

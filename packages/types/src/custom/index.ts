@@ -75,5 +75,5 @@ export type WeeklyOffset = number;
 // - must be an integer
 // - must be between 0 and 604800000
 
-export type UserType = "RESEARCHER" | "PARTICIPANT";
+export type Side = "RESEARCHER" | "PARTICIPANT";
 // - must be one of ["RESEARCHER", "PARTICIPANT"]
