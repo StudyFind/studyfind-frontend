@@ -1,4 +1,3 @@
 import { firestore } from "src";
 
-export const getStudyParticipantMeetingsQuery =
-  firestore.references.getStudyParticipantMeetingsReference;
+export const getStudyParticipantMeetingsQuery = firestore.references.getMeetingsReference;
