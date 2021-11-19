@@ -1,13 +1,13 @@
-import { firestore } from "@studyfind/firebase";
+import { actions, queries } from "@studyfind/api";
 
 const side = process.env.REACT_APP_SIDE;
 
-export const getNotificationsReference =
+export const getNotificationsQuery =
   side === "RESEARCHER"
-    ? firestore.references.getResearcherNotificationsReference
-    : firestore.references.getParticipantNotificationsReference;
+    ? queries.researcher.getNotificationsQuery
+    : queries.participant.getNotificationsQuery;
 
-export const updateNotificationDocument =
+export const readNotification =
   side === "RESEARCHER"
-    ? firestore.mutations.updateResearcherNotificationDocument
-    : firestore.mutations.updateParticipantNotificationDocument;
+    ? actions.researcher.readNotification
+    : actions.participant.readNotification;

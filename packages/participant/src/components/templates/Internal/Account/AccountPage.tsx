@@ -1,4 +1,4 @@
-import { api } from "@studyfind/firebase";
+import { actions, queries } from "@studyfind/api";
 
 import { useState, useEffect } from "react";
 import { useDocument } from "hooks";
@@ -28,15 +28,15 @@ const Profile = {
 
 function AccountPage() {
   const reference = {
-    RESEARCHER: api.queries.researcher.getResearcherQuery(),
-    PARTICIPANT: api.queries.participant.getParticipantQuery(),
+    RESEARCHER: queries.researcher.getResearcherQuery(),
+    PARTICIPANT: queries.participant.getParticipantQuery(),
   }[side];
 
   const [userDocument, loading, error] = useDocument<UserDocument>(reference);
   const [values, setValues] = useState<typeof userDocument>(undefined);
 
   useEffect(() => {
-    if (!values && userDocument) {
+    if (userDocument) {
       setValues(userDocument);
     }
   }, [userDocument]);
@@ -50,8 +50,8 @@ function AccountPage() {
   const handleUpdate = () => {
     const updateUserAccount =
       side === "RESEARCHER"
-        ? api.actions.researcher.updateUserAccount
-        : api.actions.participant.updateUserAccount;
+        ? actions.researcher.updateUserAccount
+        : actions.participant.updateUserAccount;
 
     return updateUserAccount(values as UserDocument);
   };
@@ -150,7 +150,7 @@ function AccountPage() {
     name: "Subscription",
     link: "/account/subscription",
     icon: <FaCreditCard />,
-    content: <Subscription {...updateProps} />,
+    content: <Subscription />,
   };
 
   const tabs =

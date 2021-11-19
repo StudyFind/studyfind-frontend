@@ -1,8 +1,6 @@
 import { useRef } from "react";
 import { useCollection, useOverlay } from "hooks";
-
-import { auth } from "@studyfind/firebase";
-import { getNotificationsReference, updateNotificationDocument } from "./side";
+import { getNotificationsQuery, readNotification } from "./side";
 
 import { FaBell } from "react-icons/fa";
 import { Loader, Message } from "components/atoms";
@@ -21,16 +19,12 @@ function ToolbarNotifications() {
     },
   });
 
-  const { uid } = auth.getUser();
-
   const [notifications, loading, error] = useCollection<NotificationDocument>(
-    getNotificationsReference(uid).orderBy("time", "desc")
+    getNotificationsQuery()
   );
 
   const handleNotificationRead = (notification: NotificationDocumentExtended) => {
-    return updateNotificationDocument(uid, notification.id, {
-      read: true,
-    });
+    return readNotification({ notificationID: notification.id });
   };
 
   const MENU = (

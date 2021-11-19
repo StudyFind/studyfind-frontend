@@ -1,0 +1,20 @@
+{
+  "name": "@studyfind/api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@studyfind/firebase": "^1.0.0",
+    "@studyfind/types": "^1.0.0",
+    "@studyfind/utils": "^0.1.0",
+    "firebase": "^8.10.0"
+  }
+}

@@ -79,13 +79,7 @@ const plans: PlanData[] = [
   },
 ];
 
-interface Props {
-  showButtons: boolean;
-  handleCancel: React.MouseEventHandler;
-  handleUpdate: () => Promise<void>;
-}
-
-function Subscription({ showButtons, handleCancel, handleUpdate }: Props) {
+function Subscription() {
   const toast = useToast();
   const history = useHistory();
   const currentPlan: UserPlan = "FREE"; // TODO: use plan context here
@@ -209,11 +203,7 @@ function Subscription({ showButtons, handleCancel, handleUpdate }: Props) {
   }, [action]);
 
   return (
-    <AccountWrapper
-      showButtons={showButtons}
-      handleCancel={handleCancel}
-      handleUpdate={handleUpdate}
-    >
+    <AccountWrapper showButtons={false}>
       <Grid gap="20px">
         <AccountHeader
           title="Subscription"

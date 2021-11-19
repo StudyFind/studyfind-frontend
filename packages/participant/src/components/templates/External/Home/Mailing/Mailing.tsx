@@ -1,4 +1,4 @@
-import { api } from "@studyfind/firebase";
+import { actions } from "@studyfind/api";
 
 import { useState } from "react";
 import { useColor, useDevice } from "hooks";
@@ -37,7 +37,7 @@ function Mailing() {
 
     setLoading(true);
 
-    return api.actions.participant
+    return actions.participant
       .subscribeMailing({ email })
       .then(() => setSuccess(true))
       .catch(() => setError("There was an error"))
