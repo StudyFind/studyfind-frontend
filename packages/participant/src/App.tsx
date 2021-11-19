@@ -1,13 +1,13 @@
+import { useEffect } from "react";
+
 import { BrowserRouter } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { services } from "@studyfind/firebase";
 
+import Loading from "./Loading";
 import External from "pages/External/External";
 import Internal from "pages/Internal/Internal";
-
-import Loading from "./Loading";
-import { useEffect } from "react";
 
 function App() {
   const [cred, loading] = useAuthState(services.auth);
