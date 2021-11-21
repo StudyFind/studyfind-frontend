@@ -1,6 +1,5 @@
 import { MenuList, Grid } from "@chakra-ui/react";
 import { auth } from "@studyfind/firebase";
-import { useOverlay } from "hooks";
 import {
   FaDoorOpen,
   FaShieldAlt,

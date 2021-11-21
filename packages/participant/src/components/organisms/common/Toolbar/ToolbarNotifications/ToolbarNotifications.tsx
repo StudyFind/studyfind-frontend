@@ -5,7 +5,7 @@ import { getNotificationsQuery, readNotification } from "./side";
 import { FaBell } from "react-icons/fa";
 import { Loader, Message } from "components/atoms";
 import { Flex, MenuList, Grid, Divider } from "@chakra-ui/react";
-import { NotificationDocument, NotificationDocumentExtended } from "./types";
+import { UserNotificationDocument, UserNotificationDocumentExtended } from "types/side";
 
 import ToolbarNotificationsItem from "./ToolbarNotificationsItem";
 import ToolbarLink from "../ToolbarLink";
@@ -19,11 +19,11 @@ function ToolbarNotifications() {
     },
   });
 
-  const [notifications, loading, error] = useCollection<NotificationDocument>(
+  const [notifications, loading, error] = useCollection<UserNotificationDocument>(
     getNotificationsQuery()
   );
 
-  const handleNotificationRead = (notification: NotificationDocumentExtended) => {
+  const handleNotificationRead = (notification: UserNotificationDocumentExtended) => {
     return readNotification({ notificationID: notification.id });
   };
 

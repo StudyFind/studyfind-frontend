@@ -22,15 +22,15 @@ import {
 
 import { IconType } from "react-icons/lib";
 import { ColorScheme } from "types/global";
-import { NotificationDocumentExtended } from "./types";
+import { UserNotificationDocumentExtended } from "types/side";
 
 import ToolbarNotificationsItemIcon from "./ToolbarNotificationsItemIcon";
 import ToolbarNotificationsItemTime from "./ToolbarNotificationsItemTime";
 
 interface Props {
   isOpen: boolean;
-  notification: NotificationDocumentExtended;
-  handleNotificationRead: (notification: NotificationDocumentExtended) => Promise<void>;
+  notification: UserNotificationDocumentExtended;
+  handleNotificationRead: (notification: UserNotificationDocumentExtended) => Promise<void>;
 }
 
 interface Theme {
@@ -71,7 +71,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
       setEmphasize(true);
       handleNotificationRead(notification);
     }
-  }, [read, isOpen]);
+  }, []);
 
   useEffect(() => {
     if (emphasize) {

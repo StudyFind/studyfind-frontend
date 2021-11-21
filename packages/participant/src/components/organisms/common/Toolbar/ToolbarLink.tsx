@@ -1,7 +1,6 @@
 import { useColor } from "hooks";
 import { Box, Icon, Menu, MenuButton, IconButton } from "@chakra-ui/react";
 import { FaCircle } from "react-icons/fa";
-import { BooleanLiteral } from "typescript";
 
 interface Props {
   name: string;

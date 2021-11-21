@@ -37,6 +37,12 @@ function ConfirmModal({
     });
   };
 
+  const handleClosing = () => {
+    if (!loading) {
+      handleClose();
+    }
+  };
+
   const textColor = useColor("gray.500", "gray.400");
   const backgroundColor = useColor("white", "gray.800");
 
@@ -46,7 +52,7 @@ function ConfirmModal({
       motionPreset="scale"
       isCentered
       isOpen={true}
-      onClose={loading ? () => {} : handleClose}
+      onClose={handleClosing}
       leastDestructiveRef={undefined}
     >
       <AlertDialogOverlay background="rgb(0, 0, 0, 0.75)">
