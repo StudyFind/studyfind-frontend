@@ -35,13 +35,10 @@ export const setDocument = (query: firebase.firestore.DocumentReference, data: a
 export const updateDocument = async (query: firebase.firestore.DocumentReference, data: any) => {
   const now = getNow();
 
-  return query.set(
-    {
-      ...data,
-      updatedAt: now,
-    },
-    { merge: true }
-  );
+  return query.update({
+    ...data,
+    updatedAt: now,
+  });
 };
 
 // DELETE
