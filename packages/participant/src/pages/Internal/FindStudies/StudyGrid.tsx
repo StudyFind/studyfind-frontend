@@ -1,46 +1,42 @@
-export {};
+import { useRef, useContext } from "react";
+import { useDevice } from "hooks";
 
-// import { Message } from "components";
-// import { Box, SimpleGrid } from "@chakra-ui/react";
+import { FindStudiesContext } from "./FindStudiesContext";
 
-// import { useDevice } from "hooks";
+import { Message } from "components/atoms";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 
-// import AutoScroll from "./AutoScroll";
+import AutoScroll from "./AutoScroll";
+import StudyCardSmall from "./StudyCard";
 
-// import { auth } from "database/firebase";
+function StudyGrid() {
+  const topRef = useRef<HTMLElement>(null);
 
-// function StudyGrid({ user, conditions, filteredStudies, handleAddCondition }) {
-//   const { responsive } = useDevice();
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView();
+  };
 
-//   return filteredStudies.length ? (
-//     <SimpleGrid spacing="25px" align="flex-start" columns={responsive([1, 2, 2])}>
-//       {filteredStudies.map((study) => (
-//         <StudyCardSmall
-//           key={study.id}
-//           study={study}
-//           conditions={conditions}
-//           handleAddCondition={handleAddCondition}
-//           handleBookmark={
-//             user.saved.includes(study.id) ? () => Promise.resolve() : () => Promise.resolve()
-//           }
-//           detailsRedirectLink={`/study/${study.id}/details`}
-//           enrollRedirectLink={`/study/${study.id}/screening`}
-//           hasParticipantEnrolled={user.enrolled.includes(study.id)}
-//           hasParticipantSaved={user.saved.includes(study.id)}
-//           isParticipantVerified={auth.currentUser.emailVerified}
-//         />
-//       ))}
-//       <AutoScroll />
-//     </SimpleGrid>
-//   ) : (
-//     <Box h="500px">
-//       <Message
-//         type="neutral"
-//         title="Find Studies"
-//         description="No studies to display. Try changing your search filters for better results!"
-//       />
-//     </Box>
-//   );
-// }
+  const { responsive } = useDevice();
+  const { filteredStudies } = useContext(FindStudiesContext);
 
-// export default StudyGrid;
+  return filteredStudies.length ? (
+    <SimpleGrid spacing="25px" align="flex-start" columns={responsive([1, 2, 2])}>
+      <span ref={topRef} />
+      {filteredStudies.map((study) => (
+        <StudyCardSmall key={study.id} study={study} />
+      ))}
+      <AutoScroll onClick={scrollToTop} />
+    </SimpleGrid>
+  ) : (
+    <Box h="500px">
+      <Message
+        status="neutral"
+        title="Find Studies"
+        description="No studies to display. Try changing your search filters for better results!"
+        showBackground
+      />
+    </Box>
+  );
+}
+
+export default StudyGrid;
