@@ -7,3 +7,4 @@ export { getStudyParticipantMessagesQuery } from "./getStudyParticipantMessagesQ
 export { getStudyParticipantNotesQuery } from "./getStudyParticipantNotesQuery";
 export { getStudyParticipantRemindersQuery } from "./getStudyParticipantRemindersQuery";
 export { getStudyParticipantsQuery } from "./getStudyParticipantsQuery";
+export { getViewStudyQuery } from "./getViewStudyQuery";
