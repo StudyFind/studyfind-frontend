@@ -1,15 +1,15 @@
 import { storage } from "../config";
 
 export const downloadFile = async (path: string) => {
-  // TODO: download file
+  return storage.ref(path).getDownloadURL();
 };
 
-export const uploadFile = async (path: string, file: File) => {
-  return storage.ref().child(path).put(file);
+export const uploadFile = (path: string, file: File) => {
+  return storage.ref(path).put(file);
 };
 
 export const deleteFile = async (path: string) => {
-  return storage.ref().child(path).delete();
+  return storage.ref(path).delete();
 };
 
 export const listFiles = async (path: string) => {
