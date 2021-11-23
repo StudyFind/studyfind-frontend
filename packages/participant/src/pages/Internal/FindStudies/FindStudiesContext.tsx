@@ -1,19 +1,11 @@
+import React, { createContext, useContext, useMemo, useState } from "react";
 import moment from "moment";
-import firebase from "firebase";
 
-import React, { createContext, useMemo, useState } from "react";
-import { useCollection, useDocument } from "hooks";
+import { UserContext } from "context/UserContext";
+import { StudiesContext } from "context/StudiesContext";
 
-import { queries } from "@studyfind/api";
-
-import { Data } from "react-firebase-hooks/firestore/dist/firestore/types";
-import { StudyDocument } from "@studyfind/types";
-import { UserDocument } from "types/side";
-
-import { getUserQuery } from "./side";
-
-type UserDocumentExtended = Data<UserDocument, "id", "ref">;
-type StudyDocumentExtended = Data<StudyDocument, "id", "ref">;
+import { UserDocumentExtended } from "types/side";
+import { StudyDocumentExtended } from "types/extended";
 
 interface Filters {
   search: string;
@@ -31,8 +23,6 @@ interface Filters {
 interface Context {
   user?: UserDocumentExtended;
   filteredStudies: StudyDocumentExtended[];
-  loading: boolean;
-  error?: firebase.FirebaseError;
   filters: Filters;
   handleFilters: (name: string, value: boolean | string | string[]) => void;
   handleAddCondition: (condition: string) => void;
@@ -47,13 +37,8 @@ interface Props {
 export const FindStudiesContext = createContext({} as Context);
 
 export const FindStudiesProvider = ({ children }: Props) => {
-  const [user, userLoading, userError] = useDocument<UserDocument>(getUserQuery());
-  const [studies, studiesLoading, studiesError] = useCollection<StudyDocument>(
-    queries.participant.getFindStudiesQuery()
-  );
-
-  const loading = userLoading || studiesLoading;
-  const error = userError || studiesError;
+  const user = useContext(UserContext);
+  const studies = useContext(StudiesContext);
 
   const [filters, setFilters] = useState<Filters>({
     search: "",
@@ -63,8 +48,8 @@ export const FindStudiesProvider = ({ children }: Props) => {
     hideEnrolled: false,
     hideSaved: false,
     onlySaved: false,
-    acceptsHealthyParticipants: true,
-    acceptsRemoteParticipants: true,
+    acceptsHealthyParticipants: false,
+    acceptsRemoteParticipants: false,
     conditions: [],
   });
 
@@ -156,8 +141,6 @@ export const FindStudiesProvider = ({ children }: Props) => {
       value={{
         user,
         filteredStudies,
-        loading,
-        error,
         filters,
         handleFilters,
         handleAddCondition,

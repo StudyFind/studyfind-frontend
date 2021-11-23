@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useContext } from "react";
 import { useDevice } from "hooks";
 
 import { FindStudiesContext } from "./FindStudiesContext";
@@ -6,27 +6,24 @@ import { FindStudiesContext } from "./FindStudiesContext";
 import { Message } from "components/atoms";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 
-import AutoScroll from "./AutoScroll";
 import StudyCardSmall from "./StudyCard";
 
-function StudyGrid() {
-  const topRef = useRef<HTMLElement>(null);
+interface Props {
+  scrollToTop: () => void;
+}
 
-  const scrollToTop = () => {
-    topRef.current?.scrollIntoView();
-  };
-
+function StudyGrid({ scrollToTop }: Props) {
   const { responsive } = useDevice();
   const { filteredStudies } = useContext(FindStudiesContext);
 
   return filteredStudies.length ? (
-    <SimpleGrid spacing="25px" align="flex-start" columns={responsive([1, 2, 2])}>
-      <span ref={topRef} />
-      {filteredStudies.map((study) => (
-        <StudyCardSmall key={study.id} study={study} />
-      ))}
-      <AutoScroll onClick={scrollToTop} />
-    </SimpleGrid>
+    <>
+      <SimpleGrid spacing="25px" align="flex-start" columns={responsive([1, 2, 2])}>
+        {filteredStudies.map((study) => (
+          <StudyCardSmall key={study.id} study={study} />
+        ))}
+      </SimpleGrid>
+    </>
   ) : (
     <Box h="500px">
       <Message

@@ -1,33 +1,20 @@
-import { useContext } from "react";
+import { useRef } from "react";
 
-import { Loader, Message } from "components/atoms";
-import { FindStudiesContext } from "./FindStudiesContext";
-
-import Filters from "./Filters";
+import StudyFilters from "./StudyFilters";
 import StudyGrid from "./StudyGrid";
 
 function FindStudiesContent() {
-  const { loading, error } = useContext(FindStudiesContext);
+  const topRef = useRef<HTMLElement>(null);
 
-  if (loading) {
-    return <Loader height="calc(100vh - 128px)" />;
-  }
-
-  if (error) {
-    return (
-      <Message
-        status="failure"
-        title="Database Error"
-        description="We could not load the studies"
-        showBackground
-      />
-    );
-  }
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
-      <Filters />
-      <StudyGrid />
+      <span ref={topRef} />
+      <StudyFilters />
+      <StudyGrid scrollToTop={scrollToTop} />
     </>
   );
 }

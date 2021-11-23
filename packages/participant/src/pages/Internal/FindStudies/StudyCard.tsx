@@ -1,20 +1,18 @@
 import { useContext } from "react";
 import { useColor } from "hooks";
 
+import { auth } from "@studyfind/firebase";
+import { actions } from "@studyfind/api";
+
+import { StudyDocumentExtended } from "types/extended";
+
 import { Box, Flex, Heading, Button, Text, Tooltip, Icon } from "@chakra-ui/react";
 import { Link } from "components/atoms";
 import { FaBookmark, FaCheckCircle } from "react-icons/fa";
 
 import { FindStudiesContext } from "./FindStudiesContext";
 
-import { auth } from "@studyfind/firebase";
-import { actions } from "@studyfind/api";
-
-import { Data } from "react-firebase-hooks/firestore/dist/firestore/types";
-import { StudyDocument } from "@studyfind/types";
 import StudyConditions from "./StudyConditions";
-
-type StudyDocumentExtended = Data<StudyDocument, "id", "ref">;
 
 interface Props {
   study: StudyDocumentExtended;
@@ -23,15 +21,23 @@ interface Props {
 function StudyCardSmall({ study }: Props) {
   const { user, filters, handleAddCondition } = useContext(FindStudiesContext);
 
-  const detailsRedirectLink = `/study/${study.id}/details`;
-  const enrollRedirectLink = `/study/${study.id}/screening`;
+  const detailsRedirectLink = `/view-study/${study.id}/details`;
+  const enrollRedirectLink = `/view-study/${study.id}/screening`;
   const hasParticipantEnrolled = user?.enrolled?.includes(study.id);
   const hasParticipantSaved = user?.saved?.includes(study.id);
   const isParticipantVerified = auth.getUser().emailVerified;
 
-  const handleBookmark = user?.saved?.includes(study.id)
-    ? () => actions.participant.unsaveStudy({ studyID: study.id })
-    : () => actions.participant.saveStudy({ studyID: study.id });
+  const handleBookmark = () => {
+    const saved = user?.saved;
+
+    if (saved) {
+      actions.participant.updateUserAccount({
+        saved: saved.includes(study.id)
+          ? saved.filter((studyID) => studyID !== study.id)
+          : saved.concat(study.id),
+      });
+    }
+  };
 
   const detailsButtonColor = useColor("gray.500", "gray.400");
   const enrolledButtonColor = useColor("green.500", "green.400");
