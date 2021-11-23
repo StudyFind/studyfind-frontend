@@ -8,6 +8,7 @@ import { Table as ChakraTable, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react
 interface Props {
   headers: string[];
   data: React.ReactElement[][];
+  [key: string]: any;
 }
 
 function Table({ headers, data, ...rest }: Props) {
