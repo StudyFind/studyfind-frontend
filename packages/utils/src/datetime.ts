@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { Date, Timestamp, Timezone } from "@studyfind/types";
+import { Date, Timezone } from "@studyfind/types";
 
 /*
 ==============================================================================
@@ -39,11 +39,11 @@ const getTomorrow = () => {
   return moment().add(1, "days").format("YYYY-MM-DD");
 };
 
-const getStandardDate = (timestamp: Timestamp) => {
+const getStandardDate = (timestamp: moment.MomentInput) => {
   return moment(timestamp).format("YYYY-MM-DD");
 };
 
-const getFriendlyDate = (timestamp: Timestamp) => {
+const getFriendlyDate = (timestamp: moment.MomentInput) => {
   const standardDate = getStandardDate(timestamp);
 
   const today = getToday();
@@ -57,15 +57,15 @@ const getFriendlyDate = (timestamp: Timestamp) => {
   return moment(timestamp).format("MMMM DD, YYYY");
 };
 
-const get12HourTime = (timestamp: Timestamp) => {
+const get12HourTime = (timestamp: moment.MomentInput) => {
   return moment(timestamp).format("h:mma");
 };
 
-const get24HourTime = (timestamp: Timestamp) => {
+const get24HourTime = (timestamp: moment.MomentInput) => {
   return moment(timestamp).format("HH:mm");
 };
 
-const getRelativeTime = (timestamp: Timestamp) => {
+const getRelativeTime = (timestamp: moment.MomentInput) => {
   return moment(timestamp).fromNow();
 };
 

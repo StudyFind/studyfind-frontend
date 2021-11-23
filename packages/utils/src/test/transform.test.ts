@@ -19,32 +19,6 @@ describe("Testing Transform Weekdays and Times to Offsets Function", () => {
     );
   });
 
-  it("Check with fewer weekdays", () => {
-    assert.deepEqual(
-      transform.convertWeekdaysAndTimesToOffsets(
-        [false, false, true, false, true],
-        ["08:30", "10:30", "12:00", "15:30", "16:00"]
-      ),
-      [
-        203400000, 210600000, 216000000, 228600000, 230400000, 376200000, 383400000, 388800000,
-        401400000, 403200000,
-      ]
-    );
-  });
-
-  it("Check with extra weekdays", () => {
-    assert.deepEqual(
-      transform.convertWeekdaysAndTimesToOffsets(
-        [false, false, true, false, true, false, false, true],
-        ["08:30", "10:30", "12:00", "15:30", "16:00"]
-      ),
-      [
-        203400000, 210600000, 216000000, 228600000, 230400000, 376200000, 383400000, 388800000,
-        401400000, 403200000, 635400000, 642600000, 648000000, 660600000, 662400000,
-      ]
-    );
-  });
-
   it("Check first combo", () => {
     assert.deepEqual(
       transform.convertWeekdaysAndTimesToOffsets(

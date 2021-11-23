@@ -1,7 +1,12 @@
 import moment from "moment-timezone";
 
-const convertWeekdaysAndTimesToOffsets = (weekdays: boolean[], times: string[]) => {
-  const offsets = [];
+type Weekdays = [boolean, boolean, boolean, boolean, boolean, boolean, boolean];
+
+const convertWeekdaysAndTimesToOffsets = (
+  weekdays: [boolean, boolean, boolean, boolean, boolean, boolean, boolean],
+  times: string[]
+) => {
+  const offsets: number[] = [];
 
   weekdays.forEach((weekday, index) => {
     if (weekday) {
@@ -21,9 +26,9 @@ const convertWeekdaysAndTimesToOffsets = (weekdays: boolean[], times: string[]) 
   return offsets;
 };
 
-const convertOffsetsToWeekdaysAndTimes = (offsets: number[]) => {
-  const weekdays = [false, false, false, false, false, false, false];
-  const times = [];
+const convertOffsetsToWeekdaysAndTimes = (offsets: number[]): [Weekdays, string[]] => {
+  const weekdays: Weekdays = [false, false, false, false, false, false, false];
+  const times: string[] = [];
 
   const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
   const MILLISECONDS_IN_HOUR = 60 * 60 * 1000;
