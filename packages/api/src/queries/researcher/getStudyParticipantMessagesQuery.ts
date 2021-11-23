@@ -5,5 +5,7 @@ export const getStudyParticipantMessagesQuery = (
   studyID: DocumentID,
   participantID: DocumentID
 ) => {
-  return firestore.references.getMessagesReference(studyID, participantID).orderBy("time", "desc");
+  return firestore.references
+    .getMessagesReference(studyID, participantID)
+    .orderBy("createdAt", "desc");
 };
