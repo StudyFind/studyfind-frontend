@@ -1,19 +1,27 @@
 import { useEffect } from "react";
-import { useColor, useDevice } from "hooks";
+import { useCollection, useColor, useDevice, useDocument } from "hooks";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { auth } from "@studyfind/firebase";
+import { queries } from "@studyfind/api";
 import { createGlobalStyle } from "styled-components";
 
+import { CredProvider } from "context/CredContext";
+import { UserProvider } from "context/UserContext";
+import { StudiesProvider } from "context/StudiesContext";
 import { ConfirmProvider } from "context/ConfirmContext";
+
+import { UserDocumentExtended } from "types/side";
+import { StudyDocumentExtended } from "types/extended";
 
 import { Box, Grid } from "@chakra-ui/react";
 import { FaSearch, FaClipboard, FaNewspaper, FaCalendarAlt } from "react-icons/fa";
+import { Loader } from "components/atoms";
 
-import Sidebar from "components/organisms/common/Sidebar/Sidebar";
-import Toolbar from "components/organisms/common/Toolbar/Toolbar";
-import Router from "components/organisms/common/Router";
-import VerificationBanner from "components/organisms/common/VerificationBanner/VerificationBanner";
+import { Sidebar } from "components/organisms";
+import { Toolbar } from "components/organisms";
+import { Router } from "components/organisms";
+import { VerificationBanner } from "components/organisms";
 
 import FindStudies from "pages/Internal/FindStudies/FindStudies";
 import YourStudies from "pages/Internal/YourStudies/YourStudies";
@@ -48,7 +56,19 @@ function Internal() {
     { name: "Schedule", path: "/schedule", icon: <FaCalendarAlt /> },
   ];
 
-  const user = auth.getUser();
+  const getUser =
+    process.env.REACT_APP_SIDE === "RESEARCHER"
+      ? queries.researcher.getResearcherQuery
+      : queries.participant.getParticipantQuery;
+
+  const getStudies = queries.participant.getFindStudiesQuery;
+
+  const cred = auth.getUser();
+  const [user] = useDocument<UserDocumentExtended>(getUser());
+  const [studies] = useCollection<StudyDocumentExtended>(getStudies());
+
+  const loading = !cred || !user || !studies;
+
   const page = location.pathname.split("/")[1];
 
   const heading = page
@@ -61,72 +81,82 @@ function Internal() {
   // const MOBILE_SIDEBAR_HEIGHT = "71px";
 
   return (
-    <ConfirmProvider>
-      <Grid
-        flexDirection={isPhone ? "column" : "row"}
-        templateRows={isPhone ? "100px 1px 1fr" : ""}
-        templateColumns={isPhone ? "" : "275px 1px 1fr"}
+    <Grid
+      flexDirection={isPhone ? "column" : "row"}
+      templateRows={isPhone ? "100px 1px 1fr" : ""}
+      templateColumns={isPhone ? "" : "275px 1px 1fr"}
+      marginLeft={isPhone ? "0" : "275px"}
+      marginTop={isPhone ? "139px" : "68px"}
+    >
+      <InternalGlobalStyle />
+      <Box
+        width={isPhone ? "100%" : "275px"}
+        height={isPhone ? "" : "100vh"}
+        position="fixed"
+        left="0"
+        top="0"
+        zIndex={200}
       >
-        <InternalGlobalStyle />
+        <Sidebar name="Yohan Jhaveri" email="yohan@studyfind.org" links={links} />
+      </Box>
+      <Box
+        background={background}
+        width={isPhone ? "100vw" : "calc(100vw - 275px)"}
+        height="68px"
+        position="fixed"
+        right="0"
+        top={isPhone ? "71px" : "0"}
+        zIndex={100}
+      >
+        <Toolbar heading={heading} />
+      </Box>
+      <Box
+        background={background}
+        minHeight={isPhone ? "calc(100vh - 139px)" : "calc(100vh - 68px)"}
+        width={isPhone ? "100vw" : "calc(100vw - 275px)"}
+        padding="20px"
+      >
+        {loading ? (
+          <Loader width="100%" height="100%" />
+        ) : (
+          <CredProvider value={cred}>
+            <UserProvider value={user}>
+              <StudiesProvider value={studies}>
+                <ConfirmProvider>
+                  <Router
+                    routes={[
+                      { path: "/find-studies", component: FindStudies },
+                      { path: "/your-studies", component: YourStudies },
+                      { path: "/view-study/:studyID/:tab", component: ViewStudy },
+                      { path: "/news-feed", component: NewsFeed },
+                      { path: "/schedule", component: Schedule },
+                      { path: "/account/:tab", component: Account },
+                      { path: "/support/bug", component: Bug },
+                      { path: "/support/feature", component: Feature },
+                      { path: "/support/faqs", component: FAQs },
+                    ]}
+                    redirectTo="/find-studies"
+                  />
+                </ConfirmProvider>
+              </StudiesProvider>
+            </UserProvider>
+          </CredProvider>
+        )}
+      </Box>
+      {cred.emailVerified || (
         <Box
-          width={isPhone ? "100%" : "275px"}
-          height={isPhone ? "" : "100vh"}
-          position="fixed"
-          left="0"
-          top="0"
-          zIndex={200}
-        >
-          <Sidebar name="Yohan Jhaveri" email="yohan@studyfind.org" links={links} />
-        </Box>
-        <Box
-          background={background}
           width={isPhone ? "100vw" : "calc(100vw - 275px)"}
-          height="68px"
+          minHeight="56px"
+          background="gray.900"
           position="fixed"
-          right="0"
-          top={isPhone ? "71px" : "0"}
+          bottom="0"
+          left={isPhone ? "" : "275px"}
           zIndex={100}
         >
-          <Toolbar heading={heading} />
+          <VerificationBanner />
         </Box>
-        <Box
-          background={background}
-          minHeight={isPhone ? "calc(100vh - 139px)" : "calc(100vh - 68px)"}
-          width={isPhone ? "100vw" : "calc(100vw - 275px)"}
-          marginLeft={isPhone ? "0" : "275px"}
-          marginTop={isPhone ? "139px" : "68px"}
-          padding="20px"
-        >
-          <Router
-            routes={[
-              { path: "/find-studies", component: FindStudies },
-              { path: "/your-studies", component: YourStudies },
-              { path: "/view-study", component: ViewStudy },
-              { path: "/news-feed", component: NewsFeed },
-              { path: "/schedule", component: Schedule },
-              { path: "/account/:tab", component: Account },
-              { path: "/support/bug", component: Bug },
-              { path: "/support/feature", component: Feature },
-              { path: "/support/faqs", component: FAQs },
-            ]}
-            redirectTo="/find-studies"
-          />
-        </Box>
-        {user.emailVerified || (
-          <Box
-            width={isPhone ? "100vw" : "calc(100vw - 275px)"}
-            minHeight="56px"
-            background="gray.900"
-            position="fixed"
-            bottom="0"
-            left={isPhone ? "" : "275px"}
-            zIndex={100}
-          >
-            <VerificationBanner />
-          </Box>
-        )}
-      </Grid>
-    </ConfirmProvider>
+      )}
+    </Grid>
   );
 }
 
