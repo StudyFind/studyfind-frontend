@@ -1,3 +1,9 @@
-import { firestore } from "@studyfind/firebase";
+import { auth, firestore } from "@studyfind/firebase";
+import { DocumentID } from "@studyfind/types";
 
-export const getStudyParticipantMessagesQuery = firestore.references.getMessagesReference;
+export const getStudyParticipantMessagesQuery = (
+  studyID: DocumentID,
+  participantID: DocumentID
+) => {
+  return firestore.references.getMessagesReference(studyID, participantID).orderBy("time", "desc");
+};

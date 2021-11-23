@@ -3,7 +3,6 @@ import { DocumentID } from "@studyfind/types";
 
 interface SendMessagePayload {
   studyID: DocumentID;
-  participantID: DocumentID;
   text: string;
 }
 
