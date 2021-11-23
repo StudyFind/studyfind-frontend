@@ -127,7 +127,7 @@ function Internal() {
                   <Router
                     routes={[
                       { path: "/find-studies", component: FindStudies },
-                      { path: "/your-studies", component: YourStudies },
+                      { path: "/your-studies/:studyID?/:action?", component: YourStudies },
                       { path: "/view-study/:studyID/:tab", component: ViewStudy },
                       { path: "/join-study/:studyID/screening", component: Screening },
                       { path: "/news-feed", component: NewsFeed },

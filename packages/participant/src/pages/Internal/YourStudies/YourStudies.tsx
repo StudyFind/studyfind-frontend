@@ -6,6 +6,8 @@ import { Action, StudyFull } from "./types";
 import { UserContext } from "context/UserContext";
 import { StudiesContext } from "context/StudiesContext";
 
+import { Loader } from "components/atoms";
+
 import YourStudiesList from "./YourStudiesList";
 import YourStudiesDrawer from "./YourStudiesDrawer";
 import YourStudiesEmpty from "./YourStudiesEmpty";
@@ -18,7 +20,7 @@ interface Params {
 function YourStudies() {
   const { action, studyID } = useParams<Params>();
 
-  const [yourStudiesFull, setYourStudiesFull] = useState<StudyFull[]>([]);
+  const [yourStudiesFull, setYourStudiesFull] = useState<StudyFull[] | null>();
 
   const user = useContext(UserContext);
   const studies = useContext(StudiesContext);
@@ -50,7 +52,9 @@ function YourStudies() {
 
   useEffect(() => {
     handleLoadStudyParticipantData();
-  });
+  }, []);
+
+  console.log(10);
 
   const isOpen = !!(action && selectedStudy);
 
@@ -61,6 +65,10 @@ function YourStudies() {
   const handleClose = () => {
     history.push(`/your-studies`);
   };
+
+  if (!yourStudiesFull) {
+    return <Loader height="100%" />;
+  }
 
   return yourStudiesFull.length ? (
     <>
