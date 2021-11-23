@@ -1,4 +1,5 @@
-import { Message } from "components/atoms";
+import { Message, Link } from "components/atoms";
+import { Button } from "@chakra-ui/react";
 
 function YourStudiesEmpty() {
   return (
@@ -8,7 +9,11 @@ function YourStudiesEmpty() {
       description="Enroll for studies to begin participating"
       height="400px"
       showBackground
-    />
+    >
+      <Link to="/find-studies">
+        <Button>Find Studies</Button>
+      </Link>
+    </Message>
   );
 }
 
