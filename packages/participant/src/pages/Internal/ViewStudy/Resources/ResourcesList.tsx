@@ -9,7 +9,7 @@ interface Props {
 
 function ResourcesList({ resources }: Props) {
   return (
-    <OrderedList paddingLeft="10px">
+    <OrderedList paddingLeft="20px">
       {resources.map((resource, i) => (
         <ResourceItem key={i} resource={resource} />
       ))}

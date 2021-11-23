@@ -9,7 +9,7 @@ interface Props {
 
 function LocationsList({ locations }: Props) {
   return (
-    <OrderedList paddingLeft="10px">
+    <OrderedList paddingLeft="20px">
       {locations.map((location, i) => (
         <LocationsItem key={i} location={location} />
       ))}

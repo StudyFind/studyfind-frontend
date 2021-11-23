@@ -9,7 +9,7 @@ interface Props {
 
 function QuestionsList({ questions }: Props) {
   return (
-    <OrderedList paddingLeft="10px">
+    <OrderedList paddingLeft="20px">
       {questions.map((question, i) => (
         <QuestionItem key={i} question={question} />
       ))}
