@@ -1,5 +1,5 @@
 import { useHistory, useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Tab } from "types/global";
 
 function useTabs(tabs: Tab[], useURL: boolean) {
