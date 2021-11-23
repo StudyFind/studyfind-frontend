@@ -1,7 +1,7 @@
 import { useState, createContext } from "react";
 import { ColorScheme } from "types/global";
 
-import ConfirmModal from "components/organisms/common/ConfirmModal";
+import { ConfirmModal } from "components/organisms";
 
 export interface Confirm {
   title: string;
