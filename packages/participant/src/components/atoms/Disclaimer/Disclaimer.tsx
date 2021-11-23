@@ -27,7 +27,7 @@ export const Disclaimer = React.memo(({ colorScheme = "red", children }: Props) 
       borderWidth="1px"
       borderColor={textColor}
     >
-      <Icon as={FaExclamationCircle} marginRight="5px" marginBottom="3px" fontSize="12px" />
+      <Icon as={FaExclamationCircle} marginRight="5px" fontSize="12px" />
       {children}
     </Text>
   );
