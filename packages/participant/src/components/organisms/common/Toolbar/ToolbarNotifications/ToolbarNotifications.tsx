@@ -67,7 +67,7 @@ function ToolbarNotifications() {
       isOpen={isOpen}
       onOpen={handleOpen}
       onClose={handleClose}
-      showAlert={!loading && !(notifications?.length && notifications[0].read)}
+      showAlert={!loading && !!notifications?.length && !notifications[0].read}
     />
   );
 }
