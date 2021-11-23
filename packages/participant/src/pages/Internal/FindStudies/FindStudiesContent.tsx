@@ -7,7 +7,7 @@ function FindStudiesContent() {
   const topRef = useRef<HTMLElement>(null);
 
   const scrollToTop = () => {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
+    topRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
