@@ -8,7 +8,7 @@ export type StudyParticipantStatus =
   | "accepted"
   | "rejected";
 
-export type StudyParticipantReponse = "Yes" | "No" | "Unsure";
+export type StudyParticipantReponse = "Yes" | "No" | "Unsure" | "";
 
 export interface StudyParticipantDocument {
   status: StudyParticipantStatus;

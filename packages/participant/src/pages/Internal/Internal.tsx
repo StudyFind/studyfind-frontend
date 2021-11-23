@@ -26,6 +26,7 @@ import { VerificationBanner } from "components/organisms";
 import FindStudies from "pages/Internal/FindStudies/FindStudies";
 import YourStudies from "pages/Internal/YourStudies/YourStudies";
 import ViewStudy from "pages/Internal/ViewStudy/ViewStudy";
+import Screening from "./JoinStudy/Screening/Screening";
 import NewsFeed from "pages/Internal/NewsFeed/NewsFeed";
 import Schedule from "pages/Internal/Schedule/Schedule";
 import Account from "pages/Internal/Account/Account";
@@ -128,6 +129,7 @@ function Internal() {
                       { path: "/find-studies", component: FindStudies },
                       { path: "/your-studies", component: YourStudies },
                       { path: "/view-study/:studyID/:tab", component: ViewStudy },
+                      { path: "/join-study/:studyID/screening", component: Screening },
                       { path: "/news-feed", component: NewsFeed },
                       { path: "/schedule", component: Schedule },
                       { path: "/account/:tab", component: Account },

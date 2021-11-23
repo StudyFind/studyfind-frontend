@@ -24,7 +24,7 @@ function DetailsHead({ study }: Props) {
   const enrolledButtonColor = useColor("green.500", "green.400");
   const enrolledButtonBackground = useColor("green.100", "green.900");
 
-  const enrollRedirectLink = `/view-study/${study.id}/screening`;
+  const enrollRedirectLink = `/join-study/${study.id}/screening`;
 
   return (
     <TabHeader heading="Details">

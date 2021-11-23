@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 import { auth, firestore } from "@studyfind/firebase";
 import { DocumentID, Timezone, StudyQuestion, StudyParticipantReponse } from "@studyfind/types";
 
@@ -9,6 +7,7 @@ interface EnrollForStudyPayload {
   availability: string;
   questions: StudyQuestion[];
   responses: StudyParticipantReponse[];
+  enrolled: DocumentID[];
 }
 
 export const enrollForStudy = async ({
@@ -17,18 +16,25 @@ export const enrollForStudy = async ({
   availability,
   questions,
   responses,
+  enrolled,
 }: EnrollForStudyPayload) => {
   const participantID = auth.getUser().uid;
 
-  firestore.mutations.createStudyParticipantDocument(studyID, participantID, {
-    status: "interested",
-    timezone,
-    availability,
-    questions,
-    responses,
+  const createStudyParticipantPromise = firestore.mutations.createStudyParticipantDocument(
+    studyID,
+    participantID,
+    {
+      status: "interested",
+      timezone,
+      availability,
+      questions,
+      responses,
+    }
+  );
+
+  const updateParticipantPromise = firestore.mutations.updateParticipantDocument(participantID, {
+    enrolled,
   });
 
-  return firestore.mutations.updateParticipantDocument(participantID, {
-    enrolled: firebase.firestore.FieldValue.arrayUnion(studyID),
-  });
+  return Promise.allSettled([createStudyParticipantPromise, updateParticipantPromise]);
 };

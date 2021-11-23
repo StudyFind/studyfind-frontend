@@ -22,7 +22,7 @@ function StudyCardSmall({ study }: Props) {
   const { user, filters, handleAddCondition } = useContext(FindStudiesContext);
 
   const detailsRedirectLink = `/view-study/${study.id}/details`;
-  const enrollRedirectLink = `/view-study/${study.id}/screening`;
+  const enrollRedirectLink = `/join-study/${study.id}/screening`;
   const hasParticipantEnrolled = user?.enrolled?.includes(study.id);
   const hasParticipantSaved = user?.saved?.includes(study.id);
   const isParticipantVerified = auth.getUser().emailVerified;
