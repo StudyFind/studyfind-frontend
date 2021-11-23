@@ -7,6 +7,7 @@ import { Message } from "components/atoms";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 
 import StudyCardSmall from "./StudyCard";
+import AutoScroll from "./AutoScroll";
 
 interface Props {
   scrollToTop: () => void;
@@ -23,6 +24,7 @@ function StudyGrid({ scrollToTop }: Props) {
           <StudyCardSmall key={study.id} study={study} />
         ))}
       </SimpleGrid>
+      <AutoScroll onClick={scrollToTop} />
     </>
   ) : (
     <Box h="500px">
