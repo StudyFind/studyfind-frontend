@@ -2,10 +2,11 @@ import { useDevice } from "hooks";
 
 import { datetime } from "@studyfind/utils";
 
+import { MeetingDocumentExtended } from "types/extended";
+
 import { Flex, Text } from "@chakra-ui/react";
 import { FaCheckCircle, FaPhone } from "react-icons/fa";
 import { Card, Hint, Link, ActionButton } from "components/atoms";
-import { MeetingDocumentExtended } from "./types";
 
 interface Props {
   meeting: MeetingDocumentExtended;

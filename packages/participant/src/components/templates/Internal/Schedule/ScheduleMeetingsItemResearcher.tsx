@@ -2,10 +2,11 @@ import { useDevice } from "hooks";
 
 import { datetime } from "@studyfind/utils";
 
+import { MeetingDocumentExtended } from "types/extended";
+
 import { Flex, Text } from "@chakra-ui/react";
 import { FaPencilAlt, FaPhone, FaTrashAlt } from "react-icons/fa";
 import { Card, Hint, Link, ActionButton } from "components/atoms";
-import { MeetingDocumentExtended } from "./types";
 
 interface Props {
   meeting: MeetingDocumentExtended;
@@ -60,7 +61,7 @@ function ScheduleMeetingsItemResearcher({ meeting, handleDelete }: Props) {
           />
         </Link>
         <Link
-          to={`/study/${meeting.studyID}/participants/${meeting.participantID}/meetings`}
+          to={`/view-study/${meeting.studyID}/participants/${meeting.participantID}/meetings`}
           isWrapper
         >
           <ActionButton icon={<FaPencilAlt />} hint="Edit" colorScheme="blue" />

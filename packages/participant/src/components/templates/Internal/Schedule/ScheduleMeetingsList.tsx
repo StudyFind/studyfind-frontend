@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@chakra-ui/react";
 
-import { MeetingDocumentExtended } from "./types";
+import { MeetingDocumentExtended } from "types/extended";
 
 import ScheduleMeetingsItemParticipant from "./ScheduleMeetingsItemParticipant";
 import ScheduleMeetingsItemResearcher from "./ScheduleMeetingsItemResearcher";
