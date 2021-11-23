@@ -1,10 +1,12 @@
+import { useContext } from "react";
+
 import { Box, Flex, Heading, Icon, Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import { TextInput, ToggleInput } from "components/atoms";
-import { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
+
 import { FindStudiesContext } from "./FindStudiesContext";
 
-function Filters() {
+function StudyFilters() {
   const { filters, handleFilters, handleDeleteCondition, handleClearConditions } =
     useContext(FindStudiesContext);
 
@@ -95,4 +97,4 @@ function Filters() {
   );
 }
 
-export default Filters;
+export default StudyFilters;
