@@ -1,4 +1,4 @@
-import { Address, Email, Latitude, Longitude, Timestamp, UserID } from "../custom";
+import { Address, Email, Latitude, Longitude, Timestamp, UserID, URL } from "../custom";
 
 export type StudyLocation = {
   address: Address;
