@@ -1,4 +1,4 @@
-import Router from "components/organisms/common/Router";
+import { Router } from "components/organisms";
 
 import Home from "pages/External/Home/Home";
 import Auth from "pages/External/Auth/Auth";
