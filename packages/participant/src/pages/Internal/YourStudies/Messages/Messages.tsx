@@ -28,12 +28,14 @@ function Messages() {
   } = usePagination(queries.participant.getStudyParticipantMessagesQuery(studyID), 15);
 
   const scrollToBottom = () => {
-    bottomRef?.current?.scrollIntoView();
+    bottomRef.current?.scrollIntoView();
   };
 
   useEffect(() => {
     if (!loading) {
-      scrollToBottom();
+      setTimeout(() => {
+        scrollToBottom();
+      }, 10);
     }
   }, [loading]);
 
