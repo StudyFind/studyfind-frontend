@@ -8,6 +8,7 @@ interface Props {
   readonly size?: string;
   readonly colorScheme?: string;
   readonly onClick?: ButtonClickEventHandler;
+  readonly [key: string]: any;
 }
 
 type ColorSet = {
@@ -18,7 +19,7 @@ type ColorSet = {
 };
 
 export const ActionButton = React.memo(
-  ({ icon, hint, size = "sm", colorScheme, onClick = () => {} }: Props) => {
+  ({ icon, hint, size = "sm", colorScheme, onClick = () => {}, ...rest }: Props) => {
     const defaultColor = useColorModeValue("gray.500", "gray.500");
     const defaultBackground = useColorModeValue("transparent", "transparent");
     const defaultHoverBackground = useColorModeValue("gray.100", "gray.900");
@@ -53,6 +54,7 @@ export const ActionButton = React.memo(
           icon={icon}
           onClick={onClick}
           {...colors}
+          {...rest}
         />
       </Tooltip>
     );
