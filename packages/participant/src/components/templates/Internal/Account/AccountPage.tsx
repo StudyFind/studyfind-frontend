@@ -1,14 +1,13 @@
-import { actions, queries } from "@studyfind/api";
+import { useState, useEffect, useContext } from "react";
 
-import { useState, useEffect } from "react";
-import { useDocument } from "hooks";
-
-import { Box } from "@chakra-ui/react";
-import { Loader, Message } from "components/atoms";
-import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react-icons/fa";
+import { actions } from "@studyfind/api";
 
 import { Side } from "types/global";
-import { UserDocument } from "types/side";
+import { UserDocument, UserDocumentExtended } from "types/side";
+import { UserContext } from "context/UserContext";
+
+import { Box } from "@chakra-ui/react";
+import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react-icons/fa";
 
 import ProfileResearcher from "./Profile/ProfileResearcher";
 import ProfileParticipant from "./Profile/ProfileParticipant";
@@ -27,24 +26,19 @@ const Profile = {
 }[side];
 
 function AccountPage() {
-  const reference = {
-    RESEARCHER: queries.researcher.getResearcherQuery(),
-    PARTICIPANT: queries.participant.getParticipantQuery(),
-  }[side];
-
-  const [userDocument, loading, error] = useDocument<UserDocument>(reference);
-  const [values, setValues] = useState<typeof userDocument>(undefined);
+  const user = useContext(UserContext);
+  const [values, setValues] = useState<typeof user>(undefined);
 
   useEffect(() => {
-    if (userDocument) {
-      setValues(userDocument);
+    if (user) {
+      setValues(user);
     }
-  }, [userDocument]);
+  }, [user]);
 
-  const haveInputsChanged = JSON.stringify(values) !== JSON.stringify(userDocument);
+  const haveInputsChanged = JSON.stringify(values) !== JSON.stringify(user);
 
   const handleCancel = () => {
-    setValues(userDocument);
+    setValues(user);
   };
 
   const handleUpdate = () => {
@@ -53,7 +47,7 @@ function AccountPage() {
         ? actions.researcher.updateUserAccount
         : actions.participant.updateUserAccount;
 
-    return updateUserAccount(values as UserDocument);
+    return updateUserAccount(values as UserDocumentExtended);
   };
 
   const handleSetProfileAttribute = (name: string, value: string) => {
@@ -85,20 +79,6 @@ function AccountPage() {
         }
     );
   };
-
-  if (loading || !values) {
-    return <Loader height="calc(100vh - 128px)" />;
-  }
-
-  if (error) {
-    return (
-      <Message
-        status="failure"
-        title="Database Error"
-        description="We could not load your account information"
-      />
-    );
-  }
 
   const updateProps = {
     values,
