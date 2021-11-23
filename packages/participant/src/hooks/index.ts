@@ -1,4 +1,5 @@
 export { useColorModeValue as useColor, useClipboard } from "@chakra-ui/react";
+export { default as usePagination } from "./usePagination";
 export { default as useCollection } from "./useCollection";
 export { default as useDocument } from "./useDocument";
 export { default as useAuthForm } from "./useAuthForm";
