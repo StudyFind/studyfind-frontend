@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "studyfind-development"
+  },
+  "targets": {
+    "studyfind-development": {
+      "hosting": {
+        "manage": [
+          "development-manage"
+        ]
+      }
+    }
+  }
+}
