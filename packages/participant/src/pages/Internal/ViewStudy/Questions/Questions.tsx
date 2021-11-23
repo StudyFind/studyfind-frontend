@@ -3,7 +3,7 @@ import { StudyDocumentExtended } from "types/extended";
 import TabHeader from "../TabHeader";
 
 import QuestionsEmpty from "./QuestionsEmpty";
-import QuestionsTable from "./QuestionsTable";
+import QuestionsList from "./QuestionsList";
 
 interface Props {
   study: StudyDocumentExtended;
@@ -17,7 +17,7 @@ function Locations({ study }: Props) {
   return (
     <>
       <TabHeader heading="Questions" />
-      <QuestionsTable questions={study.questions} />
+      <QuestionsList questions={study.questions} />
     </>
   );
 }
