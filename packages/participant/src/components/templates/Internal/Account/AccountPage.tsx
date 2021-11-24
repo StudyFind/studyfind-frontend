@@ -43,7 +43,7 @@ function AccountPage() {
     setValues(user);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const updateUserAccount =
       side === "RESEARCHER"
         ? actions.researcher.updateUserAccount

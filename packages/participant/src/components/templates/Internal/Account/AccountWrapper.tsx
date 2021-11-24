@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useToast } from "@chakra-ui/react";
 import { useDevice } from "hooks";
 
 import { Grid } from "@chakra-ui/react";
@@ -20,15 +19,11 @@ function AccountWrapper({
   handleUpdate = () => Promise.resolve(),
 }: Props) {
   const [loading, setLoading] = useState(false);
-  const toast = useToast();
 
   const handleSubmit = () => {
     setLoading(true);
 
-    return handleUpdate()
-      .then(() => toast({}))
-      .catch(() => toast({}))
-      .finally(() => setLoading(false));
+    return handleUpdate().finally(() => setLoading(false));
   };
 
   const { isPhone } = useDevice();
