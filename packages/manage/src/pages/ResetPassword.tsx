@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { validate } from "@studyfind/utils";
 
-import { Card, Form, Message, PasswordInput } from "components";
+import { Card, Form, Message, PasswordInput } from "components/atoms";
 import { Grid, Heading, Button } from "@chakra-ui/react";
 import { auth } from "@studyfind/firebase";
 

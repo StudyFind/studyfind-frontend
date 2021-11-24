@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Message } from "components";
+import { Message } from "components/atoms";
 import { Flex, Spinner } from "@chakra-ui/react";
 import { auth } from "@studyfind/firebase";
 
