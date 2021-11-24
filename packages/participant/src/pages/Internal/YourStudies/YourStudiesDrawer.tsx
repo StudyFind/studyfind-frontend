@@ -24,7 +24,7 @@ function YourStudiesDrawer({ action, isOpen, study, handleClose }: Props) {
     reminders: action === "reminders" && <Reminders study={study} />,
     messages: action === "messages" && <Messages />,
     questions: action === "questions" && (
-      <Questions questions={study.questions} responses={study.participant.responses} />
+      <Questions questions={study.participant.questions} responses={study.participant.responses} />
     ),
   };
 
