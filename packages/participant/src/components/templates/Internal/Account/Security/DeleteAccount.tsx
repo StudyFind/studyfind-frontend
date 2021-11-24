@@ -2,7 +2,7 @@ import { useAuthForm } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
-import { Grid, Button } from "@chakra-ui/react";
+import { Grid, Button, useToast } from "@chakra-ui/react";
 import { Form } from "components/atoms/Form/Form";
 import { EmailInput } from "components/atoms/Inputs/EmailInput/EmailInput";
 import { PasswordInput } from "components/atoms/Inputs/PasswordInput/PasswordInput";
@@ -10,10 +10,26 @@ import { PasswordInput } from "components/atoms/Inputs/PasswordInput/PasswordInp
 import AccountHeader from "../AccountHeader";
 
 function DeleteAccount() {
+  const toast = useToast();
+
   const authForm = useAuthForm({
     initialValues: { email: "", password: "" },
     initialErrors: { email: "", password: "" },
-    onSubmit: auth.deleteAccount,
+    onSubmit: (values) =>
+      auth
+        .deleteAccount({
+          email: values.email,
+          password: values.password,
+        })
+        .then(() => {
+          toast({
+            title: "Your account along with all associated data was deleted successfully!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+        }),
   });
 
   return (

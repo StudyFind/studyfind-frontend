@@ -2,21 +2,33 @@ import { useAuthForm } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
-import { Grid, Button } from "@chakra-ui/react";
+import { Grid, Button, useToast } from "@chakra-ui/react";
 import { Form } from "components/atoms/Form/Form";
 import { PasswordInput } from "components/atoms/Inputs/PasswordInput/PasswordInput";
 
 import AccountHeader from "../AccountHeader";
 
 function ChangePassword() {
+  const toast = useToast();
+
   const authForm = useAuthForm({
     initialValues: { password: "", newPassword: "" },
     initialErrors: { password: "", newPassword: "" },
     onSubmit: (values) =>
-      auth.changePassword({
-        password: values.password || "",
-        newPassword: values.newPassword || "",
-      }),
+      auth
+        .changePassword({
+          password: values.password || "",
+          newPassword: values.newPassword || "",
+        })
+        .then(() => {
+          toast({
+            title: "Your password was changed successfully!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+        }),
   });
 
   return (

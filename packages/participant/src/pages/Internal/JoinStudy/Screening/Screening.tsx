@@ -21,6 +21,7 @@ import {
   RadioGroup,
   Text,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 
 interface Params {
@@ -28,6 +29,7 @@ interface Params {
 }
 
 function Screening() {
+  const toast = useToast();
   const history = useHistory();
 
   const user = useContext(UserContext);
@@ -76,6 +78,16 @@ function Screening() {
           enrolled: user.enrolled.concat(studyID),
         })
         .then(() => setIsSubmitting(false))
+        .then(() => {
+          toast({
+            title:
+              "You have successfully attempted to enroll in this research study. Wait to hear back from the researcher for the next steps!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+        })
         .then(() => history.push(`/view-study/${study.id}/details`));
     }
   };

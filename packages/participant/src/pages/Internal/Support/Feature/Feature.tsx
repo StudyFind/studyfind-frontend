@@ -13,7 +13,7 @@ interface Values {
 }
 
 function Feature() {
-  // const toast = useToast();
+  const toast = useToast();
 
   const [values, setValues] = useState<Values>({
     name: "",
@@ -53,12 +53,21 @@ function Feature() {
 
     setLoading(true);
     onSubmit(values)
-      .then(() =>
+      .then(() => {
         setValues({
           name: "",
           description: "",
-        })
-      )
+        });
+      })
+      .then(() => {
+        toast({
+          title: "Thank you for suggesting a feature for the StudyFind software!",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
+      })
       .finally(() => setLoading(false));
   };
 

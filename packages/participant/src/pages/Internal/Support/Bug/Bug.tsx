@@ -16,7 +16,7 @@ interface Values {
 }
 
 function Bug() {
-  // const toast = useToast();
+  const toast = useToast();
 
   const [values, setValues] = useState<Values>({
     description: "",
@@ -58,14 +58,23 @@ function Bug() {
 
     setLoading(true);
     onSubmit(values)
-      .then(() =>
+      .then(() => {
         setValues({
           description: "",
           screenshot: null,
           browser: "",
           system: "",
-        })
-      )
+        });
+      })
+      .then(() => {
+        toast({
+          title: "Thank you for reporting a bug for the StudyFind software!",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
+      })
       .finally(() => setLoading(false));
   };
 

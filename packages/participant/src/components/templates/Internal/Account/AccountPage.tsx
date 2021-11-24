@@ -6,7 +6,7 @@ import { Side } from "types/global";
 import { UserDocument, UserDocumentExtended } from "types/side";
 import { UserContext } from "context/UserContext";
 
-import { Box } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react-icons/fa";
 
 import ProfileResearcher from "./Profile/ProfileResearcher";
@@ -26,6 +26,8 @@ const Profile = {
 }[side];
 
 function AccountPage() {
+  const toast = useToast();
+
   const user = useContext(UserContext);
   const [values, setValues] = useState<typeof user>(undefined);
 
@@ -47,7 +49,15 @@ function AccountPage() {
         ? actions.researcher.updateUserAccount
         : actions.participant.updateUserAccount;
 
-    return updateUserAccount(values as UserDocumentExtended);
+    return updateUserAccount(values as UserDocumentExtended).then(() => {
+      toast({
+        title: "Your profile information was successfully updated!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+    });
   };
 
   const handleSetProfileAttribute = (name: string, value: string) => {
@@ -83,8 +93,8 @@ function AccountPage() {
   const updateProps = {
     values,
     showButtons: haveInputsChanged,
-    handleCancel: handleCancel,
-    handleUpdate: handleUpdate,
+    handleCancel,
+    handleUpdate,
   };
 
   const PROFILE = {
