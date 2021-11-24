@@ -2,7 +2,7 @@ import { useColor } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
-import { MutableRefObject } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 import { MessageDocumentExtended } from "types/extended";
 
 import { Box, Flex } from "@chakra-ui/react";
@@ -16,7 +16,6 @@ interface Props {
   handleMessageRead: (messageID: string) => void;
   handleLoadMore: () => void;
   loadingMore: boolean;
-  bottomRef: MutableRefObject<HTMLDivElement | undefined>;
 }
 
 function MessageList({
@@ -25,9 +24,20 @@ function MessageList({
   handleMessageRead,
   handleLoadMore,
   loadingMore,
-  bottomRef,
 }: Props) {
   const messageListbackground = useColor("#f8f9fa", "gray.800");
+
+  const bottomRef = useRef<HTMLElement>(null);
+
+  const scrollToBottom = () => {
+    bottomRef.current?.scrollIntoView();
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      scrollToBottom();
+    }, 20);
+  }, []);
 
   return (
     <Box overflowY="scroll" background={messageListbackground}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useColor } from "hooks";
 
 import { Flex } from "@chakra-ui/react";
@@ -9,9 +9,14 @@ interface Props {
   handleMessageSend: (text: string) => Promise<void>;
 }
 
-function MessageInput({ handleMessageSend }: Props) {
+function MessagesInput({ handleMessageSend }: Props) {
   const [text, setText] = useState("");
   const [isSending, setIsSending] = useState(false);
+
+  useEffect(() => {
+    const input = document.querySelector('input[value=""]') as HTMLInputElement;
+    input?.focus();
+  }, []);
 
   const handleChange = (_: string, value: string) => {
     setText(value);
@@ -62,4 +67,4 @@ function MessageInput({ handleMessageSend }: Props) {
   );
 }
 
-export default MessageInput;
+export default MessagesInput;

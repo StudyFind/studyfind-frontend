@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { usePagination } from "hooks";
+
+import { actions, queries } from "@studyfind/api";
 
 import { Grid } from "@chakra-ui/react";
 import { Loader } from "components/atoms";
 
 import MessagesList from "./MessagesList";
 import MessagesInput from "./MessagesInput";
-import { actions, queries } from "@studyfind/api";
 
 interface Params {
   studyID: string;
@@ -15,8 +15,6 @@ interface Params {
 
 function Messages() {
   const { studyID } = useParams<Params>();
-
-  const bottomRef = useRef<HTMLDivElement>();
 
   const {
     documents: messages,
@@ -27,24 +25,12 @@ function Messages() {
     fetchedAll,
   } = usePagination(queries.participant.getStudyParticipantMessagesQuery(studyID), 15);
 
-  const scrollToBottom = () => {
-    bottomRef.current?.scrollIntoView();
-  };
-
-  useEffect(() => {
-    if (!loading) {
-      setTimeout(() => {
-        scrollToBottom();
-      }, 10);
-    }
-  }, [loading]);
-
   const handleMessageSend = async (text: string) => {
-    return actions.participant.sendMessage({ studyID, text }).then(() => scrollToBottom());
+    actions.participant.sendMessage({ studyID, text });
   };
 
   const handleMessageRead = async (messageID: string) => {
-    return actions.participant.readMessage({ studyID, messageID });
+    actions.participant.readMessage({ studyID, messageID });
   };
 
   if (loading) {
@@ -63,7 +49,6 @@ function Messages() {
         loadingMore={loadingMore}
         handleLoadMore={handleLoadMore}
         handleMessageRead={handleMessageRead}
-        bottomRef={bottomRef}
       />
       <MessagesInput handleMessageSend={handleMessageSend} />
     </Grid>
