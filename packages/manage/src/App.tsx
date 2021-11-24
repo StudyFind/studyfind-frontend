@@ -1,5 +1,5 @@
 import { ChakraProvider, Flex } from "@chakra-ui/react";
-import { Message } from "components";
+import { Message } from "components/atoms";
 import { theme } from "constants/theme";
 
 import ResetPassword from "pages/ResetPassword";
