@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { Stack } from "@chakra-ui/react";
 
 import TeamSectionWrapper from "../TeamSectionWrapper";
@@ -20,7 +20,7 @@ interface Props {
 
 function Collaborations({ collaborations }: Props) {
   const { isPhone } = useDevice();
-  const background = useColor("gray.100", "gray.800");
+  const background = useColorModeValue("gray.100", "gray.800");
 
   return (
     <TeamSectionWrapper id="collaborations" heading="Collaborations" background={background}>

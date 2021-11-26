@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { InputWrapper } from "../helpers";
 import { Option } from "types/global";
@@ -40,7 +40,7 @@ export const StringSelectInput = React.memo(
       onChange(name, updated);
     };
 
-    const borderColor = useColor("gray.200", "gray.700");
+    const borderColor = useColorModeValue("gray.200", "gray.700");
 
     return (
       <InputWrapper label={label} error={error}>

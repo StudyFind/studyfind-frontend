@@ -1,5 +1,5 @@
 import React from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, Icon, Tooltip } from "@chakra-ui/react";
 import { FaExclamationCircle } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
@@ -14,7 +14,7 @@ interface Props {
 
 export const Hint = React.memo(
   ({ label, icon = FaExclamationCircle, colorScheme = "gray", ...rest }: Props) => {
-    const tooltipBackground = useColor("gray.700", `${colorScheme}.400`);
+    const tooltipBackground = useColorModeValue("gray.700", `${colorScheme}.400`);
 
     return (
       <Tooltip label={label} background={tooltipBackground}>

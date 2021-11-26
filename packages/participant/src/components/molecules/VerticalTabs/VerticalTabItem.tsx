@@ -1,5 +1,5 @@
 import React from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Button, Text } from "@chakra-ui/react";
 
 interface Props {
@@ -11,9 +11,9 @@ interface Props {
 }
 
 function VerticalTabItem({ icon, name, selected, showBorder, onClick }: Props) {
-  const borderColor = useColor("gray.200", "gray.700");
-  const hoverBackground = useColor("gray.200", "gray.800");
-  const activeBackground = useColor("gray.300", "gray.700");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const hoverBackground = useColorModeValue("gray.200", "gray.800");
+  const activeBackground = useColorModeValue("gray.300", "gray.700");
 
   const selectedStyles = {
     color: "white",

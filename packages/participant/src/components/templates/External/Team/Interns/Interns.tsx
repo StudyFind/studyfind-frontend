@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { VStack } from "@chakra-ui/react";
 
@@ -18,7 +18,7 @@ interface Props {
 }
 
 function Interns({ interns, alumni }: Props) {
-  const background = useColor("gray.100", "gray.800");
+  const background = useColorModeValue("gray.100", "gray.800");
 
   return (
     <TeamSectionWrapper id="interns" heading="Our Team" background={background}>

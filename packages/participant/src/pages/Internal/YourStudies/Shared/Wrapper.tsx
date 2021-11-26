@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Box } from "@chakra-ui/react";
 
 interface Props {
@@ -7,8 +7,8 @@ interface Props {
 }
 
 function Wrapper({ children }: Props) {
-  const border = useColor("gray.200", "gray.700");
-  const background = useColor("white", "gray.900");
+  const border = useColorModeValue("gray.200", "gray.700");
+  const background = useColorModeValue("white", "gray.900");
 
   return (
     <Box

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { useWindowScroll, useWindowSize } from "react-use";
 
 import { Flex, Button } from "@chakra-ui/react";
@@ -24,9 +24,9 @@ function Header({ logoLink, buttonText, buttonLink }: Props) {
   }, [y, height]);
 
   const { isPhone } = useDevice();
-  const background = useColor("white", "gray.900");
+  const background = useColorModeValue("white", "gray.900");
 
-  const borderColor = useColor("gray.200", "gray.700");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   if (!active) {
     return null;

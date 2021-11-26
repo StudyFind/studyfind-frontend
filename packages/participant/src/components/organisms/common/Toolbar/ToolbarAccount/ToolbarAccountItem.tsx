@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { MenuItem, Text, Icon, Button } from "@chakra-ui/react";
 import { Link } from "components/atoms/Link/Link";
 import { IconType } from "react-icons";
@@ -11,9 +11,9 @@ interface Props {
 }
 
 function ToolbarAccountItem({ icon, name, link, ...rest }: Props) {
-  const borderColor = useColor("gray.200", "gray.700");
-  const hoverBackground = useColor("gray.200", "gray.800");
-  const activeBackground = useColor("gray.300", "gray.700");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const hoverBackground = useColorModeValue("gray.200", "gray.800");
+  const activeBackground = useColorModeValue("gray.300", "gray.700");
 
   const styles = {
     color: "gray.400",

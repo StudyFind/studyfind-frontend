@@ -1,6 +1,5 @@
-import { ChakraProvider, Flex } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, Flex } from "@chakra-ui/react";
 import { Message } from "components/atoms";
-import { theme } from "constants/theme";
 
 import ResetPassword from "pages/ResetPassword";
 import VerifyEmail from "pages/VerifyEmail";
@@ -9,6 +8,13 @@ function App() {
   const params = new URLSearchParams(window.location.search);
   const mode = params.get("mode") || "";
   const code = params.get("oobCode") || "";
+
+  const theme = extendTheme({
+    config: {
+      useSystemColorMode: true,
+      initialColorMode: "dark",
+    },
+  });
 
   const render = () => {
     if (!mode) {

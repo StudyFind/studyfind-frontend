@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 import { actions } from "@studyfind/api";
@@ -39,13 +39,13 @@ function StudyCardSmall({ study }: Props) {
     }
   };
 
-  const detailsButtonColor = useColor("gray.500", "gray.400");
-  const enrolledButtonColor = useColor("green.500", "green.400");
-  const enrolledButtonBackground = useColor("green.100", "green.900");
-  const bookmarkBackground = useColor("gray.300", "gray.600");
-  const borderColor = useColor("gray.200", "gray.700");
+  const detailsButtonColor = useColorModeValue("gray.500", "gray.400");
+  const enrolledButtonColor = useColorModeValue("green.500", "green.400");
+  const enrolledButtonBackground = useColorModeValue("green.100", "green.900");
+  const bookmarkBackground = useColorModeValue("gray.300", "gray.600");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
-  const background = useColor("white", "gray.900");
+  const background = useColorModeValue("white", "gray.900");
 
   return (
     <Flex

@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { Box, VStack, HStack, Image, Text, Icon } from "@chakra-ui/react";
 import { FaLinkedin } from "react-icons/fa";
 import { Link } from "components/atoms/Link/Link";
@@ -14,7 +14,7 @@ interface Props {
 function TeamMember({ image, name, position, description, linkedinURL }: Props) {
   const { isPhone } = useDevice();
 
-  const textColor = useColor("gray.600", "gray.400");
+  const textColor = useColorModeValue("gray.600", "gray.400");
 
   return (
     <VStack align="center" spacing="20px">
