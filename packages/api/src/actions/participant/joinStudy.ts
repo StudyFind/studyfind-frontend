@@ -1,7 +1,7 @@
 import { auth, firestore } from "@studyfind/firebase";
 import { DocumentID, Timezone, StudyQuestion, StudyParticipantReponse } from "@studyfind/types";
 
-interface EnrollForStudyPayload {
+interface JoinStudyPayload {
   studyID: DocumentID;
   timezone: Timezone;
   availability: string;
@@ -10,14 +10,14 @@ interface EnrollForStudyPayload {
   enrolled: DocumentID[];
 }
 
-export const enrollForStudy = async ({
+export const joinStudy = async ({
   studyID,
   timezone,
   availability,
   questions,
   responses,
   enrolled,
-}: EnrollForStudyPayload) => {
+}: JoinStudyPayload) => {
   const participantID = auth.getUser().uid;
 
   const createStudyParticipantPromise = firestore.mutations.createStudyParticipantDocument(

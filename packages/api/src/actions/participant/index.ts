@@ -1,6 +1,7 @@
 export { confirmMeeting } from "./confirmMeeting";
 export { confirmReminder } from "./confirmReminder";
-export { enrollForStudy } from "./enrollForStudy";
+export { joinStudy } from "./joinStudy";
+export { leaveStudy } from "./leaveStudy";
 export { readMessage } from "./readMessage";
 export { readNotification } from "./readNotification";
 export { saveStudy } from "./saveStudy";

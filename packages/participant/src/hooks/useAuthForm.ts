@@ -74,7 +74,7 @@ function useAuthForm<V extends Object, E extends Object>({
 
     if (errorExists) {
       setErrors(errorMessages as E);
-      return;
+      return Promise.reject();
     }
 
     setLoading(true);
