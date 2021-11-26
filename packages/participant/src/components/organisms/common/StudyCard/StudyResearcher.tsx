@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { Box, Flex, Text, Avatar } from "@chakra-ui/react";
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
 function StudyResearcher({ researcher }: Props) {
   const { isPhone } = useDevice();
 
-  const avatar = useColor("blue.500", "blue.700");
-  const background = useColor("white", "gray.900");
-  const borderColor = useColor("gray.200", "gray.700");
+  const avatar = useColorModeValue("blue.500", "blue.700");
+  const background = useColorModeValue("white", "gray.900");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Box>

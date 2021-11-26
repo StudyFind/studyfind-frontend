@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, Grid, Heading, Text, Switch } from "@chakra-ui/react";
 
 interface Props {
@@ -20,8 +20,8 @@ export const SwitchInput = React.memo(
       onChange(name, value);
     };
 
-    const textColor = useColor("gray.500", "gray.400");
-    const errorColor = useColor("red.500", "red.400");
+    const textColor = useColorModeValue("gray.500", "gray.400");
+    const errorColor = useColorModeValue("red.500", "red.400");
 
     return (
       <Flex

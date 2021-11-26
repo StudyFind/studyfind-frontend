@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import {
   NumberInput as NumberInputWrapper,
   NumberInputField,
@@ -42,7 +42,7 @@ export const NumberInput = React.memo(
       onChange(name, value);
     };
 
-    const stepperColor = useColor("gray.500", "gray.400");
+    const stepperColor = useColorModeValue("gray.500", "gray.400");
 
     return (
       <InputWrapper label={label} error={error}>

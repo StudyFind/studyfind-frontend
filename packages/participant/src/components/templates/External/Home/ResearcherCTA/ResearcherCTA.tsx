@@ -1,10 +1,10 @@
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import HomeSectionWrapper from "../HomeSectionWrapper";
 
 function ResearcherCTA() {
-  const background = useColor("gray.100", "gray.800");
+  const background = useColorModeValue("gray.100", "gray.800");
 
   return (
     <HomeSectionWrapper background={background}>

@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Box, Divider } from "@chakra-ui/react";
 import { ColorScheme } from "types/global";
 import {
@@ -32,7 +32,7 @@ interface Panel {
 }
 
 function Home() {
-  const dividerColor = useColor("gray.200", "gray.600");
+  const dividerColor = useColorModeValue("gray.200", "gray.600");
 
   const features = [
     {

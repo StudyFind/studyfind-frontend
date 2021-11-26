@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useTabs, useColor, useDevice } from "hooks";
+import { useTabs, useColorModeValue, useDevice } from "hooks";
 import { Tabs, Tab, TabList, TabPanels, TabPanel } from "@chakra-ui/react";
 import { Tab as TabType } from "types/global";
 
@@ -11,8 +11,8 @@ interface Props {
 }
 
 function HorizontalTabs({ tabs, useURL = true, ...rest }: Props) {
-  const color = useColor("gray.400", "gray.500");
-  const borderColor = useColor("gray.300", "gray.600");
+  const color = useColorModeValue("gray.400", "gray.500");
+  const borderColor = useColorModeValue("gray.300", "gray.600");
 
   const { tabIndex, setTabIndex } = useTabs(tabs, useURL);
 

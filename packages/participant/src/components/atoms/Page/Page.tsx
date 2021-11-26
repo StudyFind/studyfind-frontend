@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { Box } from "@chakra-ui/react";
 import { Loader } from "../Loader/Loader";
 
@@ -13,7 +13,7 @@ interface Props {
 export const Page = React.memo(({ isLoading, children, ...rest }: Props) => {
   const { isPhone } = useDevice();
 
-  const background = useColor("#f8f9fa", "gray.800");
+  const background = useColorModeValue("#f8f9fa", "gray.800");
 
   return (
     <Box background={background} padding={isPhone ? "20px" : "40px"} {...rest}>

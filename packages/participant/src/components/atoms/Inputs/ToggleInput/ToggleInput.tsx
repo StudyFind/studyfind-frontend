@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { ColorScheme } from "types/global";
 
@@ -14,13 +14,13 @@ interface Props {
 
 export const ToggleInput = React.memo(
   ({ name, value, label, colorScheme = "blue", onChange }: Props) => {
-    const defaultColor = useColor("gray.500", "gray.400");
-    const defaultBackground = useColor("gray.100", "gray.800");
-    const defaultBorderColor = useColor("gray.300", "gray.500");
+    const defaultColor = useColorModeValue("gray.500", "gray.400");
+    const defaultBackground = useColorModeValue("gray.100", "gray.800");
+    const defaultBorderColor = useColorModeValue("gray.300", "gray.500");
 
-    const activeColor = useColor(`${colorScheme}.500`, `${colorScheme}.400`);
-    const activeBackground = useColor(`${colorScheme}.100`, `${colorScheme}.900`);
-    const activeBorderColor = useColor(`${colorScheme}.400`, `${colorScheme}.400`);
+    const activeColor = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);
+    const activeBackground = useColorModeValue(`${colorScheme}.100`, `${colorScheme}.900`);
+    const activeBorderColor = useColorModeValue(`${colorScheme}.400`, `${colorScheme}.400`);
 
     const styles = value
       ? {

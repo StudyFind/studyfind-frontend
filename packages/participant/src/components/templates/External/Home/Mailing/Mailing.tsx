@@ -1,7 +1,7 @@
 import { actions } from "@studyfind/api";
 
 import { useState } from "react";
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { validate } from "@studyfind/utils";
 
 import { Heading, Button, Icon, VStack, Text, HStack } from "@chakra-ui/react";
@@ -44,7 +44,7 @@ function Mailing() {
       .finally(() => setLoading(false));
   };
 
-  const cardBackgroundColor = useColor("gray.100", "gray.800");
+  const cardBackgroundColor = useColorModeValue("gray.100", "gray.800");
 
   return (
     <HomeSectionWrapper>

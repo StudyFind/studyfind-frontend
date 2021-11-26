@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { IconType } from "react-icons/lib";
 
 import PricingHeader from "./PricingHeader";
@@ -27,7 +27,7 @@ function Pricing({ title, description, plans }: Props) {
     setIsBilledAnnually(value);
   };
 
-  const background = useColor("gray.100", "gray.800");
+  const background = useColorModeValue("gray.100", "gray.800");
 
   return (
     <HomeSectionWrapper background={background} align="flex-start">

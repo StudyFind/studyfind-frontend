@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { ButtonClickEventHandler, ColorScheme } from "types/global";
 
@@ -13,10 +13,10 @@ interface Props {
 
 export const EditorButton = React.memo(
   ({ children, icon, colorScheme = "gray", onClick = () => {} }: Props) => {
-    const colorText = useColor(`${colorScheme}.500`, `${colorScheme}.400`);
-    const colorBack = useColor(`${colorScheme}.100`, `${colorScheme}.900`);
-    const colorHover = useColor(`${colorScheme}.200`, `${colorScheme}.800`);
-    const colorBorder = useColor(`${colorScheme}.500`, `${colorScheme}.400`);
+    const colorText = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);
+    const colorBack = useColorModeValue(`${colorScheme}.100`, `${colorScheme}.900`);
+    const colorHover = useColorModeValue(`${colorScheme}.200`, `${colorScheme}.800`);
+    const colorBorder = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);
 
     return (
       <Button

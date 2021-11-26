@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex } from "@chakra-ui/react";
 import { IconType } from "react-icons/lib";
 
@@ -18,9 +18,9 @@ interface Props {
 }
 
 function PricingPlan({ icon, name, price, features, isPopular, isBilledAnnually }: Props) {
-  const background = useColor("white", "gray.900");
-  const accentColor = useColor("blue.600", "blue.400");
-  const borderColor = useColor("gray.200", "gray.700");
+  const background = useColorModeValue("white", "gray.900");
+  const accentColor = useColorModeValue("blue.600", "blue.400");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Flex
