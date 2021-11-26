@@ -54,8 +54,6 @@ function YourStudies() {
     handleLoadStudyParticipantData();
   }, []);
 
-  console.log(10);
-
   const isOpen = !!(action && selectedStudy);
 
   const handleOpen = (studyID: string, action: Action) => {
