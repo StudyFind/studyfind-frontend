@@ -4,7 +4,7 @@ import moment from "moment-timezone";
 
 import Linkify from "react-linkify";
 
-import { Flex, Text, Icon } from "@chakra-ui/react";
+import { Flex, Text, Icon, Link as ChakraLink } from "@chakra-ui/react";
 import { HiCheckCircle } from "react-icons/hi";
 import { MessageDocumentExtended } from "types/extended";
 import { Link } from "components/atoms";
@@ -37,7 +37,9 @@ function Message({ message, handleMessageRead, isUserMessageSender }: Props) {
           <Linkify
             componentDecorator={(decoratedHref, decoratedText, key) =>
               decoratedHref.includes("@") ? (
-                decoratedText
+                <ChakraLink target="_blank" href={decoratedHref} textDecoration="underline">
+                  {decoratedText}
+                </ChakraLink>
               ) : (
                 <Link
                   key={key}
