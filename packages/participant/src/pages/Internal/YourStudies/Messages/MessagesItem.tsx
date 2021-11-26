@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import moment from "moment-timezone";
 
+import Linkify from "react-linkify";
+
 import { Flex, Text, Icon } from "@chakra-ui/react";
 import { HiCheckCircle } from "react-icons/hi";
 import { MessageDocumentExtended } from "types/extended";
+import { Link } from "components/atoms";
 
 interface Props {
   message: MessageDocumentExtended;
@@ -31,7 +34,24 @@ function Message({ message, handleMessageRead, isUserMessageSender }: Props) {
           color={isUserMessageSender ? "white" : "gray.700"}
           background={isUserMessageSender ? "blue.500" : "gray.200"}
         >
-          {message.text}
+          <Linkify
+            componentDecorator={(decoratedHref, decoratedText, key) =>
+              decoratedHref.includes("@") ? (
+                decoratedText
+              ) : (
+                <Link
+                  key={key}
+                  to={decoratedHref}
+                  color={isUserMessageSender ? "white" : "blue.500"}
+                  textDecoration="underline"
+                >
+                  {decoratedText}
+                </Link>
+              )
+            }
+          >
+            {message.text}
+          </Linkify>
         </Text>
         <Meta paddingTop="4px" align="center" gridGap="2px" justify={placement}>
           {isUserMessageSender && (
