@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 
 import { Box } from "@chakra-ui/react";
 
@@ -15,8 +15,8 @@ function AuthCard() {
 
   const { isPhone } = useDevice();
 
-  const background = useColor("#f8f9fa", "gray.800");
-  const borderColor = useColor("gray.200", "gray.700");
+  const background = useColorModeValue("#f8f9fa", "gray.800");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Box

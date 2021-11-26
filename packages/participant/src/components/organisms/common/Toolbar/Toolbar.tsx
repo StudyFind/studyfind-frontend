@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { Flex, Heading } from "@chakra-ui/react";
 
@@ -12,8 +12,8 @@ interface Props {
 }
 
 function Toolbar({ heading, ...rest }: Props) {
-  const borderColor = useColor("gray.200", "gray.700");
-  const background = useColor("white", "gray.800");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const background = useColorModeValue("white", "gray.800");
 
   return (
     <Flex

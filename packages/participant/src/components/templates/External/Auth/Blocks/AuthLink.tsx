@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Box } from "@chakra-ui/react";
 
 interface Props {
@@ -7,8 +7,8 @@ interface Props {
 }
 
 export const AuthLink = ({ children, ...rest }: Props) => {
-  const color = useColor("#718096", "gray.500");
-  const hoverColor = useColor("blue.500", "blue.400");
+  const color = useColorModeValue("#718096", "gray.500");
+  const hoverColor = useColorModeValue("blue.500", "blue.400");
 
   const hoverStyles = {
     color: hoverColor,

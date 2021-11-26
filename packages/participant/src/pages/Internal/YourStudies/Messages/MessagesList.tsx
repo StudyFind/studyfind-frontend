@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
@@ -25,7 +25,7 @@ function MessageList({
   handleLoadMore,
   loadingMore,
 }: Props) {
-  const messageListbackground = useColor("#f8f9fa", "gray.800");
+  const messageListbackground = useColorModeValue("#f8f9fa", "gray.800");
 
   const bottomRef = useRef<HTMLElement>(null);
 

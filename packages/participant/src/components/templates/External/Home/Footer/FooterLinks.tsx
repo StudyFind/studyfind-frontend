@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { ButtonGroup, IconButton } from "@chakra-ui/react";
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link } from "components/atoms/Link/Link";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 function FooterLinks({ links }: Props) {
-  const color = useColor("gray.500", "gray.200");
+  const color = useColorModeValue("gray.500", "gray.200");
 
   return (
     <ButtonGroup variant="ghost" color="gray.600">

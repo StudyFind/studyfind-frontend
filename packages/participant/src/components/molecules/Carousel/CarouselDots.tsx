@@ -1,5 +1,5 @@
 import React from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Box, HStack, Icon } from "@chakra-ui/react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
@@ -20,8 +20,8 @@ function CarouselDots({
   handleNext,
   handleSelect,
 }: Props) {
-  const selectedColor = useColor("blue.500", "blue.400");
-  const defaultColor = useColor("gray.300", "gray.700");
+  const selectedColor = useColorModeValue("blue.500", "blue.400");
+  const defaultColor = useColorModeValue("gray.300", "gray.700");
 
   const pixelSize = { sm: 8, md: 10, lg: 12 }[size];
 

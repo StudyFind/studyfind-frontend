@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
@@ -24,7 +24,7 @@ function Sidebar({ links, ...rest }: Props) {
   const [active, setActive] = useState(false);
   const { isPhone } = useDevice();
 
-  const background = useColor("blue.900", "gray.900");
+  const background = useColorModeValue("blue.900", "gray.900");
   const user = auth.getUser();
 
   const toggleActive = () => {

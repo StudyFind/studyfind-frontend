@@ -1,5 +1,5 @@
 import React from "react";
-import { useColor, useClipboard } from "hooks";
+import { useColorModeValue, useClipboard } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { FaCopy, FaCheckCircle } from "react-icons/fa";
 import { SecondaryButton } from "../SecondaryButton/SecondaryButton";
@@ -14,12 +14,12 @@ export const ClipboardButton = React.memo(
   ({ children, copiedValue, buttonTextOnCopied }: Props) => {
     const { hasCopied, onCopy } = useClipboard(copiedValue);
 
-    const defaultBackground = useColor("gray.100", "gray.800");
+    const defaultBackground = useColorModeValue("gray.100", "gray.800");
     const defaultHover = { background: defaultBackground };
     const defaultActive = { background: defaultBackground };
 
-    const copiedBorderColor = useColor("green.200", "green.700");
-    const copiedBackground = useColor("green.100", "green.800");
+    const copiedBorderColor = useColorModeValue("green.200", "green.700");
+    const copiedBackground = useColorModeValue("green.100", "green.800");
     const copiedHover = { background: copiedBackground };
     const copiedActive = { background: copiedBackground };
 

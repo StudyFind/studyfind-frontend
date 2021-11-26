@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Box, Divider } from "@chakra-ui/react";
 import { ColorScheme } from "types/global";
 import {
@@ -17,6 +17,7 @@ import Hero from "components/templates/External/Home/Hero/Hero";
 import Features from "components/templates/External/Home/Features/Features";
 import Team from "components/templates/External/Home/Team/Team";
 import Mailing from "components/templates/External/Home/Mailing/Mailing";
+import ResearcherCTA from "components/templates/External/Home/ResearcherCTA/ResearcherCTA";
 
 import Background from "images/microscope.jpg";
 import Yohan from "images/founders/yohan.png";
@@ -31,7 +32,7 @@ interface Panel {
 }
 
 function Home() {
-  const dividerColor = useColor("gray.200", "gray.600");
+  const dividerColor = useColorModeValue("gray.200", "gray.600");
 
   const features = [
     {
@@ -139,6 +140,10 @@ function Home() {
       <SectionDivider />
 
       <Team title={title} description={description} founders={founders} panels={panels} />
+
+      <SectionDivider />
+
+      <ResearcherCTA />
 
       <SectionDivider />
 

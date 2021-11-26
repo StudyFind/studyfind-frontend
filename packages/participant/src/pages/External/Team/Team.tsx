@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { Box, Divider, HStack } from "@chakra-ui/react";
 
@@ -50,7 +50,7 @@ import Collaborations from "components/templates/External/Team/Collaborations/Co
 import ReturnHomeLink from "pages/External/ReturnHomeLink";
 
 function Team() {
-  const dividerColor = useColor("gray.200", "gray.600");
+  const dividerColor = useColorModeValue("gray.200", "gray.600");
 
   const interns = [
     {

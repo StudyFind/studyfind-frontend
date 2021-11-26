@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import {
   Box,
@@ -43,8 +43,8 @@ function ConfirmModal({
     }
   };
 
-  const textColor = useColor("gray.500", "gray.400");
-  const backgroundColor = useColor("white", "gray.800");
+  const textColor = useColorModeValue("gray.500", "gray.400");
+  const backgroundColor = useColorModeValue("white", "gray.800");
 
   return (
     <AlertDialog

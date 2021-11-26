@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { VStack, Heading, Text, Button } from "@chakra-ui/react";
 import { Link } from "components/atoms/Link/Link";
 import { ColorScheme } from "types/global";
@@ -14,8 +14,8 @@ interface Props {
 function TeamPanel({ title, description, buttonText, buttonLink, colorScheme }: Props) {
   const { isPhone } = useDevice();
 
-  const headingColor = useColor(`${colorScheme}.700`, `${colorScheme}.200`);
-  const backgroundColor = useColor(`${colorScheme}.100`, `${colorScheme}.700`);
+  const headingColor = useColorModeValue(`${colorScheme}.700`, `${colorScheme}.200`);
+  const backgroundColor = useColorModeValue(`${colorScheme}.100`, `${colorScheme}.700`);
 
   return (
     <VStack

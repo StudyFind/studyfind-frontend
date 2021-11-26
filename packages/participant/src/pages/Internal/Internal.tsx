@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useCollection, useColor, useDevice, useDocument } from "hooks";
+import { useCollection, useColorModeValue, useDevice, useDocument } from "hooks";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { auth } from "@studyfind/firebase";
@@ -37,7 +37,7 @@ import FAQs from "pages/Internal/Support/FAQs/FAQs";
 function Internal() {
   const history = useHistory();
   const location = useLocation();
-  const background = useColor("white", "gray.800");
+  const background = useColorModeValue("white", "gray.800");
 
   const { isPhone } = useDevice();
 

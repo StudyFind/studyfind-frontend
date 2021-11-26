@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, HStack } from "@chakra-ui/react";
 
 interface Props {
@@ -11,8 +11,8 @@ interface Props {
 }
 
 function WizardFormSteps({ stepIndex, numberOfSteps, allowSkippingSteps, handleSelect }: Props) {
-  const blueColor = useColor("blue.500", "blue.400");
-  const reachedTextColor = useColor("white", "gray.800");
+  const blueColor = useColorModeValue("blue.500", "blue.400");
+  const reachedTextColor = useColorModeValue("white", "gray.800");
 
   return (
     <HStack>

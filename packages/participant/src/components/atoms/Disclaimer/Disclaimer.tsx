@@ -1,5 +1,5 @@
 import React from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { ColorScheme } from "types/global";
 import { Text, Icon } from "@chakra-ui/react";
@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const Disclaimer = React.memo(({ colorScheme = "red", children }: Props) => {
-  const textColor = useColor(`${colorScheme}.500`, `${colorScheme}.400`);
-  const background = useColor(`${colorScheme}.100`, `${colorScheme}.900`);
+  const textColor = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);
+  const background = useColorModeValue(`${colorScheme}.100`, `${colorScheme}.900`);
 
   return (
     <Text

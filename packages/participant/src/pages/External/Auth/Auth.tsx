@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 
 import { Box, Flex, HStack } from "@chakra-ui/react";
 
@@ -6,7 +6,7 @@ import AuthCard from "components/templates/External/Auth/AuthCard";
 import ReturnHomeLink from "pages/External/ReturnHomeLink";
 
 function Auth() {
-  const background = useColor("white", "gray.900");
+  const background = useColorModeValue("white", "gray.900");
   const { isPhone } = useDevice();
 
   return (

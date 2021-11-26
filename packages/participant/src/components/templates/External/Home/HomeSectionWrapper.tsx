@@ -1,5 +1,5 @@
 import { Stack } from "@chakra-ui/react";
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 
 interface Props {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface Props {
 function HomeSectionWrapper({ children, ...rest }: Props) {
   const { isPhone } = useDevice();
 
-  const backgroundColor = useColor("white", "gray.900");
+  const backgroundColor = useColorModeValue("white", "gray.900");
 
   return (
     <Stack

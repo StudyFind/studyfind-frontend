@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, Spinner } from "@chakra-ui/react";
 import { ColorScheme } from "types/global";
 
@@ -13,8 +13,8 @@ interface Props {
 export const Loader = React.memo(({ size = "lg", colorScheme = "blue", ...rest }: Props) => {
   const thickness = ["xs", "sm", "md", "lg", "xl"].indexOf(size) + 1;
 
-  const filledColor = useColor(`${colorScheme}.500`, `${colorScheme}.400`);
-  const emptyColor = useColor("gray.200", "gray.700");
+  const filledColor = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);
+  const emptyColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Flex justify="center" align="center" width="100%" {...rest}>

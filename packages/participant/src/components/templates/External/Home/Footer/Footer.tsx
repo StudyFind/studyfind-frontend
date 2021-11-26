@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { Box, HStack } from "@chakra-ui/react";
 
 import FooterCopyright from "./FooterCopyright";
@@ -14,7 +14,7 @@ interface Props {
 
 function Footer({ links }: Props) {
   const { isPhone } = useDevice();
-  const background = useColor("white", "gray.900");
+  const background = useColorModeValue("white", "gray.900");
 
   return (
     <Box>
