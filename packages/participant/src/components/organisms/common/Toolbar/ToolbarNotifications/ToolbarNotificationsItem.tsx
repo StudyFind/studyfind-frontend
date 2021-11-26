@@ -18,6 +18,7 @@ import {
   FaMagic,
   FaUser,
   FaUserClock,
+  FaUserTimes,
 } from "react-icons/fa";
 
 import { IconType } from "react-icons/lib";
@@ -48,6 +49,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
     CREATE_STUDY: { icon: FaClipboard, colorScheme: "green" },
     DELETE_STUDY: { icon: FaClipboard, colorScheme: "red" },
     PARTICIPANT_ENROLLED: { icon: FaUser, colorScheme: "teal" },
+    PARTICIPANT_LEFT: { icon: FaUserTimes, colorScheme: "red" },
     PARTICIPANT_CONFIRMED_MEETING: { icon: FaCalendarCheck, colorScheme: "teal" },
     PARTICIPANT_CONFIRMED_REMINDER: { icon: FaCheckSquare, colorScheme: "teal" },
     RESEARCHER_SENT_MESSAGE: { icon: FaComment, colorScheme: "teal" },

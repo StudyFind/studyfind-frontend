@@ -7,6 +7,7 @@ export interface ResearcherNotificationDocument extends CommonNotificationDocume
     | "CREATE_STUDY"
     | "DELETE_STUDY"
     | "PARTICIPANT_ENROLLED"
+    | "PARTICIPANT_LEFT"
     | "PARTICIPANT_CONFIRMED_MEETING"
     | "PARTICIPANT_CONFIRMED_REMINDER"
     | "MEETING_NOW";
