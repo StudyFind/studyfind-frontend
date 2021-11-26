@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { useLocation } from "react-router-dom";
 
 import { Link } from "components/atoms/Link/Link";
@@ -23,7 +23,7 @@ function SidebarLinks({ links }: Props) {
     return pagename === truename;
   };
 
-  const linkColor = useColor("gray.400", "gray.500");
+  const linkColor = useColorModeValue("gray.400", "gray.500");
 
   return (
     <Grid marginBottom="auto">

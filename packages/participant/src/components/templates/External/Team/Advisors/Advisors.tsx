@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { SimpleGrid } from "@chakra-ui/react";
 
 import TeamMember from "components/templates/External/Home/Team/TeamMember";
@@ -17,7 +17,7 @@ interface Props {
 
 function Board({ advisors }: Props) {
   const { responsive } = useDevice();
-  const background = useColor("white", "gray.900");
+  const background = useColorModeValue("white", "gray.900");
 
   return (
     <TeamSectionWrapper id="board" heading="National Advisory Board" background={background}>

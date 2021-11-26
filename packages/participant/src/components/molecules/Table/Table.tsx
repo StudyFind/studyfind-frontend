@@ -1,5 +1,5 @@
 import React from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Table as ChakraTable, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 // headers is an array of strings of length x
@@ -12,9 +12,9 @@ interface Props {
 }
 
 function Table({ headers, data, ...rest }: Props) {
-  const borderColor = useColor("gray.200", "gray.700");
-  const headCellBackgroundColor = useColor("gray.100", "gray.800");
-  const bodyCellBackgroundColor = useColor("white", "gray.900");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const headCellBackgroundColor = useColorModeValue("gray.100", "gray.800");
+  const bodyCellBackgroundColor = useColorModeValue("white", "gray.900");
 
   return (
     <ChakraTable {...rest}>

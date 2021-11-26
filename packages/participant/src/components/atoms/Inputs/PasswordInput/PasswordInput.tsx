@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Button } from "@chakra-ui/react";
 import { TextInput } from "../TextInput/TextInput";
 
@@ -20,8 +20,8 @@ export const PasswordInput = React.memo(
       setShow((prev) => !prev);
     };
 
-    const toggleButtonColor = useColor("gray.500", "gray.400");
-    const toggleButtonHoverColor = useColor("blue.500", "blue.400");
+    const toggleButtonColor = useColorModeValue("gray.500", "gray.400");
+    const toggleButtonHoverColor = useColorModeValue("blue.500", "blue.400");
 
     const TOGGLE_BUTTON = (
       <Button

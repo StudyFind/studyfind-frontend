@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { CustomFile } from "./types";
 
@@ -13,11 +13,11 @@ interface Props {
 }
 
 function FileCard({ file, handleOpen }: Props) {
-  const iconBackgroundColor = useColor("white", "gray.900");
-  const detailsBackgroundColor = useColor("gray.50", "gray.800");
-  const fileNameColor = useColor("gray.600", "gray.100");
-  const secondaryColor = useColor("gray.400", "gray.500");
-  const borderColor = useColor("gray.200", "gray.700");
+  const iconBackgroundColor = useColorModeValue("white", "gray.900");
+  const detailsBackgroundColor = useColorModeValue("gray.50", "gray.800");
+  const fileNameColor = useColorModeValue("gray.600", "gray.100");
+  const secondaryColor = useColorModeValue("gray.400", "gray.500");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Box borderRadius="6px" borderWidth="1px" borderColor={borderColor}>

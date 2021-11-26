@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
@@ -7,8 +7,8 @@ interface Props {
 }
 
 function PricingPlanBadge({ children }: Props) {
-  const color = useColor("white", "gray.800");
-  const background = useColor("blue.500", "blue.200");
+  const color = useColorModeValue("white", "gray.800");
+  const background = useColorModeValue("blue.500", "blue.200");
 
   return (
     <Flex

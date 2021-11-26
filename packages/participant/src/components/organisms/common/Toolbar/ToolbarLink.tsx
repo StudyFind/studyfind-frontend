@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Box, Icon, Menu, MenuButton, IconButton } from "@chakra-ui/react";
 import { FaCircle } from "react-icons/fa";
 
@@ -14,10 +14,10 @@ interface Props {
 }
 
 function ToolbarLink({ name, icon, menu, showAlert, isOpen, onOpen, onClose, onClick }: Props) {
-  const background = useColor("transparent", "gray.900");
-  const borderColor = useColor("gray.200", "gray.700");
-  const borderWidth = useColor("1px", "0");
-  const color = useColor("gray.400", "gray.500");
+  const background = useColorModeValue("transparent", "gray.900");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const borderWidth = useColorModeValue("1px", "0");
+  const color = useColorModeValue("gray.400", "gray.500");
 
   const extra =
     isOpen || onOpen || onClose !== undefined

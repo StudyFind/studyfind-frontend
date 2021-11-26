@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 
 import { Link } from "components/atoms";
 import { Box, Flex, Text, Icon, MenuItem } from "@chakra-ui/react";
@@ -83,7 +83,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
 
   const { isPhone } = useDevice();
 
-  const titleColor = useColor("black", "white");
+  const titleColor = useColorModeValue("black", "white");
 
   // convert external link to internal link otherwise Link component will open link in new tab
   const hostname =

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Heading, Text, Box, Icon, Center, Flex } from "@chakra-ui/react";
 import { FaTimesCircle, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
@@ -35,10 +35,10 @@ export const Message = React.memo(
 
     const { icon, colorScheme } = statuses[status];
 
-    const iconColor = useColor(`${colorScheme}.400`, `${colorScheme}.400`);
-    const background = useColor(`${colorScheme}.100`, `${colorScheme}.900`);
-    const borderColor = useColor(`${colorScheme}.400`, `${colorScheme}.400`);
-    const descriptionTextColor = useColor("gray.500", "gray.400");
+    const iconColor = useColorModeValue(`${colorScheme}.400`, `${colorScheme}.400`);
+    const background = useColorModeValue(`${colorScheme}.100`, `${colorScheme}.900`);
+    const borderColor = useColorModeValue(`${colorScheme}.400`, `${colorScheme}.400`);
+    const descriptionTextColor = useColorModeValue("gray.500", "gray.400");
 
     const backgroundStyles = showBackground
       ? {

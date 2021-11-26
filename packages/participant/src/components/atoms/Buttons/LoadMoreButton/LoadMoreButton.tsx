@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Text, Button } from "@chakra-ui/react";
 import { ButtonClickEventHandler } from "types/global";
 
@@ -13,10 +13,10 @@ interface Props {
 
 export const LoadMoreButton = React.memo(
   ({ isLoading, fetchedAll, fetchedAllText, onClick }: Props) => {
-    const borderColor = useColor("gray.200", "gray.700");
-    const backgroundColor = useColor("white", "gray.900");
-    const hoverBackgroundColor = useColor("gray.100", "gray.800");
-    const activeBackgroundColor = useColor("gray.200", "gray.700");
+    const borderColor = useColorModeValue("gray.200", "gray.700");
+    const backgroundColor = useColorModeValue("white", "gray.900");
+    const hoverBackgroundColor = useColorModeValue("gray.100", "gray.800");
+    const activeBackgroundColor = useColorModeValue("gray.200", "gray.700");
 
     if (fetchedAll) {
       return <Text color="gray.400">{fetchedAllText}</Text>;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Icon, Flex, Text, Tooltip } from "@chakra-ui/react";
 import { FaExclamationCircle, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
@@ -31,8 +31,8 @@ export const ConfirmationStatus = React.memo(({ children, status = "neutral", hi
 
   const { colorScheme, icon } = statuses[status];
 
-  const textColor = useColor(`${colorScheme}.500`, `${colorScheme}.300`);
-  const borderColor = useColor(`${colorScheme}.400`, `${colorScheme}.300`);
+  const textColor = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.300`);
+  const borderColor = useColorModeValue(`${colorScheme}.400`, `${colorScheme}.300`);
 
   return (
     <Tooltip label={hint}>

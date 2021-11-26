@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Input } from "@chakra-ui/react";
 
 interface Props {
@@ -10,12 +10,12 @@ interface Props {
 }
 
 export const InputField = ({ as, error, ...rest }: Props) => {
-  const errorPlaceholderColor = useColor("red.400", "red.400");
-  const errorBackground = useColor("red.100", "red.800");
-  const borderColor = useColor("gray.200", "gray.700");
-  const backgroundColor = useColor("white", "gray.900");
-  const hoverBorderColor = useColor("gray.300", "gray.600");
-  const placeholderColor = useColor("gray.400", "gray.500");
+  const errorPlaceholderColor = useColorModeValue("red.400", "red.400");
+  const errorBackground = useColorModeValue("red.100", "red.800");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const backgroundColor = useColorModeValue("white", "gray.900");
+  const hoverBorderColor = useColorModeValue("gray.300", "gray.600");
+  const placeholderColor = useColorModeValue("gray.400", "gray.500");
 
   const Field = as || Input;
 
