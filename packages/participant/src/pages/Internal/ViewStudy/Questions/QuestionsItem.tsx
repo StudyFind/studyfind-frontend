@@ -8,9 +8,7 @@ interface Props {
 function QuestionsItem({ question }: Props) {
   return (
     <ListItem marginY="4px">
-      <Text color="blue.500" paddingLeft="10px">
-        {question.prompt}
-      </Text>
+      <Text paddingLeft="10px">{question.prompt}</Text>
     </ListItem>
   );
 }

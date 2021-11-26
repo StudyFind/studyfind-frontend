@@ -7,7 +7,7 @@ interface Props {
   location: StudyLocation;
 }
 
-function LocationItem({ location }: Props) {
+function LocationsItem({ location }: Props) {
   const initial = "https://www.google.com/maps?saddr=My+Location&daddr=";
   const address = location.address;
   const cleaned = address.trim().split(" ").join("+");
@@ -24,4 +24,4 @@ function LocationItem({ location }: Props) {
   );
 }
 
-export default LocationItem;
+export default LocationsItem;
