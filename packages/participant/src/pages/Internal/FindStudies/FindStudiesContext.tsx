@@ -22,8 +22,8 @@ interface Filters {
 
 interface Context {
   user?: UserDocumentExtended;
-  filteredStudies: StudyDocumentExtended[];
   filters: Filters;
+  filteredStudies: StudyDocumentExtended[];
   handleFilters: (name: string, value: boolean | string | string[]) => void;
   handleAddCondition: (condition: string) => void;
   handleDeleteCondition: (index: number) => void;
@@ -140,8 +140,8 @@ export const FindStudiesProvider = ({ children }: Props) => {
     <FindStudiesContext.Provider
       value={{
         user,
-        filteredStudies,
         filters,
+        filteredStudies,
         handleFilters,
         handleAddCondition,
         handleDeleteCondition,
