@@ -20,21 +20,11 @@ export const joinStudy = async ({
 }: JoinStudyPayload) => {
   const participantID = auth.getUser().uid;
 
-  const createStudyParticipantPromise = firestore.mutations.createStudyParticipantDocument(
-    studyID,
-    participantID,
-    {
-      status: "interested",
-      timezone,
-      availability,
-      questions,
-      responses,
-    }
-  );
-
-  const updateParticipantPromise = firestore.mutations.updateParticipantDocument(participantID, {
-    enrolled,
+  return firestore.mutations.createStudyParticipantDocument(studyID, participantID, {
+    status: "interested",
+    timezone,
+    availability,
+    questions,
+    responses,
   });
-
-  return Promise.allSettled([createStudyParticipantPromise, updateParticipantPromise]);
 };
