@@ -1,5 +1,5 @@
 import { auth, firestore } from "@studyfind/firebase";
-import { DocumentID } from "@studyfind/types";
+import { DocumentID, Timezone, StudyQuestion, StudyParticipantReponse } from "@studyfind/types";
 
 interface JoinStudyPayload {
   studyID: DocumentID;
@@ -9,5 +9,14 @@ interface JoinStudyPayload {
 export const leaveStudy = async ({ studyID, enrolled }: JoinStudyPayload) => {
   const participantID = auth.getUser().uid;
 
-  return firestore.mutations.deleteStudyParticipantDocument(studyID, participantID);
+  const deleteStudyParticipantPromise = firestore.mutations.deleteStudyParticipantDocument(
+    studyID,
+    participantID
+  );
+
+  const updateParticipantPromise = firestore.mutations.updateParticipantDocument(participantID, {
+    enrolled,
+  });
+
+  return Promise.allSettled([deleteStudyParticipantPromise, updateParticipantPromise]);
 };
