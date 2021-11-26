@@ -24,6 +24,10 @@ import {
 import { IconType } from "react-icons/lib";
 import { ColorScheme } from "types/global";
 import { UserNotificationDocumentExtended } from "types/side";
+import {
+  ResearcherNotificationDocumentCode,
+  ParticipantNotificationDocumentCode,
+} from "@studyfind/types";
 
 import ToolbarNotificationsItemIcon from "./ToolbarNotificationsItemIcon";
 import ToolbarNotificationsItemTime from "./ToolbarNotificationsItemTime";
@@ -39,12 +43,18 @@ interface Theme {
   colorScheme: ColorScheme;
 }
 
+type NotificationDocumentCode =
+  | ResearcherNotificationDocumentCode
+  | ParticipantNotificationDocumentCode;
+
 function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead }: Props) {
   const [emphasize, setEmphasize] = useState(false);
 
   const { code, createdAt, title, body, link, read } = notification;
 
-  const themes: { [key: string]: Theme } = {
+  const themes: {
+    [key in NotificationDocumentCode]: Theme;
+  } = {
     CREATE_ACCOUNT: { icon: FaMagic, colorScheme: "purple" },
     CREATE_STUDY: { icon: FaClipboard, colorScheme: "green" },
     DELETE_STUDY: { icon: FaClipboard, colorScheme: "red" },
