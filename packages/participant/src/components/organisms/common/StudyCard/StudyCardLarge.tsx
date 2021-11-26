@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { Heading, Text, Box, Flex } from "@chakra-ui/react";
 
 import { StudyDocumentExtended } from "types/extended";
@@ -14,8 +14,8 @@ interface Props {
 function StudyCardLarge({ study }: Props) {
   const { isPhone } = useDevice();
 
-  const background = useColor("white", "gray.900");
-  const borderColor = useColor("gray.200", "gray.700");
+  const background = useColorModeValue("white", "gray.900");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Box

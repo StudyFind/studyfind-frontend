@@ -1,4 +1,5 @@
-import { Flex, Tag, TagLabel, useColorMode } from "@chakra-ui/react";
+import { Flex, Tag, TagLabel } from "@chakra-ui/react";
+import { useColorMode } from "hooks";
 
 interface Props {
   conditions: string[];

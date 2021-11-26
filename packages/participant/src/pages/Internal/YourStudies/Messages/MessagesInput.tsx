@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { Flex } from "@chakra-ui/react";
 import { FaPaperPlane } from "react-icons/fa";
@@ -34,8 +34,8 @@ function MessagesInput({ handleMessageSend }: Props) {
     }
   };
 
-  const background = useColor("white", "gray.900");
-  const borderColor = useColor("gray.200", "gray.700");
+  const background = useColorModeValue("white", "gray.900");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
 
   return (
     <Form onSubmit={handleSubmit}>

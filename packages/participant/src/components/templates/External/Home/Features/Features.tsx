@@ -1,4 +1,4 @@
-import { useColor, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 import { SimpleGrid } from "@chakra-ui/react";
 
 import HomeSectionWrapper from "../HomeSectionWrapper";
@@ -17,7 +17,7 @@ interface Props {
 }
 
 function Features({ features }: Props) {
-  const background = useColor("gray.100", "gray.800");
+  const background = useColorModeValue("gray.100", "gray.800");
 
   const { isPhone } = useDevice();
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 import { Flex, Tag } from "@chakra-ui/react";
 
 interface Props {
@@ -9,10 +9,10 @@ interface Props {
 function ReminderWeekdays({ weekdays }: Props) {
   const acronyms = ["S", "M", "T", "W", "T", "F", "S"];
 
-  const tagColor = useColor("gray.500", "gray.400");
-  const tagBackground = useColor("gray.200", "gray.700");
-  const tagActiveColor = useColor("white", "white");
-  const tagActiveBackground = useColor("blue.500", "blue.400");
+  const tagColor = useColorModeValue("gray.500", "gray.400");
+  const tagBackground = useColorModeValue("gray.200", "gray.700");
+  const tagActiveColor = useColorModeValue("white", "white");
+  const tagActiveBackground = useColorModeValue("blue.500", "blue.400");
 
   return (
     <Weekdays>

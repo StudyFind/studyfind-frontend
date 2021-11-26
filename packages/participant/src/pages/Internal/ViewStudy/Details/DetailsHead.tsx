@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
@@ -21,8 +21,8 @@ function DetailsHead({ study }: Props) {
   const isParticipantVerified = auth.getUser().emailVerified;
   const hasParticipantEnrolled = user?.enrolled.includes(study.id);
 
-  const enrolledButtonColor = useColor("green.500", "green.400");
-  const enrolledButtonBackground = useColor("green.100", "green.900");
+  const enrolledButtonColor = useColorModeValue("green.500", "green.400");
+  const enrolledButtonBackground = useColorModeValue("green.100", "green.900");
 
   const enrollRedirectLink = `/join-study/${study.id}/screening`;
 

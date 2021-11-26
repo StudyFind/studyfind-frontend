@@ -1,4 +1,4 @@
-import { useColor } from "hooks";
+import { useColorModeValue } from "hooks";
 
 import { StudyParticipantReponse, StudyQuestion } from "@studyfind/types";
 
@@ -12,8 +12,8 @@ interface Props {
 }
 
 function QuestionCard({ question, response }: Props) {
-  const questionColor = useColor("black", "gray.200");
-  const responseColor = useColor("gray.500", "gray.500");
+  const questionColor = useColorModeValue("black", "gray.200");
+  const responseColor = useColorModeValue("gray.500", "gray.500");
 
   return (
     <Wrapper>
