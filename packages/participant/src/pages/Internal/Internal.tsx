@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useCollection, useColorModeValue, useDevice, useDocument } from "hooks";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -40,6 +40,12 @@ function Internal() {
   const background = useColorModeValue("white", "gray.800");
 
   const { isPhone } = useDevice();
+
+  const topRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    topRef.current?.scrollIntoView({ behavior: "auto", block: "center" });
+  }, [location]);
 
   useEffect(() => {
     const redirect = localStorage.getItem("redirect");
@@ -98,7 +104,7 @@ function Internal() {
         top="0"
         zIndex={200}
       >
-        <Sidebar name="Yohan Jhaveri" email="yohan@studyfind.org" links={links} />
+        <Sidebar links={links} />
       </Box>
       <Box
         background={background}
@@ -117,6 +123,7 @@ function Internal() {
         width={isPhone ? "100vw" : "calc(100vw - 275px)"}
         padding="20px"
       >
+        <div ref={topRef} />
         {loading ? (
           <Loader width="100%" height="100%" />
         ) : (
