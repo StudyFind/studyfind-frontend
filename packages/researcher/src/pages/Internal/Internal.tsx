@@ -1,10 +1,10 @@
+import firebase from "firebase";
 import moment from "moment-timezone";
 
 import { useEffect } from "react";
 import { useCollection, useColorModeValue, useDevice, useDocument } from "hooks";
 import { useHistory, useLocation } from "react-router-dom";
 
-import { auth } from "@studyfind/firebase";
 import { createGlobalStyle } from "styled-components";
 import { getUser, getStudies, updateUserTimezone } from "./side";
 
@@ -33,7 +33,11 @@ import Feature from "pages/Internal/Support/Feature/Feature";
 import Bug from "pages/Internal/Support/Bug/Bug";
 import FAQs from "pages/Internal/Support/FAQs/FAQs";
 
-function Internal() {
+interface Props {
+  cred: firebase.User;
+}
+
+function Internal({ cred }: Props) {
   const history = useHistory();
   const location = useLocation();
   const background = useColorModeValue("white", "gray.800");
@@ -51,7 +55,6 @@ function Internal() {
 
   const links = [{ name: "Dashboard", path: "/dashboard", icon: <FaPoll /> }];
 
-  const cred = auth.getUser();
   const [user] = useDocument<UserDocumentExtended>(getUser());
   const [studies] = useCollection<StudyDocumentExtended>(getStudies());
 

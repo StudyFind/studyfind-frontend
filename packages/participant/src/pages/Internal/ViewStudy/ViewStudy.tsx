@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { useParams } from "react-router-dom";
-
-import { StudiesContext } from "context/StudiesContext";
+import { useStudies } from "hooks";
 
 import { Message } from "components/atoms";
 import { HorizontalTabs } from "components/molecules";
@@ -21,7 +19,7 @@ interface URLParams {
 function ViewStudy() {
   const { studyID } = useParams<URLParams>();
 
-  const studies = useContext(StudiesContext);
+  const studies = useStudies();
   const study = studies?.find((s) => s.id === studyID);
 
   if (!study) {

@@ -1,16 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { Action, StudyFull } from "./types";
-
-import { UserContext } from "context/UserContext";
-import { StudiesContext } from "context/StudiesContext";
 
 import { Loader } from "components/atoms";
 
 import YourStudiesList from "./YourStudiesList";
 import YourStudiesDrawer from "./YourStudiesDrawer";
 import YourStudiesEmpty from "./YourStudiesEmpty";
+import { useStudies, useUser } from "hooks";
 
 interface Params {
   action: Action;
@@ -22,8 +20,8 @@ function YourStudies() {
 
   const [yourStudiesFull, setYourStudiesFull] = useState<StudyFull[] | null>();
 
-  const user = useContext(UserContext);
-  const studies = useContext(StudiesContext);
+  const user = useUser();
+  const studies = useStudies();
 
   const history = useHistory();
 

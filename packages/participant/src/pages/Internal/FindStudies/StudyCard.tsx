@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { useColorModeValue } from "hooks";
+import { useColorModeValue, useCred } from "hooks";
 
-import { auth } from "@studyfind/firebase";
 import { actions } from "@studyfind/api";
 
 import { StudyDocumentExtended } from "types/extended";
@@ -19,13 +18,14 @@ interface Props {
 }
 
 function StudyCardSmall({ study }: Props) {
+  const cred = useCred();
   const { user, filters, handleAddCondition } = useContext(FindStudiesContext);
 
   const detailsRedirectLink = `/view-study/${study.id}/details`;
   const enrollRedirectLink = `/join-study/${study.id}/screening`;
   const hasParticipantEnrolled = user?.enrolled?.includes(study.id);
   const hasParticipantSaved = user?.saved?.includes(study.id);
-  const isParticipantVerified = auth.getUser().emailVerified;
+  const isParticipantVerified = cred.emailVerified;
 
   const handleBookmark = () => {
     const saved = user?.saved;

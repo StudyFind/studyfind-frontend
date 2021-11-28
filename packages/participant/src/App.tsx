@@ -33,7 +33,7 @@ function App() {
   return (
     <BrowserRouter>
       <ChakraProvider theme={theme}>
-        {loading ? <Loading /> : cred ? <Internal /> : <External />}
+        {loading ? <Loading /> : cred ? <Internal cred={cred} /> : <External />}
       </ChakraProvider>
     </BrowserRouter>
   );

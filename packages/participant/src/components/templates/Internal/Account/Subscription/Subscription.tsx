@@ -13,6 +13,7 @@ import AccountHeader from "../AccountHeader";
 
 import SubscriptionView from "./SubscriptionView";
 import SubscriptionForm from "./SubscriptionForm";
+import { useCred } from "hooks";
 
 export type Period = "annually" | "monthly";
 export type UserPlan = "FREE" | "STANDARD" | "PREMIUM";
@@ -80,8 +81,10 @@ const plans: PlanData[] = [
 ];
 
 function Subscription() {
+  const cred = useCred();
   const toast = useToast();
   const history = useHistory();
+
   const currentPlan: UserPlan = "FREE"; // TODO: use plan context here
 
   const [isBilledAnnually, setIsBilledAnnually] = useState(true);
@@ -100,7 +103,7 @@ function Subscription() {
   const retrieveUserPlanDetails = async () => {
     const snapshot = await services.firestore
       .collection("researchers")
-      .doc(auth.getUser().uid)
+      .doc(cred.uid)
       .collection("subscriptions")
       .where("status", "!=", "canceled")
       .limit(1)
@@ -147,7 +150,7 @@ function Subscription() {
 
     const docRef = await services.firestore
       .collection("researchers")
-      .doc(auth.getUser().uid)
+      .doc(cred.uid)
       .collection("checkout_sessions")
       .add({
         price: selectedPriceID,

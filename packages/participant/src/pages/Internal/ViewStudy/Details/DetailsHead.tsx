@@ -1,24 +1,22 @@
-import { useContext } from "react";
-import { useColorModeValue } from "hooks";
+import { useColorModeValue, useCred, useUser } from "hooks";
 
-import { auth } from "@studyfind/firebase";
+import { StudyDocumentExtended } from "types/extended";
 
 import { Link } from "components/atoms";
 import { Tooltip, Box, Flex, Text, Button } from "@chakra-ui/react";
 import { FaCheckCircle } from "react-icons/fa";
 
 import TabHeader from "../TabHeader";
-import { StudyDocumentExtended } from "types/extended";
-import { UserContext } from "context/UserContext";
 
 interface Props {
   study: StudyDocumentExtended;
 }
 
 function DetailsHead({ study }: Props) {
-  const user = useContext(UserContext);
+  const cred = useCred();
+  const user = useUser();
 
-  const isParticipantVerified = auth.getUser().emailVerified;
+  const isParticipantVerified = cred.emailVerified;
   const hasParticipantEnrolled = user?.enrolled.includes(study.id);
 
   const enrolledButtonColor = useColorModeValue("green.500", "green.400");

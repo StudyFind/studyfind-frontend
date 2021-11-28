@@ -1,4 +1,4 @@
-import { useAuthForm } from "hooks";
+import { useAuthForm, useConfirm } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
@@ -8,11 +8,10 @@ import { EmailInput } from "components/atoms/Inputs/EmailInput/EmailInput";
 import { PasswordInput } from "components/atoms/Inputs/PasswordInput/PasswordInput";
 
 import AccountHeader from "../AccountHeader";
-import { useContext } from "react";
-import { ConfirmContext } from "context/ConfirmContext";
 
 function DeleteAccount() {
   const toast = useToast();
+  const confirm = useConfirm();
 
   const authForm = useAuthForm({
     initialValues: { email: "", password: "" },
@@ -33,8 +32,6 @@ function DeleteAccount() {
           });
         }),
   });
-
-  const confirm = useContext(ConfirmContext);
 
   const handleSubmit = () => {
     confirm({

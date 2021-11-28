@@ -1,12 +1,12 @@
-import { auth } from "@studyfind/firebase";
+import { useCred } from "hooks";
+
+import { UserDocument } from "types/side";
 
 import { Grid, Tooltip, Box } from "@chakra-ui/react";
 import { CheckboxInput } from "components/atoms/Inputs/CheckboxInput/CheckboxInput";
 
 import AccountWrapper from "../AccountWrapper";
 import AccountHeader from "../AccountHeader";
-
-import { UserDocument } from "types/side";
 
 interface Props {
   values: UserDocument | undefined;
@@ -23,9 +23,8 @@ function Notifications({
   handleUpdate,
   handleSetNotificationsAttribute,
 }: Props) {
-  const user = auth.getUser();
+  const { email } = useCred();
 
-  const email = user.email;
   const phone = values?.phone || "";
   const localPreference = values?.notifications?.local || false;
   const emailPreference = values?.notifications?.email || false;

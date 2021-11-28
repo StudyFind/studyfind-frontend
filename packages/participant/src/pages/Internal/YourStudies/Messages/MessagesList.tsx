@@ -1,6 +1,4 @@
-import { useColorModeValue } from "hooks";
-
-import { auth } from "@studyfind/firebase";
+import { useColorModeValue, useCred } from "hooks";
 
 import { MutableRefObject, useEffect, useRef } from "react";
 import { MessageDocumentExtended } from "types/extended";
@@ -25,6 +23,7 @@ function MessageList({
   handleLoadMore,
   loadingMore,
 }: Props) {
+  const cred = useCred();
   const messageListbackground = useColorModeValue("#f8f9fa", "gray.800");
 
   const bottomRef = useRef<HTMLElement>(null);
@@ -64,7 +63,7 @@ function MessageList({
             key={message.id}
             message={message}
             handleMessageRead={handleMessageRead}
-            isUserMessageSender={message.user === auth.getUser().uid}
+            isUserMessageSender={message.user === cred.uid}
           />
         ))}
       </Flex>

@@ -1,9 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useConfirm, useUser } from "hooks";
 
 import { actions } from "@studyfind/api";
-
-import { UserContext } from "context/UserContext";
-import { ConfirmContext } from "context/ConfirmContext";
 
 import { Action, StudyFull } from "./types";
 
@@ -24,8 +22,8 @@ interface Props {
 }
 
 function YourStudiesItem({ study, handleOpen }: Props) {
-  const user = useContext(UserContext);
-  const confirm = useContext(ConfirmContext);
+  const user = useUser();
+  const confirm = useConfirm();
 
   const [hover, setHover] = useState(false);
 

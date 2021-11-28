@@ -1,11 +1,9 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import moment from "moment";
-
-import { UserContext } from "context/UserContext";
-import { StudiesContext } from "context/StudiesContext";
 
 import { UserDocumentExtended } from "types/side";
 import { StudyDocumentExtended } from "types/extended";
+import { useStudies, useUser } from "hooks";
 
 interface Filters {
   search: string;
@@ -37,8 +35,8 @@ interface Props {
 export const FindStudiesContext = createContext({} as Context);
 
 export const FindStudiesProvider = ({ children }: Props) => {
-  const user = useContext(UserContext);
-  const studies = useContext(StudiesContext);
+  const user = useUser();
+  const studies = useStudies();
 
   const [filters, setFilters] = useState<Filters>({
     search: "",

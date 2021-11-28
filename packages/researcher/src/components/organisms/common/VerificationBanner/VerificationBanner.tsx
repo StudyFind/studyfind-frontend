@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCred } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 
@@ -9,7 +10,7 @@ import VerificationFailure from "./VerificationFailure";
 type State = "pending" | "success" | "failure";
 
 function VerificationBanner() {
-  const { email } = auth.getUser();
+  const { email } = useCred();
 
   const [state, setState] = useState<State>("pending");
   const [loading, setLoading] = useState(false);

@@ -1,9 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 import { updateUserAccount } from "./side";
 
 import { UserDocument, UserDocumentExtended } from "types/side";
-import { UserContext } from "context/UserContext";
 
 import { Box, useToast } from "@chakra-ui/react";
 import { FaUser, FaBell, FaShieldAlt, FaCreditCard, FaMapMarkedAlt } from "react-icons/fa";
@@ -16,15 +15,16 @@ import Security from "./Security/Security";
 import Subscription from "./Subscription/Subscription";
 
 import VerticalTabs from "components/molecules/VerticalTabs/VerticalTabs";
+import { useUser } from "hooks";
 
 const Profile = process.env.REACT_APP_SIDE
   ? (props: any) => <ProfileResearcher {...props} />
   : (props: any) => <ProfileParticipant {...props} />;
 
 function AccountPage() {
+  const user = useUser();
   const toast = useToast();
 
-  const user = useContext(UserContext);
   const [values, setValues] = useState(user);
 
   useEffect(() => {

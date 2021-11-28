@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { useColorModeValue, useDevice } from "hooks";
-
-import { auth } from "@studyfind/firebase";
+import { useColorModeValue, useCred, useDevice } from "hooks";
 
 import { Flex } from "@chakra-ui/react";
 
@@ -21,11 +19,12 @@ interface Props {
 }
 
 function Sidebar({ links, ...rest }: Props) {
-  const [active, setActive] = useState(false);
+  const { displayName, email } = useCred();
   const { isPhone } = useDevice();
 
+  const [active, setActive] = useState(false);
+
   const background = useColorModeValue("blue.900", "gray.900");
-  const user = auth.getUser();
 
   const toggleActive = () => {
     if (isPhone) {
@@ -49,7 +48,7 @@ function Sidebar({ links, ...rest }: Props) {
       {(!isPhone || active) && (
         <>
           <SidebarLinks links={links} />
-          <SidebarUser name={user?.displayName || ""} email={user?.email || ""} />
+          <SidebarUser name={displayName || ""} email={email || ""} />
         </>
       )}
     </Flex>

@@ -1,16 +1,13 @@
-import { useContext } from "react";
-
-import { CredContext } from "context/CredContext";
-import { StudiesContext } from "context/StudiesContext";
+import { useCred, useStudies } from "hooks";
 
 import DashboardGrid from "./DashboardGrid";
 import DashboardEmpty from "./DashboardEmpty";
 
 function Dashboard() {
-  const cred = useContext(CredContext);
-  const studies = useContext(StudiesContext);
+  const cred = useCred();
+  const studies = useStudies();
 
-  const verified = cred.emailVerified || false;
+  const verified = cred.emailVerified;
 
   if (studies.length === 0) {
     return <DashboardEmpty verified={verified} />;

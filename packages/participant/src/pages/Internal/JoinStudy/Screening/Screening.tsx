@@ -1,13 +1,11 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { useStudies, useUser } from "hooks";
 
 import { auth } from "@studyfind/firebase";
 import { actions } from "@studyfind/api";
 
 import { StudyParticipantReponse } from "@studyfind/types";
-
-import { UserContext } from "context/UserContext";
-import { StudiesContext } from "context/StudiesContext";
 
 import { Card, Message } from "components/atoms";
 
@@ -32,8 +30,8 @@ function Screening() {
   const toast = useToast();
   const history = useHistory();
 
-  const user = useContext(UserContext);
-  const studies = useContext(StudiesContext);
+  const user = useUser();
+  const studies = useStudies();
 
   const { studyID } = useParams<Params>();
 
