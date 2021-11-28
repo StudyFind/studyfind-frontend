@@ -71,7 +71,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
       setEmphasize(true);
       handleNotificationRead(notification);
     }
-  }, []);
+  }, [read, isOpen]);
 
   useEffect(() => {
     if (emphasize) {
@@ -122,7 +122,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
                   color="blue.400"
                   fontSize="14px"
                   paddingLeft="5px"
-                  paddingBottom="2px"
+                  paddingTop="3px"
                 />
               )}
             </Text>
