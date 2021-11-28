@@ -1,16 +1,19 @@
+import moment from "moment-timezone";
+
 import { useEffect, useRef } from "react";
 import { useCollection, useColorModeValue, useDevice, useDocument } from "hooks";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { auth } from "@studyfind/firebase";
-import { queries } from "@studyfind/api";
 import { createGlobalStyle } from "styled-components";
+import { getUser, getStudies, updateUserTimezone } from "./side";
 
 import { CredProvider } from "context/CredContext";
 import { UserProvider } from "context/UserContext";
 import { StudiesProvider } from "context/StudiesContext";
 import { ConfirmProvider } from "context/ConfirmContext";
 
+import { Timezone } from "@studyfind/types";
 import { UserDocumentExtended } from "types/side";
 import { StudyDocumentExtended } from "types/extended";
 
@@ -63,13 +66,6 @@ function Internal() {
     { name: "Schedule", path: "/schedule", icon: <FaCalendarAlt /> },
   ];
 
-  const getUser =
-    process.env.REACT_APP_SIDE === "RESEARCHER"
-      ? queries.researcher.getResearcherQuery
-      : queries.participant.getParticipantQuery;
-
-  const getStudies = queries.participant.getFindStudiesQuery;
-
   const cred = auth.getUser();
   const [user] = useDocument<UserDocumentExtended>(getUser());
   const [studies] = useCollection<StudyDocumentExtended>(getStudies());
@@ -86,6 +82,25 @@ function Internal() {
   // const SIDEBAR_WIDTH = "275px";
   // const TOOLBAR_HEIGHT = "68px";
   // const MOBILE_SIDEBAR_HEIGHT = "71px";
+
+  useEffect(() => {
+    if (user?.timezone) {
+      const { region, autodetect, updatedAt } = user.timezone;
+
+      const now = moment().utc().valueOf();
+      const thirtyMinutes = 30 * 60 * 1000;
+
+      const detected = moment.tz.guess(true) as Timezone;
+
+      if (autodetect && region !== detected && updatedAt + thirtyMinutes > now) {
+        updateUserTimezone({ autodetect, region: detected });
+
+        moment.tz.setDefault(detected);
+      } else {
+        moment.tz.setDefault(region);
+      }
+    }
+  }, [user?.timezone?.region]);
 
   return (
     <Grid

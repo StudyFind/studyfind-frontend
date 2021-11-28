@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 
-import { actions } from "@studyfind/api";
+import { updateUserAccount } from "./side";
 
-import { Side } from "types/global";
 import { UserDocument, UserDocumentExtended } from "types/side";
 import { UserContext } from "context/UserContext";
 
@@ -18,12 +17,9 @@ import Subscription from "./Subscription/Subscription";
 
 import VerticalTabs from "components/molecules/VerticalTabs/VerticalTabs";
 
-const side = process.env.REACT_APP_SIDE as Side;
-
-const Profile = {
-  RESEARCHER: (props: any) => <ProfileResearcher {...props} />,
-  PARTICIPANT: (props: any) => <ProfileParticipant {...props} />,
-}[side];
+const Profile = process.env.REACT_APP_SIDE
+  ? (props: any) => <ProfileResearcher {...props} />
+  : (props: any) => <ProfileParticipant {...props} />;
 
 function AccountPage() {
   const toast = useToast();
@@ -44,11 +40,6 @@ function AccountPage() {
   };
 
   const handleUpdate = async () => {
-    const updateUserAccount =
-      side === "RESEARCHER"
-        ? actions.researcher.updateUserAccount
-        : actions.participant.updateUserAccount;
-
     return updateUserAccount(values as UserDocumentExtended).then(() => {
       toast({
         title: "Your profile information was successfully updated!",
@@ -144,7 +135,7 @@ function AccountPage() {
   };
 
   const tabs =
-    side === "RESEARCHER"
+    process.env.REACT_APP_SIDE === "RESEARCHER"
       ? [PROFILE, NOTIFICATIONS, TIMEZONE, SECURITY, SUBSCRIPTION]
       : [PROFILE, NOTIFICATIONS, TIMEZONE, SECURITY];
 
