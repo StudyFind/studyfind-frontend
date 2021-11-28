@@ -1,7 +1,7 @@
 import { Email, Timestamp, Side } from "../custom";
 
-export type BugSystem = "Android" | "iOS" | "macOS" | "Windows" | "Linux" | "Other";
-export type BugBrowser = "Firefox" | "Opera" | "Internet Edge" | "Chrome" | "Safari" | "Other";
+export type BugSystem = "" | "Android" | "iOS" | "macOS" | "Windows" | "Linux" | "Other";
+export type BugBrowser = "" | "Firefox" | "Opera" | "Internet Edge" | "Chrome" | "Safari" | "Other";
 
 export interface BugDocument {
   side: Side;
