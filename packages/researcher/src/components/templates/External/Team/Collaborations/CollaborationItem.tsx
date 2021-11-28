@@ -1,6 +1,6 @@
 // import { useDevice } from "hooks";
 // import { Card } from "components/atoms/Card/Card";
-import { Image, Heading, Text, Stack, VStack } from "@chakra-ui/react";
+import { Image /*Heading, Text, Stack, VStack*/ } from "@chakra-ui/react";
 
 interface Section {
   title: string;

@@ -8,6 +8,8 @@ import { EmailInput } from "components/atoms/Inputs/EmailInput/EmailInput";
 import { PasswordInput } from "components/atoms/Inputs/PasswordInput/PasswordInput";
 
 import AccountHeader from "../AccountHeader";
+import { useContext } from "react";
+import { ConfirmContext } from "context/ConfirmContext";
 
 function DeleteAccount() {
   const toast = useToast();
@@ -32,6 +34,19 @@ function DeleteAccount() {
         }),
   });
 
+  const confirm = useContext(ConfirmContext);
+
+  const handleSubmit = () => {
+    confirm({
+      title: "Delete Account",
+      description:
+        "Deleting your account is a permenant action and cannot be undone. Are you sure you want to delete your account?",
+      buttonText: "Delete",
+      colorScheme: "red",
+      handleConfirm: authForm.submit,
+    });
+  };
+
   return (
     <>
       <AccountHeader
@@ -39,7 +54,7 @@ function DeleteAccount() {
         description="Deleting your account is a permenant action and will delete all your
         user information and research studies"
       />
-      <Form onSubmit={authForm.submit}>
+      <Form onSubmit={handleSubmit}>
         <Grid gap="15px">
           <EmailInput
             name="email"

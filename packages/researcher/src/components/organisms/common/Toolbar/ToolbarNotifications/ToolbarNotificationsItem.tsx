@@ -18,11 +18,16 @@ import {
   FaMagic,
   FaUser,
   FaUserClock,
+  FaUserTimes,
 } from "react-icons/fa";
 
 import { IconType } from "react-icons/lib";
 import { ColorScheme } from "types/global";
 import { UserNotificationDocumentExtended } from "types/side";
+import {
+  ResearcherNotificationDocumentCode,
+  ParticipantNotificationDocumentCode,
+} from "@studyfind/types";
 
 import ToolbarNotificationsItemIcon from "./ToolbarNotificationsItemIcon";
 import ToolbarNotificationsItemTime from "./ToolbarNotificationsItemTime";
@@ -38,16 +43,23 @@ interface Theme {
   colorScheme: ColorScheme;
 }
 
+type NotificationDocumentCode =
+  | ResearcherNotificationDocumentCode
+  | ParticipantNotificationDocumentCode;
+
 function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead }: Props) {
   const [emphasize, setEmphasize] = useState(false);
 
   const { code, createdAt, title, body, link, read } = notification;
 
-  const themes: { [key: string]: Theme } = {
+  const themes: {
+    [key in NotificationDocumentCode]: Theme;
+  } = {
     CREATE_ACCOUNT: { icon: FaMagic, colorScheme: "purple" },
     CREATE_STUDY: { icon: FaClipboard, colorScheme: "green" },
     DELETE_STUDY: { icon: FaClipboard, colorScheme: "red" },
     PARTICIPANT_ENROLLED: { icon: FaUser, colorScheme: "teal" },
+    PARTICIPANT_LEFT: { icon: FaUserTimes, colorScheme: "red" },
     PARTICIPANT_CONFIRMED_MEETING: { icon: FaCalendarCheck, colorScheme: "teal" },
     PARTICIPANT_CONFIRMED_REMINDER: { icon: FaCheckSquare, colorScheme: "teal" },
     RESEARCHER_SENT_MESSAGE: { icon: FaComment, colorScheme: "teal" },
@@ -71,7 +83,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
       setEmphasize(true);
       handleNotificationRead(notification);
     }
-  }, []);
+  }, [read, isOpen]);
 
   useEffect(() => {
     if (emphasize) {
@@ -122,7 +134,7 @@ function ToolbarNotificationsItem({ isOpen, notification, handleNotificationRead
                   color="blue.400"
                   fontSize="14px"
                   paddingLeft="5px"
-                  paddingBottom="2px"
+                  paddingTop="3px"
                 />
               )}
             </Text>

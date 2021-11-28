@@ -26,6 +26,7 @@ import { Toolbar } from "components/organisms";
 import { Router } from "components/organisms";
 import { VerificationBanner } from "components/organisms";
 
+import Dashboard from "pages/Internal/Dashboard/Dashboard";
 import Schedule from "pages/Internal/Schedule/Schedule";
 import Account from "pages/Internal/Account/Account";
 import Feature from "pages/Internal/Support/Feature/Feature";
@@ -131,6 +132,7 @@ function Internal() {
                 <ConfirmProvider>
                   <Router
                     routes={[
+                      { path: "/dashboard", component: Dashboard },
                       { path: "/schedule", component: Schedule },
                       { path: "/account/:tab", component: Account },
                       { path: "/support/bug", component: Bug },
