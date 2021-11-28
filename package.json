@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "initialize": "lerna run bootstrap && lerna run build && lerna run bootstrap",
+    "initialize": "lerna bootstrap && lerna run build && lerna bootstrap",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "install": "lerna run install"
