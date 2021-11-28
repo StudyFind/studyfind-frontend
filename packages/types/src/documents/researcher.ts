@@ -6,13 +6,13 @@ export interface ResearcherDocument {
   phone: Phone;
   timezone: {
     region: Timezone;
-    autodetect: true;
+    autodetect: boolean;
     updatedAt: Timestamp;
   };
   notifications: {
-    local: true;
-    email: false;
-    phone: false;
+    local: boolean;
+    email: boolean;
+    phone: boolean;
   };
   createdAt: Timestamp;
   updatedAt: Timestamp;
