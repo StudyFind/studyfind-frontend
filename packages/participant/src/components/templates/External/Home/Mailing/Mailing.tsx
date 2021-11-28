@@ -1,8 +1,8 @@
-import { actions } from "@studyfind/api";
-
 import { useState } from "react";
 import { useColorModeValue, useDevice } from "hooks";
+
 import { validate } from "@studyfind/utils";
+import { subscribeMailing } from "./side";
 
 import { Heading, Button, Icon, VStack, Text, HStack } from "@chakra-ui/react";
 import { FaCheckCircle, FaShieldAlt } from "react-icons/fa";
@@ -37,8 +37,7 @@ function Mailing() {
 
     setLoading(true);
 
-    return actions.participant
-      .subscribeMailing({ email })
+    return subscribeMailing({ email })
       .then(() => setSuccess(true))
       .catch(() => setError("There was an error"))
       .finally(() => setLoading(false));
