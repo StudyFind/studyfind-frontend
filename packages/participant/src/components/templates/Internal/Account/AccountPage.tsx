@@ -25,7 +25,7 @@ function AccountPage() {
   const toast = useToast();
 
   const user = useContext(UserContext);
-  const [values, setValues] = useState<typeof user>(undefined);
+  const [values, setValues] = useState(user);
 
   useEffect(() => {
     if (user) {

@@ -69,7 +69,7 @@ function Screening() {
 
     if (user && study) {
       actions.participant
-        .enrollForStudy({
+        .joinStudy({
           studyID,
           timezone: user.timezone.region || "America/New_York",
           availability: user.availability || "",
