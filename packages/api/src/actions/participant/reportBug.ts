@@ -1,4 +1,4 @@
-import { auth, firestore } from "@studyfind/firebase";
+import { auth, firestore, storage } from "@studyfind/firebase";
 import { BugBrowser, BugSystem } from "@studyfind/types";
 
 interface ReportBugPayload {
@@ -8,14 +8,20 @@ interface ReportBugPayload {
   screenshot?: File | null;
 }
 
-export const reportBug = async ({ description, browser, system }: ReportBugPayload) => {
+export const reportBug = async ({ description, browser, system, screenshot }: ReportBugPayload) => {
   const email = auth.getUser().email;
 
-  return firestore.mutations.createBugDocument({
+  const newBugDoc = await firestore.mutations.createBugDocument({
     description,
     browser,
     system,
     email,
     side: "PARTICIPANT",
   });
+
+  if (screenshot) {
+    storage.uploadFile(`bugs/${newBugDoc}`, screenshot);
+  }
+
+  return Promise.resolve(newBugDoc);
 };

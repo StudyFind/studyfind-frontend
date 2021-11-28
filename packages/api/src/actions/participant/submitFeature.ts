@@ -4,7 +4,6 @@ import { Email } from "@studyfind/types";
 interface SubmitFeaturePayload {
   name: string;
   description: string;
-  email: Email;
 }
 
 export const submitFeature = async ({ name, description }: SubmitFeaturePayload) => {
