@@ -5,7 +5,7 @@ export const getUser =
     ? queries.researcher.getResearcherQuery
     : queries.participant.getParticipantQuery;
 
-export const getStudies = queries.participant.getFindStudiesQuery;
+export const getStudies = queries.researcher.getDashboardQuery;
 
 export const updateUserTimezone =
   process.env.REACT_APP_SIDE === "RESEARCHER"

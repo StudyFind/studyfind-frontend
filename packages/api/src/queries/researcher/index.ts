@@ -1,7 +1,7 @@
 export { getNotificationsQuery } from "./getNotificationsQuery";
 export { getResearcherQuery } from "./getResearcherQuery";
 export { getScheduleQuery } from "./getScheduleQuery";
-export { getStudiesQuery } from "./getStudiesQuery";
+export { getDashboardQuery } from "./getDashboardQuery";
 export { getStudyParticipantMeetingsQuery } from "./getStudyParticipantMeetingsQuery";
 export { getStudyParticipantMessagesQuery } from "./getStudyParticipantMessagesQuery";
 export { getStudyParticipantNotesQuery } from "./getStudyParticipantNotesQuery";
