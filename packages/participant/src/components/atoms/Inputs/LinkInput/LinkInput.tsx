@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { InputWrapper, InputField } from "../helpers";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const LinkInput = React.memo(({ name, value, error, label, onChange, ...rest }: Props) => {
+export const LinkInput = memo(({ name, value, error, label, onChange, ...rest }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.replace(/ /g, ""); // remove all whitespace because URLs don't have spaces
     onChange(name, value);

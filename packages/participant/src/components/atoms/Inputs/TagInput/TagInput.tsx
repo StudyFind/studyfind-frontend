@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { memo, useState } from "react";
 import { useColorModeValue } from "hooks";
 import { useMeasure } from "react-use";
 
@@ -20,7 +20,7 @@ interface Props {
   readonly onChange: (name: string, value: string[]) => void;
 }
 
-export const TagInput = React.memo(
+export const TagInput = memo(
   ({
     name,
     label,

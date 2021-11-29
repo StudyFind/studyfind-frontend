@@ -1,6 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
+import { memo } from "react";
 import { HashLink } from "react-router-hash-link";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
@@ -15,7 +15,7 @@ type StyledProps = {
   isWrapper?: boolean;
 };
 
-export const Link = React.memo(({ to, isWrapper, ...rest }: Props) => {
+export const Link = memo(({ to, isWrapper, ...rest }: Props) => {
   // if link starts with "http" it is treated as external and is opened in new tab
   // else link is treated as internal react router link
 

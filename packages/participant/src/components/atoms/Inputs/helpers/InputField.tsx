@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useColorModeValue } from "hooks";
 import { Input } from "@chakra-ui/react";
 

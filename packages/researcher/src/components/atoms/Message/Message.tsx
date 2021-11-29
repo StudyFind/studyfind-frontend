@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Heading, Text, Box, Icon, Center, Flex } from "@chakra-ui/react";
 import { FaTimesCircle, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
@@ -25,7 +24,7 @@ type Statuses = {
   failure: Status;
 };
 
-export const Message = React.memo(
+export const Message = memo(
   ({ status, title, description, showBackground = false, children, ...rest }: Props) => {
     const statuses: Statuses = {
       success: { icon: FaCheckCircle, colorScheme: "green" },

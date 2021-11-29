@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { Tooltip, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { ButtonClickEventHandler } from "types/global";
 
@@ -18,7 +18,7 @@ type ColorSet = {
   readonly _active: { background: string };
 };
 
-export const ActionButton = React.memo(
+export const ActionButton = memo(
   ({ icon, hint, size = "sm", colorScheme, onClick = () => {}, ...rest }: Props) => {
     const defaultColor = useColorModeValue("gray.500", "gray.500");
     const defaultBackground = useColorModeValue("transparent", "transparent");

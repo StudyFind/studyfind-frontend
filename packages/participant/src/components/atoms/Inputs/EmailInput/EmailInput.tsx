@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { InputField, InputWrapper } from "../helpers";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const EmailInput = React.memo(({ name, value, error, label, onChange, ...rest }: Props) => {
+export const EmailInput = memo(({ name, value, error, label, onChange, ...rest }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.replace(/ /g, ""); // remove all whitespace because emails don't have spaces
     onChange(name, value);

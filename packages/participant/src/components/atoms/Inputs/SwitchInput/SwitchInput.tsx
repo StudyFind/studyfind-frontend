@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Flex, Grid, Heading, Text, Switch } from "@chakra-ui/react";
 
@@ -13,7 +12,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const SwitchInput = React.memo(
+export const SwitchInput = memo(
   ({ name, value, error, label, details, onChange, ...rest }: Props) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.checked;

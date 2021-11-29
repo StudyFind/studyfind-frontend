@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Icon, Flex, Text, Tooltip } from "@chakra-ui/react";
 import { FaExclamationCircle, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
@@ -22,7 +21,7 @@ interface Props {
   hint: string;
 }
 
-export const ConfirmationStatus = React.memo(({ children, status = "neutral", hint }: Props) => {
+export const ConfirmationStatus = memo(({ children, status = "neutral", hint }: Props) => {
   const statuses: Statuses = {
     success: { colorScheme: "green", icon: FaCheckCircle },
     neutral: { colorScheme: "gray", icon: FaExclamationCircle },

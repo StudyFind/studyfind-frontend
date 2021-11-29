@@ -1,2 +1,2 @@
-import React from "react";
-export const AutocompleteInput = React.memo(() => <div></div>);
+import { memo } from "react";
+export const AutocompleteInput = memo(() => <div></div>);

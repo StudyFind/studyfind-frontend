@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { InputGroup, InputLeftElement, InputRightElement } from "@chakra-ui/react";
 import { InputField, InputWrapper } from "../helpers";
 
@@ -16,7 +15,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const TextInput = React.memo(
+export const TextInput = memo(
   ({ name, value, error, label, left, leftWidth, right, rightWidth, onChange, ...rest }: Props) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;

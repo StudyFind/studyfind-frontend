@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Box } from "@chakra-ui/react";
 
@@ -8,7 +7,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const Card = React.memo(({ children, ...rest }: Props) => {
+export const Card = memo(({ children, ...rest }: Props) => {
   const borderColor = useColorModeValue("gray.200", "gray.700");
   const backgroundColor = useColorModeValue("white", "gray.900");
 

@@ -1,6 +1,5 @@
-import React from "react";
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
-
 import { ColorScheme } from "types/global";
 import { Text, Icon } from "@chakra-ui/react";
 import { FaExclamationCircle } from "react-icons/fa";
@@ -10,7 +9,7 @@ interface Props {
   readonly colorScheme: ColorScheme;
 }
 
-export const Disclaimer = React.memo(({ colorScheme = "red", children }: Props) => {
+export const Disclaimer = memo(({ colorScheme = "red", children }: Props) => {
   const textColor = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);
   const background = useColorModeValue(`${colorScheme}.100`, `${colorScheme}.900`);
 

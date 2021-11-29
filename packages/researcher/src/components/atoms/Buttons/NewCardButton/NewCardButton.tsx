@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Heading, Flex } from "@chakra-ui/react";
 import { FaPlusCircle } from "react-icons/fa";
@@ -10,7 +9,7 @@ interface Props {
   readonly onClick: ButtonClickEventHandler;
 }
 
-export const NewCardButton = React.memo(({ children, onClick }: Props) => {
+export const NewCardButton = memo(({ children, onClick }: Props) => {
   const color = useColorModeValue("gray.500", "gray.500");
   const border = useColorModeValue("gray.300", "gray.600");
   const background = useColorModeValue("gray.100", "gray.800");

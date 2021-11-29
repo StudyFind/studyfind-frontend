@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue, useDevice } from "hooks";
 import { Box } from "@chakra-ui/react";
 import { Loader } from "../Loader/Loader";
@@ -10,7 +9,7 @@ interface Props {
   [key: string]: any;
 }
 
-export const Page = React.memo(({ isLoading, children, ...rest }: Props) => {
+export const Page = memo(({ isLoading, children, ...rest }: Props) => {
   const { isPhone } = useDevice();
 
   const background = useColorModeValue("#f8f9fa", "gray.800");

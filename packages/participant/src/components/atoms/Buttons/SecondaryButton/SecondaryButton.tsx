@@ -1,13 +1,13 @@
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Button } from "@chakra-ui/react";
-import React from "react";
 
 interface Props {
   readonly children: string;
   readonly [key: string]: any;
 }
 
-export const SecondaryButton = React.memo(({ children, ...rest }: Props) => {
+export const SecondaryButton = memo(({ children, ...rest }: Props) => {
   const borderColor = useColorModeValue("gray.200", "gray.700");
   const hoverBackgroundColor = useColorModeValue("gray.100", "gray.800");
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 import { Text, Flex, Textarea, FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/react";
 import { InputField } from "../helpers";
 
@@ -12,7 +12,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const TextareaInput = React.memo(
+export const TextareaInput = memo(
   ({ name, value, error, label, limit, onChange, ...rest }: Props) => {
     const [count, setCount] = useState(0);
 

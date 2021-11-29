@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { Select } from "@chakra-ui/react";
 import { Option } from "types/global";
 import { InputField, InputWrapper } from "../helpers";
@@ -14,7 +13,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const SelectInput = React.memo(
+export const SelectInput = memo(
   ({ name, value, error, label, options, onChange, ...rest }: Props) => {
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
       const value = event.target.value;

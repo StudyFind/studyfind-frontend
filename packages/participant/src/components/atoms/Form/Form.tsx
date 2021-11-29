@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 
 interface Props {
   readonly children: React.ReactNode;
@@ -6,7 +6,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const Form = React.memo(({ children, onSubmit, ...rest }: Props) => {
+export const Form = memo(({ children, onSubmit, ...rest }: Props) => {
   const handleEnter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit(e);

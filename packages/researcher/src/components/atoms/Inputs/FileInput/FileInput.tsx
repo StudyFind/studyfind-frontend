@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { InputField, InputWrapper } from "../helpers";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const FileInput = React.memo(({ name, error, label, onChange, ...rest }: Props) => {
+export const FileInput = memo(({ name, error, label, onChange, ...rest }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     const value = files && files[0];

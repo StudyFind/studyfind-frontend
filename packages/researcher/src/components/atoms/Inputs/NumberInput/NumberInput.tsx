@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import {
   NumberInput as NumberInputWrapper,
@@ -24,7 +23,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const NumberInput = React.memo(
+export const NumberInput = memo(
   ({
     name,
     value,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { InputField, InputWrapper } from "../helpers";
 
 interface Props {
@@ -32,7 +32,7 @@ const cleanPhone = (value: string) => {
   return value.replace(/\D/g, "").slice(-10);
 };
 
-export const PhoneInput = React.memo(({ name, value, error, label, onChange, ...rest }: Props) => {
+export const PhoneInput = memo(({ name, value, error, label, onChange, ...rest }: Props) => {
   const [phone, setPhone] = useState("");
 
   useEffect(() => {

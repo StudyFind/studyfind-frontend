@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Flex, Spinner } from "@chakra-ui/react";
 import { ColorScheme } from "types/global";
@@ -10,7 +9,7 @@ interface Props {
   [key: string]: any;
 }
 
-export const Loader = React.memo(({ size = "lg", colorScheme = "blue", ...rest }: Props) => {
+export const Loader = memo(({ size = "lg", colorScheme = "blue", ...rest }: Props) => {
   const thickness = ["xs", "sm", "md", "lg", "xl"].indexOf(size) + 1;
 
   const filledColor = useColorModeValue(`${colorScheme}.500`, `${colorScheme}.400`);

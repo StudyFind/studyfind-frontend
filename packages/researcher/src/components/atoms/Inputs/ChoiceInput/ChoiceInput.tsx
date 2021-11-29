@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { SimpleGrid, RadioGroup, Radio } from "@chakra-ui/react";
 import { InputWrapper } from "../helpers";
 import { Option } from "types/global";
@@ -13,7 +13,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const ChoiceInput = React.memo(
+export const ChoiceInput = memo(
   ({ name, value, error, label, options, onChange, ...rest }: Props) => {
     const handleChange = (value: string) => {
       onChange(name, value);

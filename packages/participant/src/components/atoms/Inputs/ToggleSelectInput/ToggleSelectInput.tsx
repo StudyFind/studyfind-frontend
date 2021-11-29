@@ -1,5 +1,4 @@
-import React from "react";
-
+import { memo } from "react";
 import { useColorModeValue } from "hooks";
 import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { InputWrapper } from "../helpers";
@@ -17,7 +16,7 @@ interface Props {
   readonly [key: string]: any;
 }
 
-export const ToggleSelectInput = React.memo(
+export const ToggleSelectInput = memo(
   ({
     name,
     value,
