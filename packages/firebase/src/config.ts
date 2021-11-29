@@ -10,8 +10,11 @@ const app = firebase.initializeApp({
 });
 
 app.analytics();
+app.performance();
 
 export const auth = app.auth();
 export const storage = app.storage();
 export const functions = app.functions();
 export const firestore = app.firestore();
+
+firestore.enablePersistence();
