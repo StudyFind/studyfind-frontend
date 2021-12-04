@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useColorModeValue, useCred, useDevice } from "hooks";
+import { useColorModeValue, useDevice } from "hooks";
 
 import { Flex } from "@chakra-ui/react";
 
@@ -14,12 +14,13 @@ interface LinkType {
 }
 
 interface Props {
+  name: string;
+  email: string;
   links: LinkType[];
   [key: string]: any;
 }
 
-function Sidebar({ links, ...rest }: Props) {
-  const { displayName, email } = useCred();
+function Sidebar({ name = "", email = "", links, ...rest }: Props) {
   const { isPhone } = useDevice();
 
   const [active, setActive] = useState(false);
@@ -48,7 +49,7 @@ function Sidebar({ links, ...rest }: Props) {
       {(!isPhone || active) && (
         <>
           <SidebarLinks links={links} />
-          <SidebarUser name={displayName || ""} email={email || ""} />
+          <SidebarUser name={name} email={email} />
         </>
       )}
     </Flex>

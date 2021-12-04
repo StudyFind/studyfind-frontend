@@ -88,7 +88,7 @@ function Internal({ cred }: Props) {
         moment.tz.setDefault(region);
       }
     }
-  }, [user?.timezone?.region]);
+  }, [user?.timezone]);
 
   return (
     <Grid
@@ -136,6 +136,7 @@ function Internal({ cred }: Props) {
                   <Router
                     routes={[
                       { path: "/dashboard", component: Dashboard },
+                      { path: "/create-study", component: Dashboard },
                       { path: "/schedule", component: Schedule },
                       { path: "/account/:tab", component: Account },
                       { path: "/support/bug", component: Bug },

@@ -103,7 +103,7 @@ function Internal({ cred }: Props) {
         moment.tz.setDefault(region);
       }
     }
-  }, [user?.timezone?.region]);
+  }, [user?.timezone]);
 
   return (
     <Grid
@@ -122,7 +122,7 @@ function Internal({ cred }: Props) {
         top="0"
         zIndex={200}
       >
-        <Sidebar links={links} />
+        <Sidebar name={cred.displayName} email={cred.email} links={links} />
       </Box>
       <Box
         background={background}
