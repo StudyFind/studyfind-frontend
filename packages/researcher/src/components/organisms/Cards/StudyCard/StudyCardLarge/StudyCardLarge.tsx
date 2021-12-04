@@ -4,8 +4,8 @@ import { Heading, Text, Box, Flex } from "@chakra-ui/react";
 import { StudyDocumentExtended } from "types/extended";
 
 import StudyBullets from "./StudyBullets";
-import StudyConditions from "./StudyConditions";
 import StudyResearcher from "./StudyResearcher";
+import StudyConditions from "../StudyConditions";
 
 interface Props {
   study: StudyDocumentExtended;

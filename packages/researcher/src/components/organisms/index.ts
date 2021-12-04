@@ -1,6 +1,7 @@
-export { default as StudyCardLarge } from "./common/StudyCard/StudyCardLarge";
-export { default as ConfirmModal } from "./common/ConfirmModal";
-export { default as VerificationBanner } from "./common/VerificationBanner/VerificationBanner";
-export { default as Toolbar } from "./common/Toolbar/Toolbar";
-export { default as Sidebar } from "./common/Sidebar/Sidebar";
-export { default as Router } from "./common/Router";
+export { default as StudyCardLarge } from "./Cards/StudyCard/StudyCardLarge/StudyCardLarge";
+export { default as StudyCardSmallParticipant } from "./Cards/StudyCard/StudyCardSmall/StudyCardSmallParticipant/StudyCardSmallParticipant";
+export { default as ConfirmModal } from "./ConfirmModal";
+export { default as VerificationBanner } from "./VerificationBanner/VerificationBanner";
+export { default as Toolbar } from "./Toolbar/Toolbar";
+export { default as Sidebar } from "./Sidebar/Sidebar";
+export { default as Router } from "./Router";
