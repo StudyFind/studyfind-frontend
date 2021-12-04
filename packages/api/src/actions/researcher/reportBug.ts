@@ -20,7 +20,7 @@ export const reportBug = async ({ description, browser, system, screenshot }: Re
   });
 
   if (screenshot) {
-    storage.uploadFile(`bugs/${newBugDoc}`, screenshot);
+    storage.uploadFile(`bugs/${newBugDoc.id}`, screenshot);
   }
 
   return Promise.resolve(newBugDoc);
