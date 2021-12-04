@@ -120,17 +120,17 @@ function Home() {
 
   const panels: Panel[] = [
     {
-      title: "Our Team",
+      title: "Interns",
       colorScheme: "blue",
       description: "The talented individuals resonsible for the day-to-day operations at StudyFind",
       buttonText: "Meet the team",
       buttonLink: "/team#interns",
     },
     {
-      title: "Advisory Board",
+      title: "Advisors",
       colorScheme: "teal",
       description:
-        "The diverse group of professionals that guide us in making a product researchers love",
+        "The diverse group of professionals that guide us in making a product our users love",
       buttonText: "Meet the Advisory Board",
       buttonLink: "/team#board",
     },
@@ -178,7 +178,7 @@ function Home() {
       <Hero
         logoLink="/home#"
         blackText="We simplify coordinating"
-        blueText="your participants"
+        blueText="with your participants"
         buttonText="Start Now"
         buttonLink="/auth"
         image={Background}

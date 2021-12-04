@@ -105,7 +105,7 @@ function Home() {
       title: "Advisors",
       colorScheme: "teal",
       description:
-        "The diverse group of professionals that guide us in making a product researchers love",
+        "The diverse group of professionals that guide us in making a product our users love",
       buttonText: "Meet the advisors",
       buttonLink: "/team#board",
     },
