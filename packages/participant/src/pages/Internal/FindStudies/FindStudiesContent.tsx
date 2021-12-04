@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import StudyFilters from "./StudyFilters";
-import StudyGrid from "./StudyGrid";
+import FindStudiesFilters from "./FindStudiesFilters";
+import FindStudiesGrid from "./FindStudiesGrid";
 
 function FindStudiesContent() {
   const topRef = useRef<HTMLElement>(null);
@@ -13,8 +13,8 @@ function FindStudiesContent() {
   return (
     <>
       <span ref={topRef} />
-      <StudyFilters />
-      <StudyGrid scrollToTop={scrollToTop} />
+      <FindStudiesFilters />
+      <FindStudiesGrid scrollToTop={scrollToTop} />
     </>
   );
 }

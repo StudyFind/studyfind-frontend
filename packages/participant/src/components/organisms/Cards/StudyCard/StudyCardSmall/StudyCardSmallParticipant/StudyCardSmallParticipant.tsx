@@ -1,7 +1,4 @@
-import { useContext } from "react";
-import { useColorModeValue, useCred } from "hooks";
-
-import { actions } from "@studyfind/api";
+import { useColorModeValue } from "hooks";
 
 import { StudyDocumentExtended } from "types/extended";
 
@@ -9,36 +6,31 @@ import { Box, Flex, Heading, Button, Text, Tooltip, Icon } from "@chakra-ui/reac
 import { Link } from "components/atoms";
 import { FaBookmark, FaCheckCircle } from "react-icons/fa";
 
-import { FindStudiesContext } from "./FindStudiesContext";
-
-import StudyConditions from "./StudyConditions";
+import StudyCardSmallParticipantConditions from "./StudyCardSmallParticipantConditions";
 
 interface Props {
   study: StudyDocumentExtended;
+  selectedConditions: string[];
+  detailsRedirectLink: string;
+  enrollRedirectLink: string;
+  isParticipantVerified: boolean;
+  hasParticipantSaved: boolean;
+  hasParticipantEnrolled: boolean;
+  handleAddCondition: (condition: string) => void;
+  handleBookmark: () => void;
 }
 
-function StudyCardSmall({ study }: Props) {
-  const cred = useCred();
-  const { user, filters, handleAddCondition } = useContext(FindStudiesContext);
-
-  const detailsRedirectLink = `/view-study/${study.id}/details`;
-  const enrollRedirectLink = `/join-study/${study.id}/screening`;
-  const hasParticipantEnrolled = user?.enrolled?.includes(study.id);
-  const hasParticipantSaved = user?.saved?.includes(study.id);
-  const isParticipantVerified = cred.emailVerified;
-
-  const handleBookmark = () => {
-    const saved = user?.saved;
-
-    if (saved) {
-      actions.participant.updateUserAccount({
-        saved: saved.includes(study.id)
-          ? saved.filter((studyID) => studyID !== study.id)
-          : saved.concat(study.id),
-      });
-    }
-  };
-
+function StudyCardSmallParticipant({
+  study,
+  selectedConditions,
+  detailsRedirectLink,
+  enrollRedirectLink,
+  isParticipantVerified,
+  hasParticipantSaved,
+  hasParticipantEnrolled,
+  handleAddCondition,
+  handleBookmark,
+}: Props) {
   const detailsButtonColor = useColorModeValue("gray.500", "gray.400");
   const enrolledButtonColor = useColorModeValue("green.500", "green.400");
   const enrolledButtonBackground = useColorModeValue("green.100", "green.900");
@@ -77,9 +69,9 @@ function StudyCardSmall({ study }: Props) {
         <Heading size="sm" noOfLines={2} marginBottom="6px">
           {study.title}
         </Heading>
-        <StudyConditions
+        <StudyCardSmallParticipantConditions
           conditions={study.conditions}
-          selectedConditions={filters.conditions}
+          selectedConditions={selectedConditions}
           handleAddCondition={handleAddCondition}
         />
         <Text color="gray.500" noOfLines={5} marginTop="10px">
@@ -128,4 +120,4 @@ function StudyCardSmall({ study }: Props) {
   );
 }
 
-export default StudyCardSmall;
+export default StudyCardSmallParticipant;

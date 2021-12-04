@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 
 import { FindStudiesContext } from "./FindStudiesContext";
 
-function StudyFilters() {
+function FindStudiesFilters() {
   const { filters, handleFilters, handleDeleteCondition, handleClearConditions } =
     useContext(FindStudiesContext);
 
@@ -97,4 +97,4 @@ function StudyFilters() {
   );
 }
 
-export default StudyFilters;
+export default FindStudiesFilters;

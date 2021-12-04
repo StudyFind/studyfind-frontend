@@ -7,7 +7,11 @@ interface Props {
   handleAddCondition: (condition: string) => void;
 }
 
-function StudyConditions({ conditions, selectedConditions, handleAddCondition }: Props) {
+function StudyCardSmallParticipantConditions({
+  conditions,
+  selectedConditions,
+  handleAddCondition,
+}: Props) {
   const { colorMode } = useColorMode();
 
   return (
@@ -30,4 +34,4 @@ function StudyConditions({ conditions, selectedConditions, handleAddCondition }:
   );
 }
 
-export default StudyConditions;
+export default StudyCardSmallParticipantConditions;
