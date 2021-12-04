@@ -14,13 +14,13 @@ interface LinkType {
 }
 
 interface Props {
-  name: string;
-  email: string;
+  name: string | null;
+  email: string | null;
   links: LinkType[];
   [key: string]: any;
 }
 
-function Sidebar({ name = "", email = "", links, ...rest }: Props) {
+function Sidebar({ name, email, links, ...rest }: Props) {
   const { isPhone } = useDevice();
 
   const [active, setActive] = useState(false);
@@ -49,7 +49,7 @@ function Sidebar({ name = "", email = "", links, ...rest }: Props) {
       {(!isPhone || active) && (
         <>
           <SidebarLinks links={links} />
-          <SidebarUser name={name} email={email} />
+          <SidebarUser name={name || ""} email={email || ""} />
         </>
       )}
     </Flex>

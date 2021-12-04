@@ -107,7 +107,7 @@ function Internal({ cred }: Props) {
         top="0"
         zIndex={200}
       >
-        <Sidebar name="Yohan Jhaveri" email="yohan@studyfind.org" links={links} />
+        <Sidebar name={cred.displayName} email={cred.email} links={links} />
       </Box>
       <Box
         background={background}
