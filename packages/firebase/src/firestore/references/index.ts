@@ -30,8 +30,8 @@ enum COLLECTION_KEYS {
   meetings = "meetings",
   reminders = "reminders",
   messages = "messages",
-  feature = "feature",
-  bug = "bug",
+  features = "features",
+  bugs = "bugs",
   mailing = "mailing",
 }
 
@@ -238,12 +238,12 @@ export const getMessageReference = (
 
 // FEATURE - not accessible on the frontend - for internal use only
 export const getFeaturesReference = () => {
-  return firestore.collection(COLLECTION_KEYS.feature) as CollectionReference<FeatureDocument>;
+  return firestore.collection(COLLECTION_KEYS.features) as CollectionReference<FeatureDocument>;
 };
 
 // BUG - not accessible on the frontend - for internal use only
 export const getBugsReference = () => {
-  return firestore.collection(COLLECTION_KEYS.bug) as CollectionReference<BugDocument>;
+  return firestore.collection(COLLECTION_KEYS.bugs) as CollectionReference<BugDocument>;
 };
 
 // MAILING - not accessible on the frontend - for internal use only
