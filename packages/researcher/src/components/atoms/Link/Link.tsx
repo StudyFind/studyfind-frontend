@@ -19,7 +19,7 @@ export const Link = memo(({ to, isWrapper, ...rest }: Props) => {
   // if link starts with "http" it is treated as external and is opened in new tab
   // else link is treated as internal react router link
 
-  if (to.substring(0, 4) === "http") {
+  if (to.substring(0, 4) === "http" || to.substring(0, 7) === "mailto:") {
     return <StyledLink href={to} color="blue.500" isExternal isWrapper={isWrapper} {...rest} />;
   }
 
@@ -37,5 +37,5 @@ const StyledLink = styled(ChakraLink)<StyledProps>`
     all: unset;
     display: block;
     cursor: pointer;
-  `}
+  `};
 `;

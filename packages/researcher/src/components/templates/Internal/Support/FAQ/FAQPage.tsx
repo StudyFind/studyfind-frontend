@@ -12,8 +12,8 @@ import {
 
 interface Props {
   questions: {
-    prompt: string;
-    answer: string;
+    prompt: React.ReactNode | string;
+    answer: React.ReactNode | string;
   }[];
 }
 
@@ -32,7 +32,7 @@ function FAQPage({ questions }: Props) {
       <Accordion allowToggle>
         {questions.map((question) => (
           <AccordionItem borderColor="gray.700" borderLeftWidth="1px" borderRightWidth="1px">
-            <AccordionButton color="blue.400" fontWeight="600">
+            <AccordionButton color="blue.400" fontWeight="500">
               <Box flex="1" textAlign="left">
                 {question.prompt}
               </Box>
